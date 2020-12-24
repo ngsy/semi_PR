@@ -12,7 +12,7 @@
             <div class="card shadow mb-4">
                   <div class="card-header py-3">
                             
-                         헤더부분
+                         헤더부분<button data-toggle="modal" data-target="#portfolioModal1" class="btn btn-danger" >click!</button>
                    </div>                      
                     
                   <div class="card-body">
