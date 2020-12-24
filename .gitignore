@@ -12,10 +12,10 @@ tmp/
 local.properties
 .project
 .classpath
-/.classpath
-*.classpath
+
 .settings/
 .class
+*.class
 
 .loadpath
 .recommenders
