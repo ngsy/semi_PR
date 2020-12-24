@@ -13,7 +13,7 @@ local.properties
 .project
 .classpath
 .settings/
-
+.class
 
 .loadpath
 .recommenders
