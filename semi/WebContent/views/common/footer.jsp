@@ -12,71 +12,79 @@
         </div>
 		<!-- end content-wrapper -->
 		
+	    <div id="sidebar-wrapper" class="bg-sidebar">	
+		    
+		   
+		
+		<div id="sidebar" >
 		    	<!-- Sidebar -->
-    	<ul class="navbar-nav bg-sidebar sidebar sidebar-dark accordion" id="accordionSidebar">
-    		<li class="nav-item active">
-		        
-          			<button class="btn btn-lg border-0 float-right" id="sidebarHideBtn"><i class="far fa-times-circle"></i></button>
-		          
-		      </li>
-		      
+	    	<ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar">
+	    		<li class="nav-item active">
+			        
+	          			<button class="btn btn-lg border-0 float-right" id="sidebarHideBtn"><i class="far fa-times-circle"></i></button>
+			          
+			      </li>
+			      
+	
+	    	
+	     		 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+			        <div class="sidebar-brand-icon rotate-n-15">
+			          	<i class="fas fa-comment-dots"></i>
+			        </div>
+		        	<div class="sidebar-brand-text mx-3">채팅</div>
+	      		</a>
+	      		
+			     <!-- Divider -->
+			     <hr class="sidebar-divider my-0">
+	      		
+	   		     <!-- Nav Item - Total -->
+			      <li class="nav-item active">
+			        <a class="nav-link"  >
+			          <i class="fas fa-fish"></i>
+			          <span>채팅방1</span></a>
+			      </li>
+			      
+	 		    
+			      <li class="nav-item active">
+			        <a class="nav-link"  >
+			          <i class="fas fa-fish"></i>
+			          <span>채팅방2</span></a>
+			      </li>
+			      
+	 		     
+			      <li class="nav-item active">
+			        <a class="nav-link"  >
+			          <i class="fas fa-fish"></i>
+			         <span>채팅방3</span></a>
+			      </li>
+			      
+	 		     
+			      <li class="nav-item active">
+			        <a class="nav-link" >
+			          <i class="fas fa-fish"></i>
+			          <span>채팅방4</span></a>
+			      </li>		      		      
+	 
+	  		     
+			      <li class="nav-item active">
+			        <a class="nav-link"  >
+			          <i class="fas fa-fish"></i>
+			          <span>채팅방5</span></a>
+			      </li>   	
+	
+	 
 
+	    			       	
+	 			      <!-- Divider -->
+	      		<hr class="sidebar-divider d-none d-md-block">
+	
+	 
+	 
+	 
+	 
+	    	</ul>
     	
-     		 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-		        <div class="sidebar-brand-icon rotate-n-15">
-		          	<i class="fas fa-comment-dots"></i>
-		        </div>
-	        	<div class="sidebar-brand-text mx-3">채팅</div>
-      		</a>
-      		
-		     <!-- Divider -->
-		     <hr class="sidebar-divider my-0">
-      		
-   		     <!-- Nav Item - Total -->
-		      <li class="nav-item active">
-		        <a class="nav-link"  >
-		          <i class="fas fa-fish"></i>
-		          <span>채팅방1</span></a>
-		      </li>
-		      
- 		     <!-- Nav Item - outer -->
-		      <li class="nav-item active">
-		        <a class="nav-link"  >
-		          <i class="fas fa-fish"></i>
-		          <span>채팅방2</span></a>
-		      </li>
-		      
- 		     <!-- Nav Item - top -->
-		      <li class="nav-item active">
-		        <a class="nav-link"  >
-		          <i class="fas fa-fish"></i>
-		         <span>채팅방3</span></a>
-		      </li>
-		      
- 		     <!-- Nav Item - bottom -->
-		      <li class="nav-item active">
-		        <a class="nav-link" >
-		          <i class="fas fa-fish"></i>
-		          <span>채팅방4</span></a>
-		      </li>		      		      
- 
-  		     <!-- Nav Item - acc -->
-		      <li class="nav-item active">
-		        <a class="nav-link"  >
-		          <i class="fas fa-fish"></i>
-		          <span>채팅방5</span></a>
-		      </li>   	
-
- 			
- 			      <!-- Divider -->
-      		<hr class="sidebar-divider d-none d-md-block">
-
- 
- 
- 
- 
-    	</ul>
-    	
+    	</div>
     	<!-- sidebar end -->
     	
     	  			 <script>
@@ -84,11 +92,12 @@
    			 
 		      	$("#sidebarHideBtn").on("click",function(){
 		      		console.log(1);
-		      		$("#accordionSidebar").css("display","none");
+		      		$("#sidebar-wrapper").css("display","none");
 		      		
 		      	});
 		      
 		      </script>
+	</div>
 	</div>
 	<!-- end Page Wrapper -->
        
