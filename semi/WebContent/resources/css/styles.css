@@ -10457,7 +10457,7 @@ background-color :#FACD87;
 
 @media (min-width: 768px) {
   .sidebar {
-    width: 14rem !important;
+    width: 15rem !important;
   }
   .sidebar .nav-item .collapse {
     position: relative;
@@ -10781,6 +10781,10 @@ container
 .container-fluid {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+#sidebarHideBtn{
+	color : white;
 }
 
 
