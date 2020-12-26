@@ -551,6 +551,8 @@ pre code {
   padding-left: 1.5rem;
   margin-right: auto;
   margin-left: auto;
+  overflow:auto; 
+ 
 }
 
 @media (min-width: 576px) {
@@ -10722,6 +10724,17 @@ container
 
 #wrapper #content-wrapper #content {
   flex: 1 0 auto;
+  height:800px;
+}
+#wrapper #sidebar-wrapper {
+  
+	width:20%;
+  overflow-x: hidden;
+}
+
+#sidebar{
+	 flex: 1 0 auto;
+  height:800px;
 }
 
 .container-fluid {
