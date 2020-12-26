@@ -3,9 +3,6 @@
 <%@ include file ="header.jsp" %>
 
 	
-        
-        <section class="page-section">
-                    <!-- Page Heading -->
       
                     
                     
@@ -32,6 +29,6 @@
 			 <!-- card-body end -->
            </div>
                     <!-- card end -->
-	</section>
+
 	
 <%@ include file ="footer.jsp" %>
