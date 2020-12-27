@@ -28,7 +28,7 @@
         </li>
         <li class="article" id="a2">
             <p class="q"><a href="#a2">질문2</a></p>
-            <p class="a">답변2</p>
+            <p class="a">답변2입니다.</p>
         </li>
         <li class="article" id="a3">
             <p class="q"><a href="#a3">질문3</a></p>
