@@ -10822,12 +10822,20 @@ container
     line-height: 22px;
     border-top: 1px solid #bdbdbd;
     margin:5px 0 0 0;}
-.head {
-	font-size : 51px;
-	color : green;
-	
-	}
 
+.color-white{
+	
+	color:#fff;
+}
+
+.pd-t{
+	
+	padding-top:16px;
+}
+.font{
+	  font-family: 'Font Awesome 5 Free';
+	
+}
 
 
 
