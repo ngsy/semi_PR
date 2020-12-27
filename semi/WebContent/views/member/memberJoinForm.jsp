@@ -6,7 +6,7 @@
  <div class="card shadow mb-4">
                   <div class="card-header py-3">
                             
-                   <h2 class="mb-3" align="center">회원가입</h2>
+                   <h2 >회원가입</h2>
                    
                    </div>                      
                     
@@ -68,7 +68,7 @@
             <tr>
            <td>내위치 조회</td>
     
-           <td><button type="button" class="btn btn-primary btn-lg" onclick="#">조회</button><td>
+           <td><button  class="btn btn-primary " onclick="#">조회</button><td>
            
             </tr>
   

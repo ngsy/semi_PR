@@ -52,57 +52,75 @@
 <body>
 
 	<!-- Page Wrapper -->
-	<div id="wrapper">
 
+	<div id="wrapper">		
 
+    	
+ 
+    	
+    	
+    	<div id="content-wrapper" class="d-flex flex-column">	
+		    
+		     <!-- Main Content -->
+      		<div id="content">	
 
+  <!-- Navigation-->
+ 
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="<%=contextPath%>">pumassi</a>
+                <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a></li>
+                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/FAQ/FAQ.jsp">FAQ</a></li>
+                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">|</a></li>
+                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">로그인</a></li>
+                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberJoinForm.jsp">회원가입</a></li>
+                    	
+                    	
+                    	
+                    </ul>
+                </div>
+         
+                
+            </div>
+                  
+                <div>
+        
+               	<button class="btn btn-lg border-0 float-right color-white" id="sidebarBtn"><i class="far fa-comment-dots"></i></button>
+                
+                </div>
+        </nav>
+        
+        <script>
+	      	$("#sidebarBtn").on("click",function(){
+	      		var status=$("#sidebar-wrapper").css("display");
+	      		
+	      		
+	      		
+	      	
+	      		if(status=="none"){
+	      			$("#sidebar-wrapper").css("display","block");
+	      		}else if(status=="block"){
+	      			$("#sidebar-wrapper").css("display","none");
 
+	      		}
+	      		
+	      	});
+        </script>
+        
+        <div class="container-fluid">
 
-		<div id="content-wrapper" class="d-flex flex-column">
-
-			<!-- Main Content -->
-			<div id="content">
-
-				<!-- Navigation-->
-
-				<nav
-					class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
-					id="mainNav">
-					<div class="container">
-						<a class="navbar-brand js-scroll-trigger" href="#page-top">pumassi</a>
-						<button
-							class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
-							type="button" data-toggle="collapse"
-							data-target="#navbarResponsive" aria-controls="navbarResponsive"
-							aria-expanded="false" aria-label="Toggle navigation">
-							Menu <i class="fas fa-bars"></i>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarResponsive">
-							<ul class="navbar-nav ml-auto">
-								<li class="nav-item mx-0 mx-lg-1"><a
-									class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-									href="<%=request.getContextPath()%>/views/board/BoardListview.jsp">우리마을게시판</a></li>
-								<li class="nav-item mx-0 mx-lg-1"><a
-									class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-									href="<%=request.getContextPath()%>/views/shopInfo/shopInfoListview.jsp">우리동네가게</a></li>
-								<li class="nav-item mx-0 mx-lg-1"><a
-									class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-									href="#contact">Contact</a></li>
-								<li class="nav-item mx-0 mx-lg-1"><a
-									class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-									href="<%=request.getContextPath()%>/views/FAQ/FAQ.jsp">FAQ</a></li>
-							</ul>
-						</div>
-
-
-					</div>
-
-					<div>
-						<a class="col-lg-4 ml-auto" href="">로그인</a> <a
-							class="col-lg-4 ml-auto"
-							href="<%=request.getContextPath()%>/views/member/memberJoinForm.jsp">회원가입</a>
-
-					</div>
-				</nav>
-
-				<div class="container-fluid">
+        
+        
+        
+        
+        
+        
+        
