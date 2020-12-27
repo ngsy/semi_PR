@@ -5,10 +5,7 @@
 
         
             <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                            
- 
-<title>FAQ</title>
+                  <div class="card-header py-3"> FAQ
                    </div>                      
                     
                   <div class="card-body">
