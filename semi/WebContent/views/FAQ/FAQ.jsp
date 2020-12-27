@@ -1,47 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+ <%@ include file ="../common/header.jsp" %>
+
+
+        
+            <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                            
+ 
 <title>FAQ</title>
-<style>
-/* FAQ */
-.faq{border-bottom:0px solid #ddd;margin:1em 0;}
-.faq .faqHeader{position:relative;zoom:1}
-.faq .faqHeader .showAll{position:absolute;bottom:0;right:0;border:0;padding:0;overflow:visible;background:none;cursor:pointer}
-.faq .faqBody{margin:0;padding:0}
-.faq .faqBody .article{list-style:none}
-.faq .q{margin:}
-.faq .q a{display:block;text-align:left; 
-    background:url("faq1_icon_q.png") no-repeat 0 0;
-    padding:0 0 0 35px;
-    font-size:18px;
-    color:#5e5e5e;
-    font-weight:bold;
-    line-height: 27px;
-    cursor:pointer;
-    margin: 10px 0; !important}
-.faq .q a:hover, .faq .q a:active, .faq .q a:focus{}
-.faq .a{background:#f8f8f8 url("faq1_icon_a.png") no-repeat 40px 10px;padding: 10px 75px 10px 75px;
-    font-size: 16px;
-    color: #444444;
-    line-height: 22px;
-    border-top: 1px solid #bdbdbd;
-    margin:5px 0 0 0;}
-.head {
-	font-size : 50px;
-	color : green;
-	
-	}
-</style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-
-</head>
-
-<body>
-<%@ include file ="../common/header.jsp" %>
-<h1 class = "head" >자주 묻는 질문</h1>
+                   </div>                      
+                    
+                  <div class="card-body">
+                  
+                  
+                  			<h1 class = "head" >자주 묻는 질문</h1>
 <br><br><br>
 <div class="faq">
     <div class="faqHeader">
@@ -55,7 +28,7 @@
         </li>
         <li class="article" id="a2">
             <p class="q"><a href="#a2">질문2</a></p>
-            <p class="a">답변2</p>
+            <p class="a">답변2입니다.</p>
         </li>
         <li class="article" id="a3">
             <p class="q"><a href="#a3">질문3</a></p>
@@ -107,6 +80,10 @@ jQuery(function($){
     });
 });
 </script>
+
+						
+                   
+                  </div>
+           </div>
 <%@ include file ="../common/footer.jsp" %>
-</body>
 </html>
