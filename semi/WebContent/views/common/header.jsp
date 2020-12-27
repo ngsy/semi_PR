@@ -42,7 +42,7 @@
 <!-- include summernote-ko-KR -->
 <script src="/resources/js/summernote-ko-KR.js"></script>
 <link href="<%=contextPath%>/resources/css/styles.css" rel="stylesheet" />
-<!--css 링크 바꿀부분-->
+<!--css 링크 바꿀부분--->
 
 
 <script src="<%=contextPath%>/resources/js/jquery-3.5.1.min.js"></script>
