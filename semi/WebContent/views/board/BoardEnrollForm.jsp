@@ -7,7 +7,7 @@
 <html>  
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">우리마을 게시글 등록</div>
+	<div class="card-header py-3">우리마을 게시글 등록함</div>
 
 	<div class="card-body">
 
@@ -25,7 +25,7 @@
 					<label for="content">content:</label>
 					<textarea class="form-control" rows="5" id="summernote" name="content"></textarea>
 				</div>
-				<button type="submit" class="btn btn-primary">글쓰기 등록</button>
+				<button type="submit" class="btn btn-primary">글쓰기 등록함</button>
 			</form>
 		</div>
   <script >
