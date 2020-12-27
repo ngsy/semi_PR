@@ -57,7 +57,23 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a></li>
                     </ul>
                 </div>
+         
+                
             </div>
+                  
+                <div>
+                <a class="col-lg-4 ml-auto"  href="">로그인</a>
+                <a class="col-lg-4 ml-auto"  href="<%=request.getContextPath()%>/views/member/memberJoinForm.jsp">회원가입</a>
+                
+                </div>
         </nav>
         
         <div class="container-fluid">
+
+        
+        
+        
+        
+        
+        
+        
