@@ -21,16 +21,15 @@ public class member {
 	}
 	
 
-	public member(int m_no, String m_name, String id, String pwd, String phone, String address, String email
-		) {
+	public member( String m_name, String id, String pwd, String phone, String email, String address){
 
-		this.m_no = m_no;
+		
 		this.m_name = m_name;
 		this.id = id;
 		this.pwd = pwd;
 		this.phone = phone;
-		this.address = address;
 		this.email = email;
+		this.address = address;
 	
 	}
 	
