@@ -18,7 +18,7 @@
          onsubmit="return joinValidate();">
          <table    align="center" >
             <tr>
-               <td width="200px">아이디</td>
+               <td  width="200px"><label class="form-label">아이디</label></td>
                <td><input type="text"  class="form-control" maxlength="13" name="userId" required></td>
                <td width="200px">
                   <button type="button" class="btn btn-outline-primary" id="idCheckBtn" onclick="checkId();">중복확인</button>
