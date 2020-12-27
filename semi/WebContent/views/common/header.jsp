@@ -1,35 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% String contextPath=request.getContextPath();
-
-%>     
+	pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
-       <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Freelancer - Start Bootstrap Theme</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        
-        <link href="<%=contextPath%>/resources/css/styles.css" rel="stylesheet" /> <!--css 링크 바꿀부분-->
-        
-        
-         <script src="<%=contextPath%>/resources/js/jquery-3.5.1.min.js" ></script>
-        
-        
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Freelancer - Start Bootstrap Theme</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+	crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css" />
+<!-- Core theme CSS (includes Bootstrap)-->
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<!-- include summernote css/js-->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<!-- include summernote-ko-KR -->
+<script src="/resources/js/summernote-ko-KR.js"></script>
+<link href="<%=contextPath%>/resources/css/styles.css" rel="stylesheet" />
+<!--css 링크 바꿀부분-->
+
+
+<script src="<%=contextPath%>/resources/js/jquery-3.5.1.min.js"></script>
+
+
 </head>
 <body>
-		
+
 	<!-- Page Wrapper -->
+
 	<div id="wrapper">		
 
     	
