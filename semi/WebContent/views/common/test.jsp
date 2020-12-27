@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file ="header.jsp" %>
 
-	
-      
-                    
-                    
+	             
             <div class="card shadow mb-4">
                   <div class="card-header py-3">
                             
