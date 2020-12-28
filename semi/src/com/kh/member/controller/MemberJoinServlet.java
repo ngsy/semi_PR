@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.member.model.service.MemberService;
-import com.kh.member.model.vo.member;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class memberJoinServlet
  */
 @WebServlet("/insert.me")
-public class memberJoinServlet extends HttpServlet {
+public class MemberJoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public memberJoinServlet() {
+    public MemberJoinServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,8 +39,22 @@ public class memberJoinServlet extends HttpServlet {
 		String pwd = request.getParameter("userPwd");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
+		double lat = Double.parseDouble(request.getParameter("lat"));
+		double lon = Double.parseDouble(request.getParameter("lon"));
+		String region1 =request.getParameter("region1");
+		String region2 =request.getParameter("region2");
 		
-		member m = new member(m_name,id,pwd,phone,email);
+		
+		
+		/*
+		 * <input type="hidden" name="lat">
+         <input type="hidden" name="lon">
+		 * <input type="hidden" name="region1">
+         <input type="hidden" name="region2">
+         
+         */
+		
+		Member m = new Member(m_name,id,pwd,phone,email,lat,lon,region1,region2);
 		
 		int result = new MemberService().insertMember(m);
 		

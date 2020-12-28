@@ -1,6 +1,6 @@
 package com.kh.member.model.vo;
 
-public class member {
+public class Member {
 
 	private int m_no; //회원번호
 	private String m_name; //회원명
@@ -13,15 +13,27 @@ public class member {
 	private int report_count; //신고횟수 
 	private int grade; //등급
 	
-//	위도,경도,지역1,지역2 변수 타입 미정
+
+	private double lat; //위도
+	private double lon; //경도
+	
+	private String region1; //지역1(시)
+	private String region2; //지역2(동)
+	
+	private String blacklist; //블랙리스트
 	
 	
-	public member() {
+
+	
+	
+	public Member() {
 		
 	}
 	
 
-	public member( String m_name, String id, String pwd, String phone, String email){
+
+
+	public Member( String m_name, String id, String pwd, String phone, String email,double lat,double lon ,String region1,String region2){
 
 		
 		this.m_name = m_name;
@@ -29,11 +41,15 @@ public class member {
 		this.pwd = pwd;
 		this.phone = phone;
 		this.email = email;
+		this.lat = lat;
+		this.lon = lon;
+		this.region1 = region1;
+		this.region2 = region2;
 		
 	}
 	
 	
-	public member(int m_no, String m_name, String id, String pwd, String phone, String address, String email,
+	public Member(int m_no, String m_name, String id, String pwd, String phone, String address, String email,
 			String status, int report_count, int grade) {
 
 		this.m_no = m_no;
@@ -114,6 +130,54 @@ public class member {
 		this.grade = grade;
 	}
 
+	public double getLat() {
+		return lat;
+	}
+
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+
+	public double getLon() {
+		return lon;
+	}
+
+
+	public void setLon(double lon) {
+		this.lon = lon;
+	}
+
+
+	public String getRegion1() {
+		return region1;
+	}
+
+
+	public void setRegion1(String region1) {
+		this.region1 = region1;
+	}
+
+
+	public String getRegion2() {
+		return region2;
+	}
+
+
+	public void setRegion2(String region2) {
+		this.region2 = region2;
+	}
+
+
+	public String getBlacklist() {
+		return blacklist;
+	}
+
+
+	public void setBlacklist(String blacklist) {
+		this.blacklist = blacklist;
+	}
 
 	
 	
