@@ -7,25 +7,33 @@
 <html>      
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">우리마을 게시글 등록함</div>
+	<div class="card-header py-3">우리마을 게시글 </div>
 
 	<div class="card-body">
 
 		<div class="container">
 
-			<form action="" method="post">
+			<form id="insertForm" action="<%= contextPath %>/insert.bo" method="post" enctype="multipart/form-data">
 				<div class="form-group">
-					<label for="title">title:</label> <input type="text"
-						class="form-control" placeholder="title" id="title" name="title">
+					<label for="title">제목</label> 
+					<input type="text"class="form-control" placeholder="title" id="title" name="title">
 				</div>
 				
 
 
 				<div class="form-group">
-					<label for="content">content:</label>
+					<label for="content">내용</label>
 					<textarea class="form-control" rows="5" id="summernote" name="content"></textarea>
 				</div>
-				<button type="submit" class="btn btn-primary">글쓰기 등록함</button>
+				
+					<div class="form-group">
+					<label for="title">파일첨부</label> 
+					<input type="file"class="form-control"  id="upfile" name="upfile">
+				</div>
+				
+				
+				<button type="reset" class="btn btn-primary">글쓰기 등록</button>
+				<button type="submit" class="btn btn-danger">취소하기</button>
 			</form>
 		</div>
   <script >
