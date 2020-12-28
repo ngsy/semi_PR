@@ -66,16 +66,13 @@
                </td>
                <td></td>
             </tr>
-            <tr>
-               <td>주소</td>
-               <td><input type="text"  class="form-control"  name="address"></td>
-               <td></td>
-            </tr>
+            
+       
              <td></td>
             <tr>
            <td>내위치 조회</td>
     
-           <td><button  class="btn btn-primary " onclick="#">조회</button><td>
+           <td><button  class="btn btn-primary " >조회</button><td>
            
             </tr>
   
@@ -108,10 +105,10 @@
         
  
         <div class="portfolio-modal modal fade" id="emailCheck" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-dialog modal-xl" >
                 <div class="modal-content">
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                        <span aria-hidden="true"></span>
                     </button>
                     <div class="modal-body text-center">
                         <div class="container">
@@ -151,7 +148,7 @@
                                    </form>
                                
                                    
-                                   
+                           
                                     
                                 </div>
                             </div>
@@ -160,6 +157,19 @@
                 </div>
             </div>
         </div>
+        
+        <script>
+        function joinValidate(){
+        	if($("#enrollForm input[name=userPwd]").val()!=$("#enrollForm input[name=checkPwd]").val()){
+        		
+        		$("#pwdResult").text("비밀번호가 일치하지않습니다.")
+        		return false;
+        	}
+        	
+        }
+        
+        
+        </script>
 
 
 <%@ include file ="../common/footer.jsp" %>

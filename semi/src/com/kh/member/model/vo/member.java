@@ -21,7 +21,7 @@ public class member {
 	}
 	
 
-	public member( String m_name, String id, String pwd, String phone, String email, String address){
+	public member( String m_name, String id, String pwd, String phone, String email){
 
 		
 		this.m_name = m_name;
@@ -29,8 +29,7 @@ public class member {
 		this.pwd = pwd;
 		this.phone = phone;
 		this.email = email;
-		this.address = address;
-	
+		
 	}
 	
 	

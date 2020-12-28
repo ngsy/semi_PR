@@ -37,12 +37,10 @@ public class memberJoinServlet extends HttpServlet {
 		String m_name = request.getParameter("userName");
 		String id = request.getParameter("userId");
 		String pwd = request.getParameter("userPwd");
-		
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
-		String address = request.getParameter("address");
 		
-		member m = new member(m_name,id,pwd,phone,email,address);
+		member m = new member(m_name,id,pwd,phone,email);
 		
 		int result = new MemberService().insertMember(m);
 		

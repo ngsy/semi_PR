@@ -47,7 +47,7 @@ public class MemberDao {
 #EMAIL*/		
 		try {
 			
-//joinMember=INSERT INTO MEMBER VALUES(SEQ_UNO.NEXTVAL, ?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT, NULL,NULL,NULL,NULL)
+//joinMember=INSERT INTO MEMBER VALUES(SEQ_UNO.NEXTVAL, ?, ?, ?, ?, ?,  DEFAULT, DEFAULT, DEFAULT, NULL,NULL,NULL,NULL,DEFAULT)
 
 			pstmt =conn.prepareStatement(sql);
 			
@@ -55,8 +55,8 @@ public class MemberDao {
 			pstmt.setString(2,m.getId());
 			pstmt.setString(3,m.getPwd());
 			pstmt.setString(4,m.getPhone());
-			pstmt.setString(5,m.getAddress());
-			pstmt.setString(6,m.getEmail());
+			pstmt.setString(5,m.getEmail());
+	
 			
 			result =pstmt.executeUpdate();
 			
