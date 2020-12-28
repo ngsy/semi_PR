@@ -19,12 +19,7 @@
 		<div id="sidebar" >
 		    	<!-- Sidebar -->
 	    	<ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar">
-	    		<li class="nav-item active">
-			        
-	          			<button class="btn btn-lg border-0 float-right" id="sidebarHideBtn"><i class="far fa-times-circle"></i></button>
-			          
-			      </li>
-			      
+
 	
 	    	
 	     		 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -87,16 +82,7 @@
     	</div>
     	<!-- sidebar end -->
     	
-    	  			 <script>
-   			
-   			 
-		      	$("#sidebarHideBtn").on("click",function(){
-		      		console.log(1);
-		      		$("#sidebar-wrapper").css("display","none");
-		      		
-		      	});
-		      
-		      </script>
+  
 	</div>
 	</div>
 	<!-- end Page Wrapper -->

@@ -7,15 +7,15 @@
             <div class="card shadow mb-4">
                   <div class="card-header py-3">
                             
- 
-<title>FAQ</title>
+ 						<h2  >자주 묻는 질문</h2>
+
                    </div>                      
                     
                   <div class="card-body">
                   
                   
-                  			<h1 class = "head" >자주 묻는 질문</h1>
-<br><br><br>
+                  			
+
 <div class="faq">
     <div class="faqHeader">
         <!--button type="button" class="showAll">답변 모두 여닫기</button-->
