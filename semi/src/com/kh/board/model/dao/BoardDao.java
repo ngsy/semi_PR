@@ -1,6 +1,6 @@
 package com.kh.board.model.dao;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;

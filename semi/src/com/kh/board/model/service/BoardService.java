@@ -10,7 +10,7 @@ import com.kh.board.model.dao.BoardDao;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 
-public class BoardService {
+public class BoardService { 
 
 	public int insertBoard(Board b, Attachment at) {
 		Connection conn = getConnection();
