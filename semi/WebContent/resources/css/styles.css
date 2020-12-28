@@ -10823,6 +10823,31 @@ container
     border-top: 1px solid #bdbdbd;
     margin:5px 0 0 0;}
 
+.color-white{
+	
+	color:#fff;
+}
+
+.pd-t{
+	
+	padding-top:16px;
+}
+.font{
+	  font-family: 'Font Awesome 5 Free';
+	
+}
+
+
+#pagingnav{
+	margin-left:40%;
+}
+
+
+
+#pwdResult{
+	color:#FF0000;
+
+}
 
 
 
