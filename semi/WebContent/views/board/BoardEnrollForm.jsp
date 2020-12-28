@@ -4,7 +4,7 @@
 <%@ include file="../common/header.jsp"%>
 
 <!DOCTYPE html>
-<html>  
+<html>      
 
 <div class="card shadow mb-4">
 	<div class="card-header py-3">우리마을 게시글 등록함</div>
