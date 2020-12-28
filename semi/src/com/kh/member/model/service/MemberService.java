@@ -8,7 +8,7 @@ import static com.kh.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 
 import com.kh.member.model.dao.MemberDao;
-import com.kh.member.model.vo.member;
+import com.kh.member.model.vo.Member;
 
 public class MemberService {
 
@@ -18,7 +18,7 @@ public class MemberService {
 	
 	
 	
-	public int insertMember(member m) {
+	public int insertMember(Member m) {
 		Connection conn = getConnection();
 		
 		int result = new MemberDao().insertMember(conn,m);

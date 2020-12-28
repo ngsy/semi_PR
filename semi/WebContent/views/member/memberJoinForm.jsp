@@ -148,7 +148,8 @@
            					$("input[name=region1]").attr("value",region1);
            					$("input[name=region2]").attr("value",region2);
 							
-           					
+           					console.log("region1"+region1);
+           					console.log("region2"+region2);
            					
            				}
            				
@@ -218,7 +219,7 @@
 
 
 
-<!--  modal-->
+<!--  매일 modal-->
         
  
         <div class="portfolio-modal modal fade" id="emailCheck" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
