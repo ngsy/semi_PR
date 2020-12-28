@@ -77,8 +77,9 @@
             </div>
                   
                 <div>
-        
-               	<button class="btn btn-lg border-0 float-right color-white" id="sidebarBtn"><i class="far fa-comment-dots"></i></button>
+                <button class="btn btn-lg border-0 float-right color-white" id="sidebarBtn"><i class="far fa-comment-dots"></i></button>
+        		<button class="btn btn-lg border-0 float-right color-white" ><i class="fas fa-tools"></i></button>
+          
                 
                 </div>
         </nav>
