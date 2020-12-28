@@ -3,7 +3,9 @@
 <%@ include file="../common/header.jsp"%>
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">공지사항 게시판</div>
+	<div class="card-header py-3">
+	<h2>공지사항 게시판</h2>
+	</div>
 
 	<div class="card-body">
 
