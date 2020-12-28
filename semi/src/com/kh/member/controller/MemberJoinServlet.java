@@ -46,13 +46,7 @@ public class MemberJoinServlet extends HttpServlet {
 		
 		
 		
-		/*
-		 * <input type="hidden" name="lat">
-         <input type="hidden" name="lon">
-		 * <input type="hidden" name="region1">
-         <input type="hidden" name="region2">
-         
-         */
+
 		
 		Member m = new Member(m_name,id,pwd,phone,email,lat,lon,region1,region2);
 		
