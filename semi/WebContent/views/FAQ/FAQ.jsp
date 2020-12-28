@@ -5,9 +5,11 @@
 
         
             <div class="card shadow mb-4">
+
                   <div class="card-header py-3">
                             
- 						<h2  >자주 묻는 질문</h2>
+ 						        <h2  >자주 묻는 질문</h2>
+
 
                    </div>                      
                     
