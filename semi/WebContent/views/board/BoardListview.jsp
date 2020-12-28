@@ -3,7 +3,9 @@
 <%@ include file="../common/header.jsp"%>
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">우리마을 게시판</div>
+	<div class="card-header py-3">
+				<h2  >우리마을 게시판</h2>
+</div>
 
 	<div class="card-body">
 
@@ -12,13 +14,12 @@
 			<nav class="navbar navbar-light bg-light" id="navibar1">
 
 				<form class="d-flex">
-					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search"
-						aria-label="Search" align="right">
+					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success" type="submit">Search</button>
 				</form>
-
+         	<a href="BoardEnrollForm.jsp" class="btn btn-primary float-right" >글쓰기</a>
 			</nav>
-
+         
 	
 			<table class="table table-striped table-hover">
 				<thead>
@@ -33,32 +34,25 @@
 				<tbody>
 					<tr>
 						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
+						<td>첫예시입니다</td>
+						<td>이윤해</td>
+						<td>1</td>
+						<td>2020/12/25</td>
 					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td colspan="2">Larry the Bird</td>
-						<td>@twitter</td>
-						<td>@mdo</td>
-					</tr>
-					
+				
 				</tbody>
 			</table>
 
-	
 
-		<nav aria-label="Page navigation example" align="center">
-			<ul class="pagination">
+	   
+	   <br>
+	   <br>
+	   <br>
+	   <br>
+	   
+
+		<nav aria-label="Page navigation example" id="pagingnav">
+			<ul class="pagination"  >
 				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 				<li class="page-item"><a class="page-link" href="#">1</a></li>
 				<li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -66,11 +60,7 @@
 				<li class="page-item"><a class="page-link" href="#">Next</a></li>
 			</ul>
 		</nav>
-		<script>
-			$("#defaultModalBtn").on("click", function() {
-				$("#defaultModal").modal("show");
-			});
-		</script>
+
 
 
 	</div>
