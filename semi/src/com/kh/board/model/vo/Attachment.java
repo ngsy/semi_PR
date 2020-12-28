@@ -1,6 +1,6 @@
 package com.kh.board.model.vo;
 
-import java.util.Date;
+import java.util.Date; 
 
 public class Attachment {
 	private int fileNo; // 파일 고유 번호

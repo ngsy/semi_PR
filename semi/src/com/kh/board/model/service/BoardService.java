@@ -1,6 +1,6 @@
 package com.kh.board.model.service;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import static com.kh.common.JDBCTemplate.close;
 import static com.kh.common.JDBCTemplate.commit;
 import static com.kh.common.JDBCTemplate.getConnection;

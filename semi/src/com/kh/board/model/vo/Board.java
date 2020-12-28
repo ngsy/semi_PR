@@ -1,7 +1,7 @@
 package com.kh.board.model.vo;
 
 import java.util.Date;
-
+ 
 public class Board {
 
 	private int boardNo; // 게시글 고유 번호
