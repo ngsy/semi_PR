@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -88,6 +89,69 @@ public class MemberDao {
 		}
 		
 		return result;
+	}
+
+	public Member loginMember(Connection conn, String userId, String userPwd) {
+		Member loginUser = null;
+		
+		PreparedStatement pstmt=null;
+		ResultSet rset =null;
+		
+		//loginMember=SELECT * FROM MEMBER WHERE USER_ID=? AND USER_PWD=? AND STATUS='Y'
+		String sql = prop.getProperty("loginMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			
+			rset =pstmt.executeQuery();
+/*M_NO
+M_NAME
+ID
+PASSWORD
+PHONE
+EMAIL
+STATUS
+REPORT_COUNT
+GRADE
+LATITUDE
+LONGITUDE
+REGION1
+REGION2
+BLACKLIST*/
+			if(rset.next()) {
+				loginUser = new Member(
+							rset.getInt("M_NO"),
+							rset.getString("M_NAME"),
+							rset.getString("ID"),
+							rset.getString("PASSWORD"),
+							rset.getString("PHONE"),
+							rset.getString("EMAIL"),
+							rset.getString("STATUS"),
+							rset.getInt("REPORT_COUNT"),
+							rset.getInt("GRADE"),
+							rset.getDouble("LATITUDE"),
+							rset.getDouble("LONGITUDE"),
+							rset.getString("REGION1"),
+							rset.getString("REGION2"),
+							rset.getString("BLACKLIST")
+									);
+						
+						
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return loginUser;
 	}
 
 }

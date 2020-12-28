@@ -7,7 +7,6 @@ public class Member {
 	private String id; //아이디
 	private String pwd; //패스워드
 	private String phone; //휴대폰
-	private String address; //주소
 	private String email; //이메일
 	private String status; //탈퇴여부
 	private int report_count; //신고횟수 
@@ -26,6 +25,29 @@ public class Member {
 
 	
 	
+	public Member(int m_no, String m_name, String id, String pwd, String phone, String email,
+			String status, int report_count, int grade, double lat, double lon, String region1, String region2,
+			String blacklist) {
+
+		this.m_no = m_no;
+		this.m_name = m_name;
+		this.id = id;
+		this.pwd = pwd;
+		this.phone = phone;
+		this.email = email;
+		this.status = status;
+		this.report_count = report_count;
+		this.grade = grade;
+		this.lat = lat;
+		this.lon = lon;
+		this.region1 = region1;
+		this.region2 = region2;
+		this.blacklist = blacklist;
+	}
+
+
+
+
 	public Member() {
 		
 	}
@@ -57,7 +79,6 @@ public class Member {
 		this.id = id;
 		this.pwd = pwd;
 		this.phone = phone;
-		this.address = address;
 		this.email = email;
 		this.status = status;
 		this.report_count = report_count;
@@ -99,12 +120,7 @@ public class Member {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+
 	public String getEmail() {
 		return email;
 	}
