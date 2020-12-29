@@ -51,7 +51,7 @@
 
 
 <script>
-	$('#summernote').summernote(
+	/*$('#summernote').summernote(
 			{
 				placeholder : "내용을넣어주세요",
 				tabsize : 2,
@@ -63,7 +63,7 @@
 						[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
 						[ 'table', [ 'table' ] ],
 						[ 'insert', [ 'link', 'picture', 'video' ] ],
-						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
+						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]*/
 			});
 </script>
 
