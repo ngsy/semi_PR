@@ -153,5 +153,85 @@ public class BoardDao {
 		return list;
 	}
 
+	public int increaseCount(Connection conn, int bno) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+
+	}
+
+	public Board selectBoard(Connection conn, int bno) {
+		Board b = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("selectBoard");
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, bno);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				b = new Board(rset.getInt("BOARD_NUMBER"),
+						rset.getString("BOARD_TITLE"),rset.getString("BOARD_CONTENT"),rset.getString("ID"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE"));
+
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return b;
+	}
+
+	public Attachment selectAttachment(Connection conn, int bno) {
+		Board b = null;
+		Attachment at = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("selectAttachment");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			rset = pstmt.executeQuery();   
+			if (rset.next()) {
+				at = new Attachment();
+				at.setFileNo(rset.getInt("FILE_NUMBER"));
+				at.setOriginName(rset.getString("FILE_ORIGIN"));
+				at.setChangeName(rset.getString("FILE_CHANGED"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return at;
+	}
+
 	
 }

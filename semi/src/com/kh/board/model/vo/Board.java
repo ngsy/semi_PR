@@ -12,15 +12,17 @@ public class Board {
 	private Date createDate; // 게시글 작성일
 	private String boardWriter; // 게시글 작성자 (번호 또는 이름)
 	private String status; // 게시글 상태값(Y, N)
+	private int boardType;	//1: 이웃게시판 2:가게 게시판 
 	private String titleImg; // 게시글의 타이틀 이미지 (실제 서버에 업로드되어있는 이름)
 	private String region1;
 	private String region2;
+	
 
 	
 	public Board() {
 
 	}
-
+	
 
 	public Board(int boardNo, String boardTitle, String boardContent, int readCount, int likeCount, Date createDate,
 			String boardWriter, String status, String titleImg, String region1, String region2) {
@@ -56,9 +58,18 @@ public class Board {
 		this.boardWriter = boardWriter;
 	}
 
+	
+	
 
-	public void setBoardNo(int boardNo) {
+	public Board(int boardNo, String boardTitle, String boardContent,String boardWriter, int readCount, Date createDate
+			) {
+		super();
 		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.readCount = readCount;
+		this.createDate = createDate;
+		this.boardWriter = boardWriter;
 	}
 
 
@@ -132,6 +143,16 @@ public class Board {
 	}
 
 
+	public int getBoardType() {
+		return boardType;
+	}
+
+
+	public void setBoardType(int boardType) {
+		this.boardType = boardType;
+	}
+
+
 	public String getTitleImg() {
 		return titleImg;
 	}
@@ -162,13 +183,20 @@ public class Board {
 	}
 
 
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
 				+ ", readCount=" + readCount + ", likeCount=" + likeCount + ", createDate=" + createDate
-				+ ", boardWriter=" + boardWriter + ", status=" + status + ", titleImg=" + titleImg + ", region1="
-				+ region1 + ", region2=" + region2 + "]";
+				+ ", boardWriter=" + boardWriter + ", status=" + status + ", boardType=" + boardType + ", titleImg="
+				+ titleImg + ", region1=" + region1 + ", region2=" + region2 + "]";
 	}
+
+
 	
 	
 	

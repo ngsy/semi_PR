@@ -31,7 +31,11 @@
 					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success" type="submit">Search</button>
 				</form>
-         	<a href="BoardEnrollForm.jsp" class="btn btn-primary float-right" >글쓰기</a>
+				
+	
+		<% if(loginUser != null){ %>
+         	<a href="enrollForm.bo" class="btn btn-primary float-right" >글쓰기</a>
+         	<% } %>
 			</nav>
          
 	
@@ -106,12 +110,8 @@
 			<button onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=maxPage%>'"> &gt;&gt; </button>
 		</div> 
 		<br><br>
-		<div align="center">
-		<% if(loginUser != null){ %>
-		<button onclick="location.href='enrollForm.bo'">작성하기</button>
-		<% } %>
-		</div>
-	</div>
+		
+
 	
 	<script>
 		<%if (!list.isEmpty()) {%>
@@ -129,15 +129,7 @@
 		
 		
 	</script>
-		<nav aria-label="Page navigation example" id="pagingnav">
-			<ul class="pagination"  >
-				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-			</ul>
-		</nav>
+	
 
 
 

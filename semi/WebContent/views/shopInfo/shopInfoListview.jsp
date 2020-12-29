@@ -9,53 +9,27 @@
 
 
 
-			<nav class="navbar navbar-light bg-light" id="navibar1">
+		<nav class="navbar navbar-light bg-light" id="navibar1">
 
-				<form class="d-flex">
-					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search"
-						aria-label="Search" align="right">
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
+			<form class="d-flex">
+				<input class="form-control me-2" id="navibar1" type="search"
+					placeholder="Search" aria-label="Search" align="right">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
 
-			</nav>
+		</nav>
+		<br>
+		<div class="card" style="width: 18rem;">
+			<img src="..." class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">Some quick example text to build on the
+					card title and make up the bulk of the card's content.</p>
+				<a href="#" class="btn btn-primary">Go somewhere</a>
+			</div>
+		</div>
 
-	
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th scope="col">글번호</th>
-						<th scope="col">글제목</th>
-						<th scope="col">작성자</th>
-						<th scope="col">조회수</th>
-						<th scope="col">작성일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td colspan="2">Larry the Bird</td>
-						<td>@twitter</td>
-						<td>@mdo</td>
-					</tr>
-					
-				</tbody>
-			</table>
 
-	
 
 		<nav aria-label="Page navigation example" align="center">
 			<ul class="pagination">
