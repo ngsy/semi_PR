@@ -154,4 +154,41 @@ BLACKLIST*/
 		return loginUser;
 	}
 
+	public Member getUserInfo(Connection conn, int mno) {
+		
+		Member m=null;
+		
+		PreparedStatement pstmt=null;
+		
+		ResultSet rset=null;
+		
+		String sql=prop.getProperty("getUserInfo");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, mno);
+			
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				m=new Member();
+				
+				m.setM_name(rset.getString("M_NAME"));
+				m.setReport_count(rset.getInt("REPORT_COUNT"));
+				
+				
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+	}
+
 }

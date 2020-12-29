@@ -11,11 +11,30 @@
        <script>
        	$(function(){
        		
+       		
+       		
        		var delBtn=$("#delBtn");
        		var getBtn=$("#getBtn");
        		<% if(type==1){ %>
        			delBtn.text("댓글 삭제하기");
        			getBtn.text("댓글 조회하기");
+       			
+      			getBtn.on("click",function(){
+            		
+      				//댓글 가져오는 ajax 
+      				
+      				
+      				
+      				
+      				
+      				
+      				
+      				
+      				
+      				
+      				$("#replyModal").modal("show");
+            	}); 
+       			
        		
        		<% }else if(type==2){ %>
 	   			delBtn.text("게시글 삭제하기");
@@ -29,6 +48,31 @@
        		<% }else if(type==4){ %>
 	   			delBtn.text("사용자 블랙리스트 추가하기");
 	   			getBtn.remove();
+	   			
+	   			$.ajax({
+	   				
+	   				url:"getUserInfo",
+	   				data: {mno:<%=r.getReportObjNo()%>},
+	   				type:"get",
+	   				success : function(userInfo){
+	   					var name=userInfo.m_name;
+	   					var count =userInfo.report_count;
+	   					
+	   					var insideText="회원 이름 : "+name+"/ 신고 횟수 : "+count;
+	   					$("#userInfo").text(insideText);
+	   					
+	   					$("#userInfo").css("margin-right","10px");
+	   					
+	   				},
+	   				error : function(){
+	   					console.log("회원정보 가져오기 실패");
+	   				}
+	   				
+	   				
+	   				
+	   				
+	   			});
+	   			
        		
        		
        		<% }%>
@@ -48,7 +92,7 @@
                     
                   <div class="card-body">
           
-                  	<form>
+                  
                   	
                   		<div class="form-group">
                   			<label for="reportNo" class="form-label">신고번호</label>
@@ -79,23 +123,48 @@
                   			<input class="form-control" id="reportDate" name="reportDate" type="text" readonly value="<%=date%>">
                   		
                   		</div>
-                  			<label></label>
+                  			<label id="userInfo"></label>
                   		  <button class="btn btn-primary" id="getBtn"></button>
                   		  <button class="btn btn-danger" id="delBtn" ></button>	
                   		  
-                  		
-                  	
-                  	
-                  	</form>
-                  
-                  		
-     
+    
                 </div>       
 			 <!-- card-body end -->
            </div>
    			<!-- card end -->
  
+		<div class="modal" id="replyModal" tabindex="-1">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">댓글 조회</h5>
+	                   <button class="close closeModal" type="button" data-dismiss="modal" aria-label="Close">
+	                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+	                    </button>	      
+	          </div>
+		      <div class="modal-body">
 
+				        <div class="form-group">
+                  			<label for="replyWriter" class="form-label">댓글 작성자</label>
+                  			<input class="form-control" id="replyWriter" name="reportMem" type="text" readonly value="">
+                  		
+                  		</div>	
+                 		<div class="form-group">
+                  			<label for="replyContent" class="form-label">댓글 내용</label>
+						  <textarea class="form-control" id="replyContent" name="replyContent" rows="3" readonly ></textarea>
+                  		</div>
+	                 	<div class="form-group">
+                  			<label for="reportDate" class="form-label">댓글 작성 날짜</label>
+                  			<input class="form-control" id="reportDate" name="reportDate" type="text" readonly value="">
+                  		
+                  		</div>
+
+		      </div>
+		      <div class="modal-footer">
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 
 

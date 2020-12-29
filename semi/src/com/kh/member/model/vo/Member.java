@@ -195,6 +195,17 @@ public class Member {
 		this.blacklist = blacklist;
 	}
 
+
+
+
+	@Override
+	public String toString() {
+		return "Member [m_no=" + m_no + ", m_name=" + m_name + ", id=" + id + ", pwd=" + pwd + ", phone=" + phone
+				+ ", email=" + email + ", status=" + status + ", report_count=" + report_count + ", grade=" + grade
+				+ ", lat=" + lat + ", lon=" + lon + ", region1=" + region1 + ", region2=" + region2 + ", blacklist="
+				+ blacklist + "]";
+	}
+
 	
 	
 	
