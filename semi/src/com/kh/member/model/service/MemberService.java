@@ -47,6 +47,32 @@ public class MemberService {
 		return loginUser;
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	public int idCheck(String userId) {
+		Connection conn = getConnection();
+
+		int result = new MemberDao().idCheck(conn,userId);
+		close(conn);
+	
+	return result;		
+	}
 
 	public Member getUserInfo(int mno) {
 		Connection conn = getConnection();		
