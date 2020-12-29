@@ -5,9 +5,7 @@
 
 <% String contextPath=request.getContextPath();
 Member loginUser = (Member)session.getAttribute("loginUser"); 
-
 String msg =(String)session.getAttribute("msg"); 
-
 %>       
 <!DOCTYPE html>
 <html>
@@ -67,8 +65,9 @@ String msg =(String)session.getAttribute("msg");
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/board/BoardListview.jsp">우리마을게시판</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/shopInfo/shopInfoListview.jsp">우리마을가게홍보</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/Notice/NoticeListview.jsp">공지사항</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" onclick="goNotice();">공지사항</a></li>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/FAQ/FAQ.jsp">FAQ</a></li>
+                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/qna/QnaListview.jsp">Q&A</a></li>                    	
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">|</a></li>
                     <%if(loginUser ==null){ %>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberloginForm.jsp" >로그인</a></li>
@@ -121,6 +120,10 @@ String msg =(String)session.getAttribute("msg");
 	      		}
 	      		
 	      	});
+	      	
+	      	function goNotice() {
+	      		location.href = "<%= request.getContextPath()%>/list.no";
+			}
         </script>
         
         <div class="container-fluid">
