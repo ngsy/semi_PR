@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.kh.member.model.vo.Member" %>
+
+
 <% String contextPath=request.getContextPath();
+Member loginUser = (Member)session.getAttribute("loginUser"); 
+
+String msg =(String)session.getAttribute("msg"); 
 
 %>       
 <!DOCTYPE html>
@@ -64,8 +70,25 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/Notice/NoticeListview.jsp">공지사항</a></li>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/FAQ/FAQ.jsp">FAQ</a></li>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">|</a></li>
-                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">로그인</a></li>
-                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberJoinForm.jsp">회원가입</a></li>
+                    <%if(loginUser ==null){ %>
+                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberloginForm.jsp" >로그인</a></li>
+                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberJoinForm.jsp" >회원가입</a></li>
+                    <%}else{ %>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberMypage.jsp" >마이페이지</a></li>
+                    
+                     <form>
+                     		<div id = "userInfo">
+								<pre style="color:white">안녕하세요!  <b style="color:orange"><%=loginUser.getM_name() %></b>  님</pre>
+								<div  align="center">
+								<a id="logoutMember" style="color:white" href="<%= request.getContextPath() %>/logout.me">로그아웃</a>
+								</div>
+							</div>
+					</form>
+                    
+                   
+                    
+                    
+                    <%} %> 
                     	
                     	
                     	

@@ -7,8 +7,8 @@ public class Board {
 	private int boardNo; // 게시글 고유 번호
 	private String boardTitle; // 게시글 제목
 	private String boardContent; // 게시글 내용
-	private int read_count; // 게시글 조회수
-	private int like_Count; // 게시글 조회수
+	private int readCount; // 게시글 조회수
+	private int likeCount; // 게시글 조회수
 	private Date createDate; // 게시글 작성일
 	private String boardWriter; // 게시글 작성자 (번호 또는 이름)
 	private String status; // 게시글 상태값(Y, N)
@@ -20,17 +20,16 @@ public class Board {
 	public Board() {
 
 	}
-	
-	
-	
-	public Board(int boardNo, String boardTitle, String boardContent, int read_count, int like_Count, Date createDate,
+
+
+	public Board(int boardNo, String boardTitle, String boardContent, int readCount, int likeCount, Date createDate,
 			String boardWriter, String status, String titleImg, String region1, String region2) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
-		this.read_count = read_count;
-		this.like_Count = like_Count;
+		this.readCount = readCount;
+		this.likeCount = likeCount;
 		this.createDate = createDate;
 		this.boardWriter = boardWriter;
 		this.status = status;
@@ -38,7 +37,6 @@ public class Board {
 		this.region1 = region1;
 		this.region2 = region2;
 	}
-
 
 
 	public int getBoardNo() {
@@ -47,10 +45,21 @@ public class Board {
 
 
 
+
+
+	public Board(int boardNo, String boardTitle, int readCount, Date createDate, String boardWriter) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.readCount = readCount;
+		this.createDate = createDate;
+		this.boardWriter = boardWriter;
+	}
+
+
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-
 
 
 	public String getBoardTitle() {
@@ -58,11 +67,9 @@ public class Board {
 	}
 
 
-
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
 	}
-
 
 
 	public String getBoardContent() {
@@ -70,35 +77,29 @@ public class Board {
 	}
 
 
-
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
 	}
 
 
-
-	public int getRead_count() {
-		return read_count;
+	public int getReadCount() {
+		return readCount;
 	}
 
 
-
-	public void setRead_count(int read_count) {
-		this.read_count = read_count;
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
 	}
 
 
-
-	public int getLike_Count() {
-		return like_Count;
+	public int getLikeCount() {
+		return likeCount;
 	}
 
 
-
-	public void setLike_Count(int like_Count) {
-		this.like_Count = like_Count;
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
 	}
-
 
 
 	public Date getCreateDate() {
@@ -106,11 +107,9 @@ public class Board {
 	}
 
 
-
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-
 
 
 	public String getBoardWriter() {
@@ -118,11 +117,9 @@ public class Board {
 	}
 
 
-
 	public void setBoardWriter(String boardWriter) {
 		this.boardWriter = boardWriter;
 	}
-
 
 
 	public String getStatus() {
@@ -130,11 +127,9 @@ public class Board {
 	}
 
 
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 
 
 	public String getTitleImg() {
@@ -142,11 +137,9 @@ public class Board {
 	}
 
 
-
 	public void setTitleImg(String titleImg) {
 		this.titleImg = titleImg;
 	}
-
 
 
 	public String getRegion1() {
@@ -154,11 +147,9 @@ public class Board {
 	}
 
 
-
 	public void setRegion1(String region1) {
 		this.region1 = region1;
 	}
-
 
 
 	public String getRegion2() {
@@ -166,23 +157,20 @@ public class Board {
 	}
 
 
-
 	public void setRegion2(String region2) {
 		this.region2 = region2;
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
-				+ ", read_count=" + read_count + ", like_Count=" + like_Count + ", createDate=" + createDate
+				+ ", readCount=" + readCount + ", likeCount=" + likeCount + ", createDate=" + createDate
 				+ ", boardWriter=" + boardWriter + ", status=" + status + ", titleImg=" + titleImg + ", region1="
 				+ region1 + ", region2=" + region2 + "]";
 	}
-
-
-
+	
+	
 	
 }
 
