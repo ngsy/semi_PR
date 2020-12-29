@@ -42,11 +42,52 @@
                   <br>
                   <br>
                   <br>
+<!-- DropDown 예시 -->                  
+<div class="dropdown ">
+  <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+    Dropdown link
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><hr></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+
+
+
+
+<div style="margin:20px;">
+<!-- 이벤트를 확인하기 위한 dropdown 컨트럴 -->
+<!-- 이벤트는 event-dropdown 클래스로 걸었다. -->
+<div class="dropdown event-dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+Test
+<span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+<li><a href="#">Sub Test1</a></li>
+<li><a href="#">Sub Test2</a></li>
+</ul>
+</div>
+<textarea readonly id="console" style="resize:none;font-size:10px;width:150px;height:150px;margin-top:100px;"></textarea>
+</div>
+
+
+        
                        
 			 <!-- card-body end -->
            </div>
    			<!-- card end -->
                     
+                   
+                   
+             
+                   
+                   
+                   
                     
                     
             <script>

@@ -45,11 +45,7 @@ String msg =(String)session.getAttribute("msg");
 
 	<div id="wrapper">		
 
-    	
- 
-    	
-    	
-    	<div id="content-wrapper" class="d-flex flex-column">	
+   <div id="content-wrapper" class="d-flex flex-column">	
 		    
 		     <!-- Main Content -->
       		<div id="content">	
@@ -74,22 +70,12 @@ String msg =(String)session.getAttribute("msg");
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberloginForm.jsp" >로그인</a></li>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberJoinForm.jsp" >회원가입</a></li>
                     <%}else{ %>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberMypage.jsp" >마이페이지</a></li>
-                    
-                     <form>
-                     		<div id = "userInfo">
-								<pre style="color:white">안녕하세요!  <b style="color:orange"><%=loginUser.getM_name() %></b>  님</pre>
-								<div  align="center">
-								<a id="logoutMember" style="color:white" href="<%= request.getContextPath() %>/logout.me">로그아웃</a>
-								</div>
-							</div>
-					</form>
-                    
+                 
                    
+       
+            
                     
-                    
-                    <%} %> 
-                    	
+                 
                     	
                     	
                     </ul>
@@ -98,12 +84,40 @@ String msg =(String)session.getAttribute("msg");
                 
             </div>
                   
+                  
+<!-- dropBox 시작 -->                 
+<div>
+                                  
+		<div class="dropdown ";>
+		  <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+		  <b> <%=loginUser.getM_name() %> 님</b>
+		  </a>
+		
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" 	style="text-align: center;" >
+		    <li><a class="dropdown-item" href="#">마이페이지</a></li>
+		    <li><a class="dropdown-item" href="#">테스트</a></li>
+		    <li><hr></li>
+		    <li><a id="logoutMember"  href="<%= request.getContextPath() %>/logout.me">로그아웃</a></li>
+		  </ul>
+		</div>
+		            
+</div>
+<!-- dropBox 끝 --> 
+
+   <%} %> 
+                    	
+                  
+                  
+                  
+                  
                 <div>
                 <button class="btn btn-lg border-0 float-right color-white" id="sidebarBtn"><i class="far fa-comment-dots"></i></button>
         		<button class="btn btn-lg border-0 float-right color-white" ><a href="<%=contextPath%>/list.re"><i class="fas fa-tools"></i></a></button>
           
                 
                 </div>
+                
+
         </nav>
         
         <script>

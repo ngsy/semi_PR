@@ -276,6 +276,60 @@
             </div>
         </div>
         
+           <!-- 아이디 중복확인 -->
+        
+        <script>
+        
+        function checkId(){
+     	   var userId = $("#enrollForm input[name = userId]");
+     	   
+     	   
+     	   if(userId.val() ==""){
+     		   alert("아이디를 입력해주세요");
+     		   userId.focus();
+     		   return false;
+     		   
+     		   }
+     	   
+     	   
+     	   $.ajax({
+     		  url:"idChek.me",
+     		  type:"post",
+     		  data:{userId:userId.val()},
+     		  success:function(result){
+     			  if(result == "fail"){ //사용불가
+     				  alert("사옹할 수 없는 아이디 입니다.");
+     			  	 userId.focus();
+     				  
+     			  }else {
+     				 if(confirm("사용 가능한 아이디 입니다. 사용하시겠습니까?")){
+     					 userId.attr("readonly","true");
+     					 $("#joinBtn").removeAttr("disabled"); //회원가입 버튼 활성화 
+     					 
+     					 
+     				 }else {
+     					 userId.focus();
+     				 }
+     				  
+     			  }
+     		
+     		  },
+     		  error:function(){
+     			console.log("서버통신실패");  
+     			System.out.println("ajax_result :"+result);
+     		}
+     		  		   
+     	   });
+        
+     	   
+        }
+        
+        
+        </script>
+        
+        
+        
+        <!-- 비밀번호 체크  -->
         <script>
         function joinValidate(){
         	if($("#enrollForm input[name=userPwd]").val()!=$("#enrollForm input[name=checkPwd]").val()){
@@ -288,6 +342,9 @@
         
         
         </script>
+        
+        
+     
 
 
 <%@ include file ="../common/footer.jsp" %>

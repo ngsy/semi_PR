@@ -153,5 +153,74 @@ BLACKLIST*/
 		
 		return loginUser;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	public int idCheck(Connection conn, String userId) {
+			int result = 0;
+		
+			PreparedStatement pstmt = null;
+			ResultSet rset= null;
+		
+			String sql = prop.getProperty("idCheck");
+			
+			System.out.println("Dao_id_Chek -sql: "+sql);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			System.out.println("rset"+rset);
+			
+			if(rset.next()) {
+				result = rset.getInt(1);  //컬럼명을 인덱스 순으로
+				System.out.println("rset.getInt(1):  "+result);
+			}
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+
+		
+		return result;
+	}
 
 }

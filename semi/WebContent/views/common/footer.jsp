@@ -141,6 +141,6 @@
         <script src="assets/mail/contact_me.js"></script> 
         <!-- Core theme JS-->
         <script src="<%=request.getContextPath() %>/resources/js/scripts.js"></script> <!-- js 바꿔야할곳-->
-        <script src="<%=request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
