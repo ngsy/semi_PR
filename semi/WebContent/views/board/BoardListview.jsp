@@ -35,7 +35,7 @@
 			</nav>
          
 	
-			<table class="table table-striped table-hover">
+			<table class="table table-striped table-hover listArea" >
 				<thead>
 					<tr>
 						<th scope="col">글번호</th>
@@ -54,7 +54,7 @@
 				</tr><%}else{ %>
 					<% for(Board b : list){ %>
 					<tr>
-						<th scope="row"><%= b.getBoardNo() %></th>
+						<td scope="row"><%= b.getBoardNo() %></td>
 						<td><%= b.getBoardTitle() %></td>
 						<td><%= b.getBoardWriter() %></td>
 						<td><%= b.getReadCount() %></td>
@@ -72,7 +72,63 @@
 	   <br>
 	   <br>
 	   
-
+	<!-- 페이징바 만들기 -->
+		<div class="pagingArea" align="center">
+			<!-- 맨 처음으로 (<<) -->
+			<button onclick="location.href='<%=contextPath%>/list.bo?currentPage=1'"> &lt;&lt; </button>
+		
+			<!-- 이전페이지로(<) -->
+			<%if(currentPage == 1){ %>
+			<button disabled> &lt; </button>
+			<%}else{ %>
+			<button onclick="location.href='<%= contextPath %>/list.bo?currentPage=<%= currentPage-1 %>'"> &lt; </button>
+			<%} %>
+			
+			<!-- 페이지 목록 -->
+			<%for(int p=startPage; p<=endPage; p++){ %>
+				
+				<%if(p == currentPage){ %>
+				<button disabled> <%= p %> </button>
+				<%}else{ %>
+				<button onclick="location.href='<%=contextPath %>/list.bo?currentPage=<%= p %>'"> <%= p %> </button>
+				<%} %>
+				
+			<%} %>
+			
+			<!-- 다음페이지로(>) -->
+			<%if(currentPage == maxPage){ %>
+			<button disabled> &gt; </button>
+			<%}else { %>
+			<button onclick="location.href='<%= contextPath %>/list.bo?currentPage=<%= currentPage+1 %>'"> &gt; </button>
+			<%} %>
+		
+			<!-- 맨 끝으로 (>>) -->
+			<button onclick="location.href='<%=contextPath%>/list.bo?currentPage=<%=maxPage%>'"> &gt;&gt; </button>
+		</div> 
+		<br><br>
+		<div align="center">
+		<% if(loginUser != null){ %>
+		<button onclick="location.href='enrollForm.bo'">작성하기</button>
+		<% } %>
+		</div>
+	</div>
+	
+	<script>
+		<%if (!list.isEmpty()) {%>
+		$(function(){
+			$(".listArea>tbody>tr").click(function(){
+				var bno = $(this).children().eq(0).text();
+				//console.log(nno);
+				
+				// 쿼리 스트링을 이용하여 get방식으로(url 노출) 글번호를 server로 전달
+				location.href="<%= contextPath %>/detail.bo?bno=" + bno;
+			});
+		});
+		<%} %>
+		
+		
+		
+	</script>
 		<nav aria-label="Page navigation example" id="pagingnav">
 			<ul class="pagination"  >
 				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
