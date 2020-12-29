@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList,com.kh.board.model.vo.*" %>
+
+<% 
+	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	
+%> 	
+	
 <%@ include file="../common/header.jsp"%>
 
 <div class="card shadow mb-4">
@@ -31,15 +45,23 @@
 						<th scope="col">작성일</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>첫예시입니다</td>
-						<td>이윤해</td>
-						<td>1</td>
-						<td>2020/12/25</td>
-					</tr>
 				
+				
+				<tbody>
+				<%if(list.isEmpty()){ %>
+				<tr>
+					<td colspan="6">조회된 리스트가 없습니다.</td>
+				</tr><%}else{ %>
+					<% for(Board b : list){ %>
+					<tr>
+						<th scope="row"><%= b.getBoardNo() %></th>
+						<td><%= b.getBoardTitle() %></td>
+						<td><%= b.getBoardWriter() %></td>
+						<td><%= b.getReadCount() %></td>
+						<td><%= b.getCreateDate() %></td>
+					</tr>
+						<%} %>
+				<%} %>
 				</tbody>
 			</table>
 

@@ -13,7 +13,8 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.kh.board.model.service.BoardService;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
-import com.kh.member.model.vo.member;
+import com.kh.member.model.vo.Member;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -67,7 +68,7 @@ public class BoardInserServlet extends HttpServlet {
 
 			String title = multiRequest.getParameter("title");
 			String content = multiRequest.getParameter("content");
-			int userNo = ((member) request.getSession().getAttribute("loginUser")).getM_no();
+			int userNo = ((Member) request.getSession().getAttribute("loginUser")).getM_no();
 			
 
 
@@ -96,8 +97,8 @@ public class BoardInserServlet extends HttpServlet {
 
 			int result = new BoardService().insertBoard(b, at);
 			if (result > 0) {
-				request.getSession().setAttribute("msg", "게시글 등록 성공");
-				response.sendRedirect("list.bo");
+//				request.getSession().setAttribute("msg", "게시글 등록 성공");
+//				response.sendRedirect("list.bo");
 			} else {
 
 				if (at != null) {
@@ -105,9 +106,9 @@ public class BoardInserServlet extends HttpServlet {
 					File failedFile = new File(savePath + at.getChangeName());
 					failedFile.delete();
 				}
-
-				request.setAttribute("msg", "게시판 등록 실패!!");
-				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+//
+//				request.setAttribute("msg", "게시판 등록 실패!!");
+//				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			}
 		}
 
