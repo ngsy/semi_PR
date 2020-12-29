@@ -48,4 +48,15 @@ public class MemberService {
 		
 	}
 
+	public Member getUserInfo(int mno) {
+		Connection conn = getConnection();		
+
+		Member m=new MemberDao().getUserInfo(conn,mno);
+		
+		close(conn);
+		
+		
+		return m;
+	}
+
 }
