@@ -39,6 +39,8 @@ public class BoardService {
 
 		close(conn);
 		return listCount;
+		
+		
 	}
 
 	public ArrayList<Board> selectList(PageInfo pi) {

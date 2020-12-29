@@ -96,7 +96,7 @@ public class BoardDao {
 
 			if (rset.next()) {
 				listCount = rset.getInt(1);
-
+         System.out.println(listCount);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -139,8 +139,8 @@ public class BoardDao {
 //			}
 			
 			while (rset.next()) {
-				list.add(new Board(rset.getInt("BOARD_NUMBER"), rset.getString("BOARD_TITLE"), rset.getInt("B_READ_COUNT"),
-						rset.getDate("B_WRITE_DATE"),rset.getString("M_NO")));
+				list.add(new Board(rset.getInt("BOARD_NUMBER"),
+						rset.getString("BOARD_TITLE"),rset.getString("ID"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE")));
 
 			}
 		} catch (SQLException e) {

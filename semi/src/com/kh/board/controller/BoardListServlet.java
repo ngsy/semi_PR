@@ -42,7 +42,7 @@ public class BoardListServlet extends HttpServlet {
 		
 		int pageLimit;			// 한 페이지 하단에 보여질 페이지 최대 갯수
 		int boardLimit;			// 한 페이지에 보여질 게시글 최대 갯수
-		
+		System.out.println("확인중");
 		// * listCount : 총 게시글 갯수 
 		listCount = new BoardService().getListCount();
 		
@@ -116,10 +116,16 @@ public class BoardListServlet extends HttpServlet {
 		ArrayList<Board> list = new BoardService().selectList(pi);
 		
 		// request에 전달값 담기
+		System.out.println(list);
+		System.out.println(pi);
+		
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
+		request.getRequestDispatcher("views/board/BoardListview.jsp").forward(request, response);
 		
-		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
+		
+		
+	   
 	
 	}
 

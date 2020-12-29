@@ -47,7 +47,7 @@ public class Board {
 
 
 
-	public Board(int boardNo, String boardTitle, int readCount, Date createDate, String boardWriter) {
+	public Board(int boardNo, String boardTitle,String boardWriter, int readCount, Date createDate ) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
