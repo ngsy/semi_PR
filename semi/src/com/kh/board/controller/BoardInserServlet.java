@@ -13,7 +13,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.kh.board.model.service.BoardService;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
-import com.kh.member.model.vo.member;
+import com.kh.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -67,7 +67,7 @@ public class BoardInserServlet extends HttpServlet {
 
 			String title = multiRequest.getParameter("title");
 			String content = multiRequest.getParameter("content");
-			int userNo = ((member) request.getSession().getAttribute("loginUser")).getM_no();
+			int userNo = ((Member) request.getSession().getAttribute("loginUser")).getM_no();
 			
 
 
