@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class IdCheckServlet
+ * Servlet implementation class idCheckServlet
  */
 @WebServlet("/idChek.me")
 public class IdCheckServlet extends HttpServlet {
@@ -30,13 +30,10 @@ public class IdCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	String userId= request.getParameter("userId");
+	
+		String userId= request.getParameter("userId");
 		
 		int result = new MemberService().idCheck(userId);
-		
-		System.out.println("Servlet_userid :"+userId);
-		System.out.println("Servlet_uresult :"+result);
 		
 		PrintWriter out =  response.getWriter();
 		
@@ -48,6 +45,7 @@ public class IdCheckServlet extends HttpServlet {
 		
 		out.flush();
 		out.close();
+		
 		
 	}
 

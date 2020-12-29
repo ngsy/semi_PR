@@ -35,6 +35,7 @@
                <td width="200px">
                   <button type="button" class="btn btn-outline-primary" id="idCheckBtn" onclick="checkId();">중복확인</button>
                </td>
+               <td><label id="idResult"></label></td>
             </tr>
             
             <br>
@@ -92,7 +93,7 @@
         <div align="center">
          
 
-            <button type="submit" class="btn btn-primary btn-primary" id="joinBtn" >가입하기</button>
+            <button type="submit" class="btn btn-primary btn-primary" id="joinBtn" disabled>가입하기</button>
 
          </div>
         
@@ -281,7 +282,10 @@
         <script>
         
         function checkId(){
-     	   var userId = $("#enrollForm input[name = userId]");
+        	
+		console.log("checkId()구동확인");
+        	
+     	   var userId = $("#enrollForm input[name=userId]");
      	   
      	   
      	   if(userId.val() ==""){
@@ -293,18 +297,24 @@
      	   
      	   
      	   $.ajax({
-     		  url:"idChek.me",
+     		  url:"<%=request.getContextPath()%>/idChek.me",
      		  type:"post",
      		  data:{userId:userId.val()},
      		  success:function(result){
      			  if(result == "fail"){ //사용불가
      				  alert("사옹할 수 없는 아이디 입니다.");
+     				 $("#idResult").text("중복된 아이디입니다.").css({"color":"red" ,"font-size":"1px"});
+     				 
+     				 
+     				
      			  	 userId.focus();
      				  
      			  }else {
      				 if(confirm("사용 가능한 아이디 입니다. 사용하시겠습니까?")){
      					 userId.attr("readonly","true");
-     					 $("#joinBtn").removeAttr("disabled"); //회원가입 버튼 활성화 
+     					 $("#idResult").text("사용가능합니다.").css("color","blue");
+     					 $("#joinBtn").removeAttr("disabled"); //회원가입 버튼 비활성화 속성 삭제
+     					 
      					 
      					 
      				 }else {
@@ -316,7 +326,7 @@
      		  },
      		  error:function(){
      			console.log("서버통신실패");  
-     			System.out.println("ajax_result :"+result);
+     			
      		}
      		  		   
      	   });
@@ -334,7 +344,7 @@
         function joinValidate(){
         	if($("#enrollForm input[name=userPwd]").val()!=$("#enrollForm input[name=checkPwd]").val()){
         		
-        		$("#pwdResult").text("비밀번호가 일치하지않습니다.")
+        		$("#pwdResult").text("비밀번호가 일치하지않습니다.");
         		return false;
         	}
         	
