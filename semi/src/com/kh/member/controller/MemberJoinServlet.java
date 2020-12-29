@@ -53,7 +53,7 @@ public class MemberJoinServlet extends HttpServlet {
 		int result = new MemberService().insertMember(m);
 		
 		if(result > 0 ) {
-			/*request.getSession().setAttribute("msg", "회원가입성공");*/
+			request.getSession().setAttribute("msg", "회원가입성공");
 			
 			response.sendRedirect(request.getContextPath()); //초기화면으로 돌아가기
 			
@@ -61,10 +61,10 @@ public class MemberJoinServlet extends HttpServlet {
 			
 		}else {
 			
-		/*	request.setAttribute("msg", "회원가입실패");
+			request.setAttribute("msg", "회원가입실패");
 			
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response); */
+			view.forward(request, response); 
 			System.out.println("회원가입 실패!-서블릿-");
 		}
 	
