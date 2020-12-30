@@ -121,7 +121,7 @@
 				//console.log(nno);
 				
 				// 쿼리 스트링을 이용하여 get방식으로(url 노출) 글번호를 server로 전달
-				location.href="<%= contextPath %>/detail.bo?bno=" + bno;
+				location.href="<%= contextPath %>/detail.bo?bno="+ bno;
 			});
 		});
 		<%} %>
