@@ -92,7 +92,7 @@ String msg =(String)session.getAttribute("msg");
                                   
 		<div class="dropdown ">
 		  <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-		  <b> <%=loginUser.getM_name() %> 님</b>
+		  <i class="fas fa-user-circle"></i> <b> <%=loginUser.getM_name() %> 님</b>
 		  </a>
 		
 		  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" 	style="text-align: center;" >
