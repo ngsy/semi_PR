@@ -14,7 +14,7 @@ String msg =(String)session.getAttribute("msg");
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Freelancer - Start Bootstrap ThemE</title>
+        <title>pumassi</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -68,14 +68,9 @@ String msg =(String)session.getAttribute("msg");
                     <%if(loginUser ==null){ %>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberloginForm.jsp" >로그인</a></li>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberJoinForm.jsp" >회원가입</a></li>
-                    <%}else{ %>
+                    <%}%>       
                  
-                   
-       
-            
-                    
-                 
-                    	
+                  	
                     	
                     </ul>
                 </div>
@@ -83,11 +78,11 @@ String msg =(String)session.getAttribute("msg");
                 
             </div>
                   
-                  
+          <% if(loginUser!=null){ %>        
 <!-- dropBox 시작 -->                 
 <div>
                                   
-		<div class="dropdown ";>
+		<div class="dropdown ">
 		  <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
 		  <b> <%=loginUser.getM_name() %> 님</b>
 		  </a>
@@ -111,7 +106,7 @@ String msg =(String)session.getAttribute("msg");
                   
                 <div>
                 <button class="btn btn-lg border-0 float-right color-white" id="sidebarBtn"><i class="far fa-comment-dots"></i></button>
-        		<button class="btn btn-lg border-0 float-right color-white" ><a href="<%=contextPath%>/list.re"><i class="fas fa-tools"></i></a></button>
+        		<button class="btn btn-lg border-0 float-right color-white" ><a href="<%=contextPath%>/list.re?page=1"><i class="fas fa-tools"></i></a></button>
           
                 
                 </div>

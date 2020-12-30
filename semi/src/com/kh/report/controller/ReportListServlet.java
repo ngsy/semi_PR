@@ -3,13 +3,13 @@ package com.kh.report.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.common.PageDto;
 import com.kh.report.model.service.ReportService;
 import com.kh.report.model.vo.Report;
 
@@ -33,13 +33,20 @@ public class ReportListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int curPage=Integer.parseInt(request.getParameter("page"));
 		
-		ArrayList<Report> list=new ReportService().getReportList();
+		int total=new ReportService().getTotalCount();
+		
+		
+		PageDto pageDto=new PageDto(total,curPage);
+		ArrayList<Report> list=new ReportService().getReportList(pageDto);
 		
 
 		
+		
 		if(list!=null) {
 			request.setAttribute("list", list);
+			request.setAttribute("pageDto", pageDto);
 			request.getRequestDispatcher("views/report/reportList.jsp").forward(request, response);
 			
 		}else {

@@ -3,10 +3,13 @@
 <%@ include file ="../common/header.jsp" %>
 <%
 	Report r=(Report)request.getAttribute("report");
-
+	String pagee=(String)request.getAttribute("page");
+	
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 	String date=sdf.format(r.getReportDate());
 	int type=r.getReportType();
+	
+	
 %>
        <script>
        	$(function(){
@@ -126,6 +129,7 @@
                   			<label id="userInfo"></label>
                   		  <button class="btn btn-primary" id="getBtn"></button>
                   		  <button class="btn btn-danger" id="delBtn" ></button>	
+                  		  <button class="btn btn-secondary float-right" onclick="location.href='<%=request.getContextPath()%>/list.re?page=<%= pagee %>'" >목록으로</button>	
                   		  
     
                 </div>       

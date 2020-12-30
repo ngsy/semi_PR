@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.common.PageDto;
 import com.kh.member.model.dao.MemberDao;
 import com.kh.report.model.vo.Report;
 import static com.kh.common.JDBCTemplate.*;
@@ -30,7 +31,7 @@ public class ReportDao {
 			e.printStackTrace();
 		}
 	}
-	public ArrayList<Report> getReportList(Connection conn) {
+	public ArrayList<Report> getReportList(Connection conn,PageDto dto) {
 		
 		ArrayList<Report> list=new ArrayList<Report>();
 		Report report=null;
@@ -39,11 +40,14 @@ public class ReportDao {
 		ResultSet rset=null;
 		
 		
-				
+		int end=dto.getCurPage()*10;
+		int start=end-9;
 		
 		String sql=prop.getProperty("selectReportList");
 		try {
 			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, end);
+			pstmt.setInt(2, start);
 			
 			rset=pstmt.executeQuery();
 			
@@ -125,5 +129,42 @@ public class ReportDao {
 		
 		
 		return report;
+	}
+	public int getTotalCount(Connection conn) {
+		PreparedStatement pstmt=null;
+		
+		ResultSet rset=null;
+		
+		String sql=prop.getProperty("getTotalCount");
+		
+		int total=0;
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				total=rset.getInt(1);
+				
+				
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		
+		
+		
+		
+		
+		return total;
 	}
 }
