@@ -32,11 +32,12 @@ public class ReportDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int rno=Integer.parseInt(request.getParameter("rno"));
-		
+		String page=request.getParameter("page");
 		Report r=new ReportService().getReport(rno);
 		
 		if(r!=null) {
 			request.setAttribute("report", r);
+			request.setAttribute("page", page);
 			request.getRequestDispatcher("views/report/reportDetail.jsp").forward(request, response);
 		}else {
 			request.setAttribute("msg", "신고 조회 실패");

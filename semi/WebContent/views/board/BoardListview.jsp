@@ -33,7 +33,7 @@
 				</form>
          	<a href="BoardEnrollForm.jsp" class="btn btn-primary float-right" >글쓰기</a>
 			</nav>
-         
+        
 	
 			<table class="table table-striped table-hover listArea" >
 				<thead>
