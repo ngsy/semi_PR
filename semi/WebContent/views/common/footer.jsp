@@ -38,8 +38,8 @@
 			          <i class="fas fa-fish"></i>
 			          <span>채팅방1</span></a>
 			      </li>
-			      
-	 		    
+			     
+	 		    <hr class="sidebar-divider my-0 chatDivider">
 			      <li class="nav-item active">
 			        <a class="nav-link"  >
 			          <i class="fas fa-fish"></i>
@@ -71,7 +71,7 @@
 
 	    			       	
 	 			      <!-- Divider -->
-	      		<hr class="sidebar-divider d-none d-md-block">
+	      		
 	
 	 
 	 
