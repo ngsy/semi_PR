@@ -17,6 +17,7 @@ import static com.kh.common.JDBCTemplate.rollback;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.PageInfo;
+import com.kh.board.model.vo.Reply;
 
 public class BoardDao { 
 	private Properties prop = new Properties();
@@ -190,7 +191,7 @@ public class BoardDao {
 
 			if (rset.next()) {
 				b = new Board(rset.getInt("BOARD_NUMBER"),
-						rset.getString("BOARD_TITLE"),rset.getString("BOARD_CONTENT"),rset.getString("ID"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE"));
+						rset.getString("BOARD_TITLE"),rset.getString("BOARD_CONTENT"),rset.getString("ID"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE"),rset.getInt("M_NO"));
 
 
 			}
@@ -232,6 +233,67 @@ public class BoardDao {
 
 		return at;
 	}
+
+	public int insertReply(Connection conn, Reply r) {
+		int result=0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,r.getReplyContent());
+			pstmt.setInt(2, r.getRefBoardId());
+			pstmt.setString(3, r.getReplyWriter());
+			
+			result=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
+	public ArrayList<Reply> selectRlist(Connection conn, int bId) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<Reply> list = new ArrayList<>();
+		String sql = prop.getProperty("selectRlist");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bId);
+			
+			rs=pstmt.executeQuery();
+		while(rs.next()) {
+			//REPLY_NO, REPLY_CONTENT, USER_ID, CREATE_DATE
+			list.add(new Reply(rs.getInt("REPLY_NUMBER"),
+					            rs.getString("REPLY_CONTENT"),
+					            rs.getString("ID"),
+					            rs.getDate("R_WRITE_DATE"),
+			                      rs.getInt("M_NO"))) ;
+					
+		}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			
+			
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
 
 	
 }
