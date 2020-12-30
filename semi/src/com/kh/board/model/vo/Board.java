@@ -9,7 +9,7 @@ public class Board {
 	private String boardContent; // 게시글 내용
 	private int readCount; // 게시글 조회수
 	private int likeCount; // 게시글 조회수
-	private Date createDate; // 게시글 작성일
+	private Date createDate; // 게시글 작성일 
 	private String boardWriter; // 게시글 작성자 (번호 또는 이름)
 	private String status; // 게시글 상태값(Y, N)
 	private int boardType;	//1: 이웃게시판 2:가게 게시판 

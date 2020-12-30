@@ -27,7 +27,7 @@ String msg =(String)session.getAttribute("msg");
         
            <link href="<%=contextPath%>/resources/css/styles.css" rel="stylesheet" /> <!--css 링크 바꿀부분-->
          <script src="<%=contextPath%>/resources/js/jquery-3.5.1.min.js" ></script>
-
+		<script src="<%=contextPath%>/resources/js/chat.js"></script>
                      
 		 <!--summernote cdn-->
 		  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -38,7 +38,15 @@ String msg =(String)session.getAttribute("msg");
 
 </head>
 <body>
+<script>
+	$(function(){
+		<% if(loginUser!=null){%>
+		var mno=<%=loginUser.getM_no()%>;
+		
+		<% }%>
+	});
 
+</script>
 	<!-- Page Wrapper -->
 
 	<div id="wrapper">		
@@ -64,13 +72,13 @@ String msg =(String)session.getAttribute("msg");
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" onclick="goNotice();">공지사항</a></li>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/FAQ/FAQ.jsp">FAQ</a></li>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/qna/QnaListview.jsp">Q&A</a></li>                    	
-                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">|</a></li>
+ <%--                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">|</a></li>
                     <%if(loginUser ==null){ %>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberloginForm.jsp" >로그인</a></li>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberJoinForm.jsp" >회원가입</a></li>
-                    <%}%>       
-                 
-                  	
+                    <%}%>    --%>    
+              
+         
                     	
                     </ul>
                 </div>
@@ -100,14 +108,20 @@ String msg =(String)session.getAttribute("msg");
 
    <%} %> 
                     	
-                  
-                  
-                  
-                  
+                
                 <div>
+                
+                
+                   <%if(loginUser ==null){ %>
+                    	<a class="col-lg-auto color-white" href="<%=request.getContextPath()%>/views/member/memberloginForm.jsp" >로그인</a>
+                    	<a class="col-lg-auto color-white" href="<%=request.getContextPath()%>/views/member/memberJoinForm.jsp" >회원가입</a>
+                    <%}%>     
+                
+                
+                 <% if(loginUser!=null){ %>  
                 <button class="btn btn-lg border-0 float-right color-white" id="sidebarBtn"><i class="far fa-comment-dots"></i></button>
         		<button class="btn btn-lg border-0 float-right color-white" ><a href="<%=contextPath%>/list.re?page=1"><i class="fas fa-tools"></i></a></button>
-          
+            	 <%} %> 
                 
                 </div>
                 
@@ -115,7 +129,7 @@ String msg =(String)session.getAttribute("msg");
         </nav>
         
         <script>
-	      	$("#sidebarBtn").on("click",function(){
+	/*       	$("#sidebarBtn").on("click",function(){
 	      		var status=$("#sidebar-wrapper").css("display");
 	      		
 	      		
@@ -128,7 +142,7 @@ String msg =(String)session.getAttribute("msg");
 
 	      		}
 	      		
-	      	});
+	      	}); */
 	      	
 	      	function goNotice() {
 	      		location.href = "<%= request.getContextPath()%>/list.no";
