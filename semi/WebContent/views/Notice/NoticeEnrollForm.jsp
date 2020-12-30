@@ -29,6 +29,9 @@
 					<label for="content">내용</label>
 					<textarea class="form-control" rows="5" id="summernote" name="content"></textarea>
 				</div>
+				
+		
+				
 				<button type="submit" class="btn btn-primary">글쓰기 등록</button>
 			</form>
 		</div>

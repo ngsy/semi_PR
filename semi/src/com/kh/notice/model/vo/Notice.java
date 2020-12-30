@@ -16,7 +16,7 @@ public class Notice {
 		
 	}
 	
-	public Notice(String noticeTitle, String noticeWriter, String noticeContent) {
+	public Notice(String noticeTitle,  String noticeContent,String noticeWriter) {
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
 		this.noticeWriter = noticeWriter;
