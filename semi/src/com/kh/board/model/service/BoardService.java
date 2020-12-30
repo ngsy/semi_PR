@@ -99,6 +99,49 @@ public class BoardService {
 		 close(conn);
 		return list;
 	}
-	
+
+	public int deleteBoard(int bid) {
+		Connection conn = getConnection();
+		int result1 = new BoardDao().deleteBoard(conn, bid);
+		int result2 = new BoardDao().deleteAttachment(conn, bid);
+		
+		if(result1>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1;
+	}
+
+	public Board selectUpdateBoard(int bno) {
+		Connection conn = getConnection();
+		Board b = new BoardDao().selectBoard(conn, bno);
+		close(conn);
+		return b;
+	}
+
+	public int updateBoard(Board b, Attachment at) {
+		Connection conn = getConnection();
+		int result1 = new BoardDao().updateBoard(conn, b);
+		int result2 = 1;
+		if (at != null) {
+			if (at.getFileNo() != 0) {
+				result2 = new BoardDao().updateAttachment(conn, at);
+			} else {
+				result2 = new BoardDao().insertNewAttahchment(conn, at);
+			}
+		}
+
+		if (result1 > 0 && result2 > 0) {
+			commit(conn);
+
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+
+		return result1 * result2;
+	}
 
 }

@@ -40,17 +40,6 @@ public class BoardInserServlet extends HttpServlet {
 
 		if (ServletFileUpload.isMultipartContent(request)) {// true로 넘어옴
 
-			// 1. 전송된 파일들을 처리할 작업 내용 (전송되는 파일의 용량 제한, 전달된 파일을 저장할 폴더 경로)
-
-			// 1_1. 전송파일 용량 제한 (int maxSize)
-//					: 10Mbyte로 제한  ([참고] cos.jar로 파일 업로드 시 최대 2기가(1.6)까지만 가능)
-//			     		1Kbyte = 1024byte (킬로바이트)
-//					1Mbyte = 1024Kbyte = 1024 * 1024 byte (메가바이트)
-//					1Gbyte = 1024Mbyte = 1024 * 1024 * 1024 Byte (기가바이트)
-//					10mbyte = 10 * 1024 * 1024 byte 
-
-			// 1_2. 전달된 파일을 저장할 서버의 폴더 경로 알아내기 (String savePath)
-			// 웹 컨테이너(WebContent) 경로안의 resources 폴더 경로 추출 (물리(절대)적인 경로)
 
 			int maxSize = 10 * 1024 * 1024;
 			String resources = request.getSession().getServletContext().getRealPath("/resources");
@@ -106,9 +95,9 @@ public class BoardInserServlet extends HttpServlet {
 					File failedFile = new File(savePath + at.getChangeName());
 					failedFile.delete();
 				}
-//
-//				request.setAttribute("msg", "게시판 등록 실패!!");
-//				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+
+				request.setAttribute("msg", "게시판 등록 실패!!");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			}
 		}
 

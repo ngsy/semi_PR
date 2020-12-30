@@ -13,7 +13,7 @@ Attachment at = (Attachment) request.getAttribute("at");
 	<div class="card-header py-3">게시판상세보기</div>
 
 	<div class="card-body">
-         	<div class="btn3" style="margin-left:1250px;">
+         	<div class="btn3" style="margin-left:70%;">
 			<%
 				if (loginUser != null && loginUser.getId().equals(b.getBoardWriter())) {
 			%>
@@ -76,7 +76,24 @@ Attachment at = (Attachment) request.getAttribute("at");
 			</div><!-- row -->
 
 		</div> <!-- container -->
-
+		
+		
+	<form action="" id="postForm" method="post">
+			<input type="hidden" name="bno" value="<%= b.getBoardNo() %>">
+		</form>
+		<script>
+			function updateForm(){
+				$("#postForm").attr("action", "<%=contextPath%>/updateForm.bo");
+				$("#postForm").submit();
+			}
+			
+			function deleteBoard(){
+				
+				 if (confirm("정말 삭제하시겠습니까?"))
+		   	     $("#postForm").attr("action", "<%=contextPath%>/deleteB.bo");
+				 $("#postForm").submit();
+			}
+		</script>
 
  <!-- 추천/신고/채팅버튼 -->
          <div class="btn1"  style="margin-left:1150px;">
@@ -98,28 +115,42 @@ Attachment at = (Attachment) request.getAttribute("at");
 			<button class="btn btn-secondary"
 				onclick="location.href='<%=contextPath%>/list.bo?currentPage=1';">목록으로</button>
 		</div>
-
-
+<br>
+<br>
 	<!-- 댓글 관련 영역 -->
 	<div class="replyArea">
 		<!-- 댓글 작성하는 div -->
-		<table border="1" align="center">
-			<tr>
-				<th>댓글작성</th>
+	
+			
 				<% if(loginUser != null){ %>
-				<td><textarea rows="3" cols="60" id="replyContent" style="resize:none;"></textarea></td>
-				<td><button id="addReply">댓글등록</button></td>
+					
+				<div class="input-group mb-3" style="width:800px; margin-left:30%;">
+				
+				
+				  <textarea class="form-control" id="replyContent"  style="resize:none; text-align:left;"  rows="3" placeholder="댓글을 작성해주세요"></textarea>	  
+			
+				 <button type="submit" class="btn btn-primary mb-3"id="addReply" "> 등록</button>
+				</div>
+				
 				<% }else{ %>
-				<td><textarea readonly rows="3" cols="60" id="replyContent" style="resize:none;">로그인한 사용자만 가능한 서비스입니다. 로그인 후 이용해주세요</textarea></td>
-				<td><button disabled>댓글등록</button></td>
+				<div class="input-group mb-3" style="width:800px; margin-left:30%;">
+				<textarea class="form-control" id="replyContent"  style="resize:none; text-align:center;"  rows="3" placeholder="로그인 후  댓글을 작성해 주세요"></textarea>
+					</div>
 				<% } %>
-			</tr>
-		</table>
+	
 		
 		
 		<!-- 댓글 리스트들 보여주는 div -->
-		<div id="replyListArea">
-			<table id="replyList" border="1" align="center">
+		<div id="replyListArea" >
+			<table class="table" id="replyList" align="center"  style="width:800px;">
+			 <thead>
+			     <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">First</th>
+				      <th scope="col">Last</th>
+				      <th scope="col">Handle</th>
+				    </tr>
+			 	</thead>
 				<!-- <tr>
 					<td width="100px">admin</td>
 					<td width="330px">댓글작성내용</td>
@@ -135,6 +166,7 @@ Attachment at = (Attachment) request.getAttribute("at");
 					<td width="330px">댓글작성내용</td>
 					<td width="150px">2020년 1월 20일</td>
 				</tr> -->
+			
 			</table>
 		</div>
 	</div> 
@@ -180,9 +212,10 @@ Attachment at = (Attachment) request.getAttribute("at");
 				var value = "";
 				for(var i in list){
 					value += '<tr>' + 
-								'<td width="100px">' + list[i].replyWriter + '</td>' +
-								'<td width="330px">' + list[i].replyContent + '</td>' + 
+								'<td width="100px">작성자|<br>' + list[i].replyWriter + '</td>' +
+								'<td width="330px" height="150px">' + list[i].replyContent + '</td>' + 
 								'<td width="150px">' + list[i].createDate  + '</td>' + 
+							
 							 '</tr>';
 				}
 				
@@ -192,7 +225,7 @@ Attachment at = (Attachment) request.getAttribute("at");
 	
 			},
 			error:function(){
-				console.log("ajax통신실패 ")
+				console.log("댓글실패 ")
 			}
 			  
 		  });
