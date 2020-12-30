@@ -16,7 +16,7 @@ public class Board {
 	private String titleImg; // 게시글의 타이틀 이미지 (실제 서버에 업로드되어있는 이름)
 	private String region1;
 	private String region2;
-	
+	private int boardWriterNo;
 
 	
 	public Board() {
@@ -56,13 +56,12 @@ public class Board {
 		this.readCount = readCount;
 		this.createDate = createDate;
 		this.boardWriter = boardWriter;
+		
 	}
 
-	
-	
 
-	public Board(int boardNo, String boardTitle, String boardContent,String boardWriter, int readCount, Date createDate
-			) {
+	public Board(int boardNo, String boardTitle, String boardContent,String boardWriter, int readCount, Date createDate,
+			 int boardWriterNo) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -70,6 +69,7 @@ public class Board {
 		this.readCount = readCount;
 		this.createDate = createDate;
 		this.boardWriter = boardWriter;
+		this.boardWriterNo = boardWriterNo;
 	}
 
 
@@ -183,6 +183,16 @@ public class Board {
 	}
 
 
+	public int getBoardWriterNo() {
+		return boardWriterNo;
+	}
+
+
+	public void setBoardWriterNo(int boardWriterNo) {
+		this.boardWriterNo = boardWriterNo;
+	}
+
+
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
@@ -193,9 +203,11 @@ public class Board {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
 				+ ", readCount=" + readCount + ", likeCount=" + likeCount + ", createDate=" + createDate
 				+ ", boardWriter=" + boardWriter + ", status=" + status + ", boardType=" + boardType + ", titleImg="
-				+ titleImg + ", region1=" + region1 + ", region2=" + region2 + "]";
+				+ titleImg + ", region1=" + region1 + ", region2=" + region2 + ", boardWriterNo=" + boardWriterNo + "]";
 	}
 
+	
+	
 
 	
 	
