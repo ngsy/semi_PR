@@ -42,8 +42,10 @@ public class BoardInserServlet extends HttpServlet {
 
 
 			int maxSize = 10 * 1024 * 1024;
-			String resources = request.getSession().getServletContext().getRealPath("/resources");
-			String savePath = resources + "\\board_upfiles\\";
+			String  resources= request.getSession().getServletContext().getRealPath("/resources");
+			String fileSeparator = File.separator;
+
+			String savePath = resources +fileSeparator+"board_upfiles"+fileSeparator;
 
 			System.out.println("savePath:" + savePath);
 
@@ -81,6 +83,8 @@ public class BoardInserServlet extends HttpServlet {
 				at.setFilePath(savePath);
 				at.setOriginName(originName);
 				at.setChangeName(changeName);
+				
+				System.out.println(at);
 
 			}
 

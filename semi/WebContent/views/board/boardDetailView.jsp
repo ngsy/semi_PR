@@ -184,13 +184,14 @@ Attachment at = (Attachment) request.getAttribute("at");
 					content:content,
 					bId:bId
 				},
-				success:function(status){
-					//console.log(status);
+				success:function(){
 					
-					if(status=="success"){
+					
+					
 						selectReplyList();
 						$("#replyContent").val("");
-					}
+						
+				
 				},
 				error:function(){
 					console.log("ajax 통신실패");

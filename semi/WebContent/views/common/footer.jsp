@@ -13,53 +13,21 @@
   
 	} 
   %>  
+  <script type="text/javascript">
   
-  <script>
-  $(function(){
 	  
+	  $(function(){
+		
 	<% if(loginUser2!=null){ %>  //로그인 했을 때
 	 var mno=<%=mno%>;
 	 
-	 chatRoomService.getChatRoomList(mno,function(list){
-		 
-			
-			deleteChatView();
-			
-			$("#accordionSidebar").on("click","li",function(){ //채팅방 클릭했을 때 이벤트
-				
-				chatService.startChat(); 
-				
-			});
-			
-			
-			var str="";
-			$.each(list,function(i){
-				
-				 str+=' <li class="nav-item active hoverStyle"><a class="nav-link"><i class="fas fa-caret-right"></i><span>&nbsp;&nbsp;&nbsp;'
-				+list[i].mName+'</span><i class="fas fa-times float-right"></i></a></li>';
-				
-				str+='<hr class="sidebar-divider my-0 chatDivider">';
-				
-			});
-		 	$("#accordionSidebar").append(str);
-		 	
-		 
-	 });
+		getChatRoomList(mno);
+	 
+	 
+
 	  
 	  <% }%>
-	  
- 	function deleteChatRoomList(){
-		 $("#accordionSidebar > li").remove();
-			$(".chatDivider").remove();
- 	}
- 	function deleteChatView(){
- 		$("#chatView").remove();
- 		$("#chatSend").remove();
- 		
- 	}
-  
-  
-  });
+	  });
   
   
   </script>  
@@ -119,16 +87,21 @@
 		<div id="sidebar" >
 		    <!-- 	Sidebar -->
 	    	<ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar">
-
-	
-	    	
+				<div id="sidebar-header-wrapper" class="d-flex">
+				
+				<div class="align-items-center d-flex" id="leftBtn">
+					<button id="exitChatBtn" class="btn color-white" ><i class="fas fa-arrow-left " ></i></button>	
+				</div>
 	     		 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+			        	    	
+			        
 			        <div class="sidebar-brand-icon rotate-n-15">
+			          
 			          	<i class="fas fa-comment-dots"></i>
 			        </div>
 		        	<div class="sidebar-brand-text mx-3">채팅</div>
 	      		</a>
-	      		
+	      		</div>
 <!-- 			     Divider
 			     <hr class="sidebar-divider my-0">
 	      		

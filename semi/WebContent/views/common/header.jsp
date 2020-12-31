@@ -27,7 +27,8 @@ String msg =(String)session.getAttribute("msg");
         
            <link href="<%=contextPath%>/resources/css/styles.css" rel="stylesheet" /> <!--css 링크 바꿀부분-->
          <script src="<%=contextPath%>/resources/js/jquery-3.5.1.min.js" ></script>
-		<script src="<%=contextPath%>/resources/js/chat.js"></script>
+		  <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/chat.js"></script>
+		
                      
 		 <!--summernote cdn-->
 		  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">

@@ -11078,6 +11078,15 @@ container
 #sidebar-wrapper{
 	display:none;
 }
+#sidebar-header-wrapper #leftBtn{
+	flex : 1 1 10%;
+}
+#sidebar-header-wrapper .sidebar-brand{
+	flex : 1 1 100%;
+	
+}
+
+
 
 
 
