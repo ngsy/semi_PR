@@ -14,10 +14,12 @@ import static com.kh.common.JDBCTemplate.commit;
 import static com.kh.common.JDBCTemplate.getConnection;
 import static com.kh.common.JDBCTemplate.rollback;
 
+import com.kh.board.model.vo.Shop;
 import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.PageInfo;
 import com.kh.board.model.vo.Reply;
+import com.kh.board.model.vo.Shop;
 
 public class BoardDao { 
 	private Properties prop = new Properties();
@@ -409,6 +411,16 @@ public class BoardDao {
 		}
 
 		return result;
+	}
+
+
+
+	public ArrayList<Shop> selectShList(Connection conn) {
+		ArrayList<Shop> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectThList");
+		ResultSet rset = null;
+		return null;
 	}
 
 	

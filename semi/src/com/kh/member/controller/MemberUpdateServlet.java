@@ -1,28 +1,23 @@
-package com.kh.notice.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.notice.model.service.NoticeService;
-import com.kh.notice.model.vo.Notice;
-
 /**
- * Servlet implementation class NoticeDetailServlet
+ * Servlet implementation class MemberUpdateServlet
  */
-@WebServlet("/detail.no")
-public class NoticeDetailServlet extends HttpServlet {
+@WebServlet("/update.me")
+public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeDetailServlet() {
+    public MemberUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +26,13 @@ public class NoticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		int nno = Integer.parseInt(request.getParameter("nno"));
 		
-		Notice notice = new NoticeService().selectNotice(nno);
-	
-	if(notice != null) {
-		request.setAttribute("notice", notice);
-		RequestDispatcher view = request.getRequestDispatcher("views/Notice/NoticeDetailView.jsp");
-		view.forward(request, response);
-	}else {
-		request.setAttribute("msg", "게시판 상세조회 실패!!");
-		request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		String userId = request.getParameter("userId");
+		String userName = request.getParameter("userName");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
 
-	}
+		
 	}
 
 	/**

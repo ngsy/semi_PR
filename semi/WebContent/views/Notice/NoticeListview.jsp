@@ -5,13 +5,11 @@
 <% 
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	
-	int listCount = pi.getListCount();
-	int currentPage = pi.getCurrentPage();
-	int maxPage = pi.getMaxPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-
+    int listCount = pi.getListCount();
+    int currentPage = pi.getCurrentPage();
+    int maxPage = pi.getMaxPage();
+    int startPage = pi.getStartPage();
+    int endPage = pi.getEndPage();
 %> 	
 
 <%@ include file="../common/header.jsp"%>
@@ -40,7 +38,7 @@
 			</nav>
 	
 	
-			<table class="table table-striped table-hover">
+			<table class="table table-striped table-hover listArea">
 				<thead>
 					<tr>
 						<th scope="col">글번호</th>
@@ -74,8 +72,6 @@
 	   	
 	   <br>
 	   <br>
-
-		<br>
 <!-- 페이징바 만들기 -->
 		<div class="pagingArea" align="center">
 			<!-- 맨 처음으로 (<<) -->
@@ -109,19 +105,23 @@
 			<!-- 맨 끝으로 (>>) -->
 			<button onclick="location.href='<%=contextPath%>/list.no?currentPage=<%=maxPage%>'"> &gt;&gt; </button>
 		</div> 
+
+
 		<br><br>
 			<script>
 		<%if (!list.isEmpty()) {%>
 		$(function(){
 			$(".listArea>tbody>tr").click(function(){
+				console.log("먹어?")
 				var nno = $(this).children().eq(0).text();
-				//console.log(nno);
+				console.log(nno)
 				
-				// 쿼리 스트링을 이용하여 get방식으로(url 노출) 글번호를 server로 전달
+			
 				location.href="<%= contextPath %>/detail.no?nno=" + nno;
 			});
 		});
-		<%} %>
+		<% } %>
+		
 		</script>
 
 	</div>
