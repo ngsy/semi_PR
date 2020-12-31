@@ -75,7 +75,7 @@
 
 			<div id=imgarea style="margin-left: 42%;">
 
-				<td><img id="contentImg1" width="150" height="120"></td>
+				<td><img id="contentImg1" width="150" height="120" border="1px"></td>
 				<td><img id="contentImg2" width="150" height="120"></td>
 				<td><img id="contentImg3" width="150" height="120"></td>
 			</div>
@@ -119,13 +119,13 @@
 		$("#fileArea").hide();
 	
 		$("#contentImg1").click(function() {
-			$("#file2").click();
+			$("#file1").click();
 		});
 		$("#contentImg2").click(function() {
-			$("#file3").click();
+			$("#file2").click();
 		});
 		$("#contentImg3").click(function() {
-			$("#file4").click();
+			$("#file3").click();
 		});
 	});
 
@@ -165,14 +165,11 @@
 <script>
 	$(function() {
 		$("#locationBtn")
-				.on(
-						"click",
-						function(e) {
+				.on("click",function(e) {
 							e.preventDefault();
 							var lat = 0.0;
 							var lon = 0.0;
-							navigator.geolocation
-									.getCurrentPosition(function(position) {
+							navigator.geolocation.getCurrentPosition(function(position) {
 
 										lat = position.coords.latitude; //위도 
 										lon = position.coords.longitude; //경도
@@ -201,9 +198,7 @@
 															var region1 = obj.documents[0].region_2depth_name;
 															var region2 = obj.documents[0].region_3depth_name;
 
-															$("#region1La")
-																	.css(
-																			"margin-right",
+															$("#region1La").css("margin-right",
 																			"10px");
 															$("#region2La")
 																	.css(

@@ -13,7 +13,7 @@ import com.kh.board.model.vo.Attachment;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.PageInfo;
 import com.kh.board.model.vo.Reply;
-import com.kh.board.model.vo.Shop;
+
 
 public class BoardService { 
 
@@ -145,12 +145,6 @@ public class BoardService {
 		return result1 * result2;
 	}
 
-	public ArrayList<Shop> selectShList() {
-		Connection conn = getConnection();
-		ArrayList<Shop> list =new BoardDao().selectShList(conn);
-		
-		close(conn);
-		return list;
-	}
+
 
 }

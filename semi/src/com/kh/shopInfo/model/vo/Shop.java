@@ -1,4 +1,4 @@
-package com.kh.board.model.vo;
+package com.kh.shopInfo.model.vo;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ public class Shop {
 	private String shopWriter; // 게시글 작성자 (번호 또는 이름)
 	private String status; // 게시글 상태값(Y, N)
 	private int shopWriterNo;
-	
+	private String titleImg;
 	private double lat; //위도
 	private double lon; //경도
 	
@@ -30,8 +30,8 @@ public class Shop {
 
 
 	public Shop(int shopNo, String shopTitle, String shopContent, int phoneNo, int readCount, int likeCount,
-			Date createDate, String shopWriter, String status, int shopWriterNo, String region1, String region2,
-			String detailLocation) {
+			Date createDate, String shopWriter, String status, int shopWriterNo, String titleImg, double lat,
+			double lon, String region1, String region2, String detailLocation) {
 		super();
 		this.shopNo = shopNo;
 		this.shopTitle = shopTitle;
@@ -43,28 +43,27 @@ public class Shop {
 		this.shopWriter = shopWriter;
 		this.status = status;
 		this.shopWriterNo = shopWriterNo;
+		this.titleImg = titleImg;
+		this.lat = lat;
+		this.lon = lon;
 		this.region1 = region1;
 		this.region2 = region2;
 		this.detailLocation = detailLocation;
 	}
 
 
-	public Shop(int shopNo, String shopTitle, String shopContent, int phoneNo, int readCount, int likeCount,
-			Date createDate, String shopWriter, int shopWriterNo, String region1, String region2,
-			String detailLocation) {
+	public Shop(int shopNo, String shopTitle, String shopContent, int phoneNo, int readCount, Date createDate,
+			String shopWriter, int shopWriterNo, String titleImg) {
 		super();
 		this.shopNo = shopNo;
 		this.shopTitle = shopTitle;
 		this.shopContent = shopContent;
 		this.phoneNo = phoneNo;
 		this.readCount = readCount;
-		this.likeCount = likeCount;
 		this.createDate = createDate;
 		this.shopWriter = shopWriter;
 		this.shopWriterNo = shopWriterNo;
-		this.region1 = region1;
-		this.region2 = region2;
-		this.detailLocation = detailLocation;
+		this.titleImg = titleImg;
 	}
 
 
@@ -168,6 +167,36 @@ public class Shop {
 	}
 
 
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+
+
+	public double getLat() {
+		return lat;
+	}
+
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+
+	public double getLon() {
+		return lon;
+	}
+
+
+	public void setLon(double lon) {
+		this.lon = lon;
+	}
+
+
 	public String getRegion1() {
 		return region1;
 	}
@@ -202,12 +231,12 @@ public class Shop {
 	public String toString() {
 		return "Shop [shopNo=" + shopNo + ", shopTitle=" + shopTitle + ", shopContent=" + shopContent + ", phoneNo="
 				+ phoneNo + ", readCount=" + readCount + ", likeCount=" + likeCount + ", createDate=" + createDate
-				+ ", shopWriter=" + shopWriter + ", status=" + status + ", shopWriterNo=" + shopWriterNo + ", region1="
-				+ region1 + ", region2=" + region2 + ", detailLocation=" + detailLocation + "]";
+				+ ", shopWriter=" + shopWriter + ", status=" + status + ", shopWriterNo=" + shopWriterNo + ", titleImg="
+				+ titleImg + ", lat=" + lat + ", lon=" + lon + ", region1=" + region1 + ", region2=" + region2
+				+ ", detailLocation=" + detailLocation + "]";
 	}
- 	  	 
- 	 
- 	 
+
+
 
  	 
 }
