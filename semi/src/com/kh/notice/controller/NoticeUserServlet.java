@@ -110,17 +110,14 @@ public class NoticeUserServlet extends HttpServlet {
 		// 어딘가에 담아서 보내주자!
 		// 페이지 정보들 PageInfo 객체에 담아주기
 		PageInfo pi = new PageInfo(listCount, currentPage, startPage, endPage, maxPage, pageLimit, noticeLimit);
-		
-//		System.out.println(pi);
+
 		
 		// 자 그러면 현재 페이지(currentPage)에 보여질 게시글 리스트 조회하기
 
 		ArrayList<Notice> list = new NoticeService().selectList(pi);
-		System.out.println(list);
-		System.out.println(pi);
-		
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
+		System.out.println("리스트"+list);
 		RequestDispatcher view = request.getRequestDispatcher("views/Notice/NoticeListview.jsp");
 		view.forward(request, response);
 	}

@@ -9,10 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
-import static com.kh.common.JDBCTemplate.close;
-import static com.kh.common.JDBCTemplate.commit;
-import static com.kh.common.JDBCTemplate.getConnection;
-import static com.kh.common.JDBCTemplate.rollback;
 
 
 import com.kh.notice.model.vo.PageInfo;
@@ -46,8 +42,7 @@ public class NoticeDao {
 		System.out.println("endrow :" + endRow);
 
 		// current page =1 startrow 1 endrow:10
-		// current page =1 startrow 1 endrow:10
-		// current page =1 startrow 1 endrow:10
+	
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
@@ -71,6 +66,7 @@ public class NoticeDao {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println("Dao의 리스트" + list);
 		return list;
 	}
 
@@ -85,8 +81,8 @@ public class NoticeDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, n.getNoticeTitle());
 			pstmt.setString(2, n.getNoticeContent());
-			pstmt.setInt(3, Integer.parseInt(n.getNoticeWriter()));
-			pstmt.setString(4, n.getNoticeWriter());
+			pstmt.setString(3, n.getNoticeWriter());
+			pstmt.setInt(4, Integer.parseInt(n.getNoticeWriter()));
 			
 			
 			result = pstmt.executeUpdate();
@@ -176,8 +172,7 @@ public class NoticeDao {
 		return n;
 	}
 
-	
-	
+
 	}
 
 
