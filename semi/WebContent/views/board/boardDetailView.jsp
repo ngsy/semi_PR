@@ -24,6 +24,23 @@ Attachment at = (Attachment) request.getAttribute("at");
 			%>
 
 		</div> <br>
+		
+			<form action="" id="postForm" method="post">
+			<input type="hidden" name="bno" value="<%= b.getBoardNo() %>">
+		</form>
+		<script>
+			function updateForm(){
+				$("#postForm").attr("action", "<%=contextPath%>/updateForm.bo");
+				$("#postForm").submit();
+			}
+			
+			function deleteBoard(){
+				
+				 if (confirm("정말 삭제하시겠습니까?"))
+		   	     $("#postForm").attr("action", "<%=contextPath%>/deleteB.bo");
+				 $("#postForm").submit();
+			}
+		</script>
          
 		<div class="container">
 			<div class="row ">
@@ -78,33 +95,20 @@ Attachment at = (Attachment) request.getAttribute("at");
 		</div> <!-- container -->
 		
 		
-	<form action="" id="postForm" method="post">
-			<input type="hidden" name="bno" value="<%= b.getBoardNo() %>">
-		</form>
-		<script>
-			function updateForm(){
-				$("#postForm").attr("action", "<%=contextPath%>/updateForm.bo");
-				$("#postForm").submit();
-			}
-			
-			function deleteBoard(){
-				
-				 if (confirm("정말 삭제하시겠습니까?"))
-		   	     $("#postForm").attr("action", "<%=contextPath%>/deleteB.bo");
-				 $("#postForm").submit();
-			}
-		</script>
+
 
  <!-- 추천/신고/채팅버튼 -->
+          <!-- 추천-->
          <div class="btn1"  style="margin-left:1150px;">
-         	<button class="btn btn-lg border-0  " id="sidebarBtn"  >
+         	<button class="btn btn-lg border-0  " id="likeBtn"  >
 			<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
 			 </button> 
-           	<button class="btn btn-lg border-0  " id="sidebarBtn"  >
+			 <!-- 신고-->
+           	<button class="btn btn-lg border-0  " id="angryBtn"  >
 			</i> <i class="fas fa-angry" style="font-size: 30px; "></i>
             </button>
-            
-           	<button class="btn btn-lg border-0  " id="sidebarBtn" >
+             <!-- 채팅-->
+           	<button class="btn btn-lg border-0  " id="chatBtn" >
             <i class="far fa-comment-dots" style="font-size: 30px;"></i>  
             </button>
          </div>
@@ -124,7 +128,7 @@ Attachment at = (Attachment) request.getAttribute("at");
 			
 				<% if(loginUser != null){ %>
 					
-				<div class="input-group mb-3" style="width:800px; margin-left:30%;">
+				<div class="input-group mb-3" style="width:800px; margin-left:25%;">
 				
 				
 				  <textarea class="form-control" id="replyContent"  style="resize:none; text-align:left;"  rows="3" placeholder="댓글을 작성해주세요"></textarea>	  
@@ -133,7 +137,7 @@ Attachment at = (Attachment) request.getAttribute("at");
 				</div>
 				
 				<% }else{ %>
-				<div class="input-group mb-3" style="width:800px; margin-left:30%;">
+				<div class="input-group mb-3" style="width:800px; margin-left:25%;">
 				<textarea class="form-control" id="replyContent"  style="resize:none; text-align:center;"  rows="3" placeholder="로그인 후  댓글을 작성해 주세요"></textarea>
 					</div>
 				<% } %>
@@ -145,10 +149,7 @@ Attachment at = (Attachment) request.getAttribute("at");
 			<table class="table" id="replyList" align="center"  style="width:800px;">
 			 <thead>
 			     <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">First</th>
-				      <th scope="col">Last</th>
-				      <th scope="col">Handle</th>
+				  
 				    </tr>
 			 	</thead>
 				<!-- <tr>
@@ -184,13 +185,13 @@ Attachment at = (Attachment) request.getAttribute("at");
 					content:content,
 					bId:bId
 				},
-				success:function(status){
+				success:function(){
 					//console.log(status);
 					
-					if(status=="success"){
+					
 						selectReplyList();
 						$("#replyContent").val("");
-					}
+					
 				},
 				error:function(){
 					console.log("ajax 통신실패");
@@ -208,13 +209,14 @@ Attachment at = (Attachment) request.getAttribute("at");
 			success:function(list){
 				console.log(list);
 
-				// 1번 방법
+			
 				var value = "";
 				for(var i in list){
 					value += '<tr>' + 
-								'<td width="100px">작성자|<br>' + list[i].replyWriter + '</td>' +
-								'<td width="330px" height="150px">' + list[i].replyContent + '</td>' + 
-								'<td width="150px">' + list[i].createDate  + '</td>' + 
+								'<td width="100px" height="150px" ">작성자|<br>' + list[i].replyWriter+'<br>'+'<div style=" font-size:5px; color:#7CAA7A;">' +list[i].createDate+'</div>' + '</td>' +
+								'<td width="200px" height="150px">' + list[i].replyContent + '</td>' + 
+								'<td width="100px" >' +'<button class="btn btn-danger" id="delRBtn" onclick="" style="width:50px; font-size:5px;"> 삭제 </button>'+
+								'&nbsp'+'<button class="btn btn-lg border-0  " id="angrybutton"></i> <i class="fas fa-angry" style="font-size: 25px; "></i></button>' +'</td>' + 
 							
 							 '</tr>';
 				}
