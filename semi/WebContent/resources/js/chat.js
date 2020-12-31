@@ -1,22 +1,8 @@
-$(function(){
+
+var chatRoomService=function(){
 	
-
-		$("#sidebar-wrapper").css("display","none");
-
-	$("#sidebarBtn").on("click",function(){
-  		var status=$("#sidebar-wrapper").css("display");
-  		
-  	
-  		if(status=="none"){
-  			$("#sidebar-wrapper").css("display","block");
-  		}else if(status=="block"){
-  			$("#sidebar-wrapper").css("display","none");
-
-  		}
-  		
-  	});
 	
-	function getChatRoomList(){
+	function getChatRoomList(mno,callback){
 		
 		
 		$.ajax({
@@ -26,9 +12,9 @@ $(function(){
 			data:{ mno:mno},
 			success:function(list){
 				
-			$("#accordionSidebar > li").remove();
-			$(".chatDivider").remove();
-			
+				if(callback){
+					callback(list);
+				}
 				
 			},
 			error: function(){
@@ -42,8 +28,41 @@ $(function(){
 		
 	}
 	
+	return {
+		getChatRoomList:getChatRoomList
+		
+		
+	};
+	
+}();
+
+
+var chatService=function(){
+	
+	
+	function startChat(mno,callback){
+		
+		deleteChatRoomList();
+			
+			
+
+		
+		
+		
+	}
+	
+	return {
+		startChat:startChat
+		
+		
+	};
+	
+}();
+	
+
 	
 	
 	
-});
+	
+
 
