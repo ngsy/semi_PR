@@ -11,16 +11,13 @@ public class Notice {
 	private int count;
 	private Date createDate;
 	private String status;
+	private int noticeWriterNo;
 	
 	public Notice() {
 		
 	}
 	
-	public Notice(String noticeTitle,  String noticeContent,String noticeWriter) {
-		this.noticeTitle = noticeTitle;
-		this.noticeContent = noticeContent;
-		this.noticeWriter = noticeWriter;
-	}
+	
 
 	public Notice(int noticeNo, String noticeTitle, String noticeWriter, int count, Date createDate) {
 		super();
@@ -33,7 +30,8 @@ public class Notice {
 	
 
 
-	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeWriter, int count, Date createDate) {
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeWriter, int count, Date createDate,
+				String status) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
@@ -41,7 +39,24 @@ public class Notice {
 		this.noticeWriter = noticeWriter;
 		this.count = count;
 		this.createDate = createDate;
+		this.status = status;
 	}
+	
+	
+
+	public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeWriter, int count,
+			Date createDate, int noticeWriterNo) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticeWriter = noticeWriter;
+		this.count = count;
+		this.createDate = createDate;
+		this.noticeWriterNo = noticeWriterNo;
+	}
+
+
 
 	public int getNoticeNo() {
 		return noticeNo;
@@ -98,12 +113,25 @@ public class Notice {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+
+	public int getNoticeWriterNo() {
+		return noticeWriterNo;
+	}
+
+
+
+	public void setNoticeWriterNo(int noticeWriterNo) {
+		this.noticeWriterNo = noticeWriterNo;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Notice [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
 				+ ", noticeWriter=" + noticeWriter + ", count=" + count + ", createDate=" + createDate + ", status="
-				+ status + "]";
+				+ status +", noticeWriterNo"+noticeWriterNo + "]";
 	}
 
 }

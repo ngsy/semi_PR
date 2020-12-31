@@ -29,60 +29,19 @@ public class NoticeDao {
 			e.printStackTrace();
 		}
 	}
-	
-	public ArrayList<Notice> selectList(Connection conn, PageInfo pi) {
-		ArrayList<Notice> list = new ArrayList<Notice>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-
-		String sql = prop.getProperty("selectList");
-		int startRow = (pi.getCurrentPage() - 1) * pi.getNoticeLimit() + 1;// 시작페이지
-		int endRow = startRow + pi.getNoticeLimit() - 1;
-		System.out.println("start row:" + startRow);
-		System.out.println("endrow :" + endRow);
-
-		// current page =1 startrow 1 endrow:10
-	
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-
-			rset = pstmt.executeQuery();
-
-
-			
-			while(rset.next()) {
-				list.add(new Notice(rset.getInt("NOTICE_NO"),
-									rset.getString("NOTICE_TITLE"),
-									rset.getString("NOTICE_WRITER"),
-									rset.getInt("NOTICE_COUNT"),
-									rset.getDate("NOTICE_DATE")));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		System.out.println("Dao의 리스트" + list);
-		return list;
-	}
-
 	public int insertNotice(Connection conn, Notice n) {
 		int result = 0;
 		
 		PreparedStatement pstmt = null;
 		
 		String sql = prop.getProperty("insertNotice");
+		
 		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, n.getNoticeTitle());
 			pstmt.setString(2, n.getNoticeContent());
-			pstmt.setString(3, n.getNoticeWriter());
-			pstmt.setInt(4, Integer.parseInt(n.getNoticeWriter()));
+			pstmt.setInt(3, Integer.parseInt(n.getNoticeWriter()));
 			
 			
 			result = pstmt.executeUpdate();
@@ -92,11 +51,9 @@ public class NoticeDao {
 		} finally {
 			close(pstmt);
 		} 
-		System.out.println(pstmt);
 		return result;
 		
 	}
-
 	public int getListCount(Connection conn) {
 		int listCount = 0;
 		Statement stmt = null;
@@ -124,6 +81,47 @@ public class NoticeDao {
 		return listCount;
 	}
 
+	public ArrayList<Notice> selectList(Connection conn, PageInfo pi) {
+		ArrayList<Notice> list = new ArrayList<Notice>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("selectList");
+		int startRow = (pi.getCurrentPage() - 1) * pi.getNoticeLimit() + 1;// 시작페이지
+		int endRow = startRow + pi.getNoticeLimit() - 1;
+		System.out.println("start row:" + startRow);
+		System.out.println("endrow :" + endRow);
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("pstmt" + pstmt);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+
+
+			
+			while(rset.next()) {
+				list.add(new Notice(rset.getInt("NOTICE_NO"),
+									rset.getString("NOTICE_TITLE"),
+									rset.getString("ID"),
+									rset.getInt("NOTICE_COUNT"),
+									rset.getDate("NOTICE_DATE")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("Dao의 리스트" + list);
+		return list;
+	}
+
+	
+
+	
 	public int increaseCount(Connection conn, int nno) {
 		
 		int result = 0;
@@ -158,7 +156,12 @@ public class NoticeDao {
 			
 			if (rset.next()) {
 				n = new Notice(rset.getInt("NOTICE_NO"),
-						rset.getString("NOTICE_TITLE"),rset.getString("NOTICE_CONTENT"),rset.getString("NOTICE_WRITER"), rset.getInt("NOTICE_COUNT"),rset.getDate("NOTICE_DATE"));
+						rset.getString("NOTICE_TITLE"),
+						rset.getString("NOTICE_CONTENT"),
+						rset.getString("ID"), 
+						rset.getInt("NOTICE_COUNT"),
+						rset.getDate("NOTICE_DATE"),
+						rset.getInt("M_NO"));
 
 
 			}
@@ -170,6 +173,51 @@ public class NoticeDao {
 			close(pstmt);
 		}
 		return n;
+	}
+	public int updateNotice(Connection conn, Notice n) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, n.getNoticeTitle());
+			pstmt.setString(2, n.getNoticeContent());
+			pstmt.setInt(3, n.getNoticeNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	public int deleteNotice(Connection conn, int nno) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, nno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 
