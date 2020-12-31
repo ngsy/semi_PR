@@ -204,7 +204,7 @@ Attachment at = (Attachment) request.getAttribute("at");
 		  $.ajax({
 			url:"rlist.bo",
 			data:{bId:<%=b.getBoardNo()%>},
-			tyoe:"get",
+			type:"get",
 			success:function(list){
 				console.log(list);
 
@@ -219,13 +219,13 @@ Attachment at = (Attachment) request.getAttribute("at");
 							 '</tr>';
 				}
 				
-				$("#replyList").html(value);
+				   $("#replyList").html(value);
 				
 				
 	
 			},
 			error:function(){
-				console.log("댓글실패 ")
+				console.log("댓글실패 ");
 			}
 			  
 		  });
