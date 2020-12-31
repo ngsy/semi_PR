@@ -40,10 +40,34 @@ String msg =(String)session.getAttribute("msg");
 <body>
 <script>
 	$(function(){
-		<% if(loginUser!=null){%>
-		var mno=<%=loginUser.getM_no()%>;
+
 		
-		<% }%>
+
+
+		
+	
+
+	$("#sidebarBtn").on("click",function(){
+		chatStatus=$("#sidebar-wrapper").css("display");
+  		
+  	
+  		if(chatStatus=="none"){
+  			chatStatus="block";
+  			switchChatView(chatStatus);
+
+  			
+  		}else if(chatStatus=="block"){
+  			chatStatus="none";
+  			switchChatView(chatStatus);
+
+  		}
+	});
+	
+	function switchChatView(status){
+			$("#sidebar-wrapper").css("display",status);
+
+	}
+	
 	});
 
 </script>
@@ -91,13 +115,15 @@ String msg =(String)session.getAttribute("msg");
 <div>
                                   
 		<div class="dropdown ">
-		  <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-		  <i class="fas fa-user-circle"></i> <b> <%=loginUser.getM_name() %> 님</b>
+		  <a class="btn color-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+		  <i class="fas fa-user-circle"></i> <b>&nbsp; <%=loginUser.getM_name() %> 님</b>
 		  </a>
 		
 		  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" 	style="text-align: center;" >
 		    <li><a class="dropdown-item" href="#">마이페이지</a></li>
 		    <li><a class="dropdown-item" href="#">테스트</a></li>
+		    <li><a class="dropdown-item" href="<%=contextPath%>/list.re?page=1">관리하기</a></li>
+		    
 		    <li><hr></li>
 		    <li><a id="logoutMember"  href="<%= request.getContextPath() %>/logout.me">로그아웃</a></li>
 		  </ul>
@@ -120,7 +146,6 @@ String msg =(String)session.getAttribute("msg");
                 
                  <% if(loginUser!=null){ %>  
                 <button class="btn btn-lg border-0 float-right color-white" id="sidebarBtn"><i class="far fa-comment-dots"></i></button>
-        		<button class="btn btn-lg border-0 float-right color-white" ><a href="<%=contextPath%>/list.re?page=1"><i class="fas fa-tools"></i></a></button>
             	 <%} %> 
                 
                 </div>

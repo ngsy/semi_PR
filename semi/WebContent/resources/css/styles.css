@@ -10716,6 +10716,7 @@ container
 */
 #wrapper {
   display: flex;
+
 }
 
 #wrapper #content-wrapper {
@@ -10726,17 +10727,18 @@ container
 
 #wrapper #content-wrapper #content {
   flex: 1 0 auto;
-  height:800px;
+ height:100vh;
 }
 #wrapper #sidebar-wrapper {
   
 	width:20%;
   overflow-x: hidden;
+   height:100vh;
 }
 
 #sidebar{
 	 flex: 1 0 auto;
-  height:800px;
+  height:100%;
 }
 
 .container-fluid {
@@ -11045,8 +11047,37 @@ container
 
 /* 한별 스타일  */
 
-
-
+.hoverStyle:hover{
+	
+	background-color:#ffc107;
+}
+.bg-white{
+	background-color:#fff;
+	
+}
+#chatView{
+	flex :1 1 auto;
+	height:65vh;
+	background-color:#FADCA5;
+	overflow-x:hidden;
+}
+#chatSend{
+	display:flex;
+	flex:1 1 auto;
+	height:10vh;
+}
+#chatWriteArea{
+	flex:1 1 75%;
+}
+#chatSendBtn{
+	flex:1 1 25%;
+}
+#accordionSidebar{
+	flex :1 1 auto;
+}
+#sidebar-wrapper{
+	display:none;
+}
 
 
 

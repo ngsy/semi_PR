@@ -159,7 +159,7 @@
                   		</div>
 	                 	<div class="form-group">
                   			<label for="reportDate" class="form-label">댓글 작성 날짜</label>
-                  			<input class="form-control" id="reportDate" name="reportDate" type="text" readonly value="">
+                  			<input class="form-control" id="replyDate" name="replyDate" type="text" readonly value="">
                   		
                   		</div>
 
