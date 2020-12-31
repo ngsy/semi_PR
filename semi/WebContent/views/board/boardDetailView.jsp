@@ -186,12 +186,15 @@ Attachment at = (Attachment) request.getAttribute("at");
 					bId:bId
 				},
 				success:function(){
-					//console.log(status);
+
+					
 					
 					
 						selectReplyList();
 						$("#replyContent").val("");
-					
+						
+				
+
 				},
 				error:function(){
 					console.log("ajax 통신실패");
