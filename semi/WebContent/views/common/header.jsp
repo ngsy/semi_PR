@@ -6,6 +6,11 @@
 <% String contextPath=request.getContextPath();
 Member loginUser = (Member)session.getAttribute("loginUser"); 
 String msg =(String)session.getAttribute("msg"); 
+
+
+
+
+
 %>       
 <!DOCTYPE html>
 <html>
