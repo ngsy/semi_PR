@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList,com.kh.qna.model.vo.*" %>
+<% 
+	ArrayList<Qna> list = (ArrayList<Qna>)request.getAttribute("list");
+%>
 <%@ include file="../common/header.jsp"%>
 
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-	<h2>공지사항 게시판</h2>
+	<h2>Q&A 게시판 </h2>
 	</div>
 
 	<div class="card-body">
@@ -16,11 +20,12 @@
 				<form class="d-flex">
 					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search"
 						aria-label="Search" align="right">
-					<button class="btn btn-outline-success" type="submit">찾기</button>
+					<button class="btn btn-outline-success" type="submit">search</button>
 				</form>
-
+			<% if(loginUser != null){ %>
+         	<a href="enrollForm.qo" class="btn btn-primary float-right" >글쓰기</a>
+         	<% } %>
 			</nav>
-
 	
 			<table class="table table-striped table-hover">
 				<thead>
@@ -28,32 +33,11 @@
 						<th scope="col">글번호</th>
 						<th scope="col">글제목</th>
 						<th scope="col">작성자</th>
-						<th scope="col">조회수</th>
 						<th scope="col">작성일</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>블랙리스트 관리입니다.</td>
-						<td>관리자</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>관리자</td>
-						<td>@fat</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td colspan="2">Larry the Bird</td>
-						<td>@twitter</td>
-						<td>@mdo</td>
-					</tr>
-					
+				
 				</tbody>
 			</table>
 

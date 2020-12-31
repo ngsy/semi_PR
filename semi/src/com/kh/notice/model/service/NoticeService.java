@@ -17,7 +17,9 @@ public class NoticeService {
 		Connection conn = getConnection();
 
 		ArrayList<Notice> list = new NoticeDao().selectList(conn, pi);
+		
 		close(conn);
+		System.out.println("service의 리스트" + list);
 		return list;
 	}
 	public int getListCount() {
@@ -60,6 +62,7 @@ public class NoticeService {
 		close(conn);
 		return n;
 	}
+	
 
 	
 	}

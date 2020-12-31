@@ -5,7 +5,7 @@
 
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-	<h2>게시글 등록 <h2>
+	<h2>Q&A 등록<h2>
 	
 	</div>
 

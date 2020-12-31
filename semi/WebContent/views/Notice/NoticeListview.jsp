@@ -5,12 +5,13 @@
 <% 
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
-
+	
 	int listCount = pi.getListCount();
 	int currentPage = pi.getCurrentPage();
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
+
 %> 	
 
 <%@ include file="../common/header.jsp"%>
@@ -75,8 +76,7 @@
 	   <br>
 
 		<br>
-
-		<!-- 페이징바 만들기 -->
+<!-- 페이징바 만들기 -->
 		<div class="pagingArea" align="center">
 			<!-- 맨 처음으로 (<<) -->
 			<button onclick="location.href='<%=contextPath%>/list.no?currentPage=1'"> &lt;&lt; </button>
@@ -110,13 +110,6 @@
 			<button onclick="location.href='<%=contextPath%>/list.no?currentPage=<%=maxPage%>'"> &gt;&gt; </button>
 		</div> 
 		<br><br>
-		
-		<script>
-			$("#defaultModalBtn").on("click", function() {
-				$("#defaultModal").modal("show");
-			});
-		</script>
-		
 			<script>
 		<%if (!list.isEmpty()) {%>
 		$(function(){
