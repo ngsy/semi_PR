@@ -2,23 +2,34 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.kh.notice.model.vo.*"%>
 <%
-	Notice n = (Notice) request.getAttribute("n");
+	Notice n = (Notice) request.getAttribute("notice");
 %>
 <%@ include file="../common/header.jsp"%>
 
 
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">게시판상세보기</div>
+	<div class="card-header py-3">공지사항상세보기</div>
 
 	<div class="card-body">
+         	<div class="btn3" style="margin-left:70%;">
+			<%
+				if (loginUser != null) {
+			%>
+			<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정</button>
+			<button class="btn btn-danger" id="delBtn" onclick="deleteBoard();">삭제</button>
+			<%
+				}
+			%>
 
+		</div> <br>
 		<div class="container">
 			<div class="row ">
 			
 			<table class= "table table-striped" style="text-align:center;boarder:1px solid #dddddd" >
 			    <thead>
 			    <tr>
+			    	<th style="width:20%; text-align:left">제목 </th>
 			       <th colspan="3" style="text-align:center"><%= n.getNoticeTitle() %></th>
 			    </tr>
 			       </thead>
@@ -51,7 +62,35 @@
 		</div>
 
 
-
+		<form action="" id="postForm" method="post">
+			<input type="hidden" name="nno" value="<%= n.getNoticeNo() %>">
+		</form>
+			<script>
+			function updateForm(){
+				$("#postForm").attr("action", "<%=contextPath%>/updateForm.no");
+				$("#postForm").submit();
+			}
+			
+			function deleteBoard(){
+				
+				 if (confirm("정말 삭제하시겠습니까?"))
+		   	     $("#postForm").attr("action", "<%=contextPath%>/deleteN.no");
+				 $("#postForm").submit();
+			}
+		</script>
+		 <!-- 추천/신고/채팅버튼 -->
+         <div class="btn1"  style="margin-left:1150px;">
+         	<button class="btn btn-lg border-0  " id="sidebarBtn"  >
+			<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
+			 </button> 
+           	<button class="btn btn-lg border-0  " id="sidebarBtn"  >
+			</i> <i class="fas fa-angry" style="font-size: 30px; "></i>
+            </button>
+            
+           	<button class="btn btn-lg border-0  " id="sidebarBtn" >
+            <i class="far fa-comment-dots" style="font-size: 30px;"></i>  
+            </button>
+         </div>
 
 		<div class="btn1" align="center">
 			<button class="btn btn-secondary"
@@ -59,24 +98,7 @@
 
 		</div>
 
-		<div class="btn2" align="right">
-			<%
-				if (loginUser != null && loginUser.getId().equals(n.getNoticeWriter())) {
-			%>
-			<button class="btn btn-primary" id="updateBtn"
-				onclick="updateForm();">수정</button>
-			<button class="btn btn-danger" id="delBtn" onclick="deleteBoard();">삭제</button>
-			<%
-				}
-			%>
-
-		</div>
-
-
-
-
-
-
+		
 
 	</div>
 

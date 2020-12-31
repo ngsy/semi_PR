@@ -1,6 +1,8 @@
 package com.kh.notice.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,24 +31,20 @@ public class NoticeDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		int nno = Integer.parseInt(request.getParameter("nno"));
 		
-		
-		Notice n = new NoticeService().selectNotice(nno);
-		
-		if(n != null) {
-			
-			// 조회수 증가시키는 서비스 요청
-			System.out.println("너나오니?");
-			request.setAttribute("n", n);
-			
-			request.getRequestDispatcher("views/Notice/NoticeDetailView.jsp").forward(request, response);
-		}else {
-			
-			request.setAttribute("msg", "게시판 상세조회 실패!!");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		}
-		
+		Notice notice = new NoticeService().selectNotice(nno);
+	
+	if(notice != null) {
+		request.setAttribute("notice", notice);
+		RequestDispatcher view = request.getRequestDispatcher("views/Notice/NoticeDetailView.jsp");
+		view.forward(request, response);
+	}else {
+		request.setAttribute("msg", "게시판 상세조회 실패!!");
+		request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+
+	}
 	}
 
 	/**
