@@ -1,4 +1,4 @@
-package com.kh.board.controller;
+package com.kh.shopInfo.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.board.model.service.BoardService;
-import com.kh.board.model.vo.Shop;
+
+import com.kh.shopInfo.model.service.ShopService;
+import com.kh.shopInfo.model.vo.Shop;
+
 
 /**
  * Servlet implementation class ShopListServlet
@@ -31,9 +33,10 @@ public class ShopListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Shop> list= new BoardService().selectShList();
+		ArrayList<Shop> list= new ShopService().selectShList();
+		System.out.println(list);
 		request.setAttribute("list",list );
-		request.getRequestDispatcher("views/shopInfo/shopInfoListview.jsp").forward(request, response);
+		request.getRequestDispatcher("views/shop/shopListview.jsp").forward(request, response);
 	}
 
 	/**
