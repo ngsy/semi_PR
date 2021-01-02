@@ -9,7 +9,7 @@ import static com.kh.common.JDBCTemplate.rollback;
 
 import com.kh.member.model.vo.Member;
 import com.kh.shop.model.dao.ShopDao;
-import com.kh.shop.model.vo.Attachment;
+import com.kh.board.model.vo.Attachment;
 import com.kh.shop.model.vo.Shop;
 
 public class ShopService {
@@ -39,6 +39,36 @@ public class ShopService {
 		close(conn);
 		return result1*result2;
 	
+	}
+
+
+
+	public Shop selectshop(int sNo) {
+		Connection conn = getConnection();
+
+		int result = new ShopDao().increaseCount(conn, sNo);
+
+		Shop s = null;
+		if (result > 0) {
+			commit(conn);
+			s = new ShopDao().selectshop(conn, sNo);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return s;
+	}
+
+
+
+
+	public ArrayList<Attachment> selectShAttachment(int sNo) {
+		Connection conn = getConnection();
+		
+		ArrayList<Attachment> list =new ShopDao().selectShAttachment(conn,sNo);
+		
+		close(conn);
+		return list;
 	}
 
 }

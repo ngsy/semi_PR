@@ -82,7 +82,7 @@ Attachment at = (Attachment) request.getAttribute("at");
 						<tr>
 							<td style="width: 20%; text-align: left">내용|</td>
 							<td colspan="2" style="height: 500px; text-align: left"><%=b.getBoardContent()%>
-
+                           
 							</td>
 
 						</tr>
