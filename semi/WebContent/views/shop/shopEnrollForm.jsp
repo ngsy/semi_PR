@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp"%>
+<%@ page import="com.kh.member.model.vo.*"%>
+<%
+Member m =(Member)request.getAttribute("loginUser");
 
-
+%>
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
 
@@ -14,11 +17,11 @@
 
 	<div class="card-body">
 
+     	
+			<form id="shopInsertForm" action="insert.sh" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="writer" value="<%= loginUser.getM_no() %>">
+            
 
-			<form id="shopInsertForm" action="insert.th" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="writer" value="">
-			<input type="hidden" name="region1"> <input type="hidden"name="region2"> <input type="hidden" name="lat"> <input
-				type="hidden" name="lon">
 
 			<table align="center" class="table" style="width: 800px; margin-top:auto;">
 				<tbody>
@@ -33,7 +36,7 @@
 					<tr>
 						<td width="200px"><label class="form-label">가게소개</label></td>
 						<td><textarea type="text" class="form-control"
-								maxlength="300" name="shopcategory" style="height: 200px"
+								maxlength="300" name="shopintro" style="height: 200px"
 								required></textarea></td>
 
 					</tr>
@@ -47,19 +50,11 @@
 						
 					</tr>
 
-					<tr>
-						<td>내 상호위치 조회</td>
-
-
-						<td id="locationTd"><label id="region1La"></label><label
-							id="region2La"></label>
-						<button class="btn btn-primary" id="locationBtn">조회</button>
-						</td>
-					</tr>
+			
 					<tr>
 						<td><label class="form-label">상세주소 </label></td>
 						<td><input type="text" class="form-control" maxlength="30"
-							name="shopdetaillocation" required></td>
+							name="shopdetaillocation" placeholder="시,구,동,번지,호수 까지 적어주세요"required></td>
 
 					</tr>
 					<br>
@@ -101,7 +96,7 @@
 
 
 				<button type="submit" class="btn btn-primary btn-primary"
-					id="joinBtn" disabled>가입하기</button>
+					id="joinBtn" >가입하기</button>
 
 			</div>
 
@@ -162,129 +157,7 @@
 
 
 
-<script>
-	$(function() {
-		$("#locationBtn")
-				.on("click",function(e) {
-							e.preventDefault();
-							var lat = 0.0;
-							var lon = 0.0;
-							navigator.geolocation.getCurrentPosition(function(position) {
 
-										lat = position.coords.latitude; //위도 
-										lon = position.coords.longitude; //경도
-
-										console.log(lat);
-										console.log(lon);
-
-										$
-												.ajax({ //행정구역명 알아오기
-
-													url : "https://dapi.kakao.com/v2/local/geo/coord2regioncode",
-													dataType : "json",
-													headers : {
-														'Authorization' : 'KakaoAK 59be782aa73b67df6a17a930e63d057d'
-													},
-													data : {
-
-														x : lon,
-														y : lat
-													},
-													type : "get",
-													success : function(obj) {
-
-														if (obj.documents.length != 0) {
-
-															var region1 = obj.documents[0].region_2depth_name;
-															var region2 = obj.documents[0].region_3depth_name;
-
-															$("#region1La").css("margin-right",
-																			"10px");
-															$("#region2La")
-																	.css(
-																			"margin-right",
-																			"10px");
-
-															$("#region1La")
-																	.text(
-																			region1);
-															$("#region2La")
-																	.text(
-																			region2);
-
-															$(
-																	"input[name=region1]")
-																	.attr(
-																			"value",
-																			region1);
-															$(
-																	"input[name=region2]")
-																	.attr(
-																			"value",
-																			region2);
-
-															console
-																	.log("region1"
-																			+ region1);
-															console
-																	.log("region2"
-																			+ region2);
-
-														}
-
-													},
-													error : function() {
-														alert("위치정보 조회 실패");
-													}
-
-												}); //ajax1
-
-										$
-												.ajax({ //좌표계 변환하기
-
-													url : "https://dapi.kakao.com/v2/local/geo/transcoord",
-													dataType : "json",
-													headers : {
-														'Authorization' : 'KakaoAK 59be782aa73b67df6a17a930e63d057d'
-													},
-													data : {
-
-														x : lon,
-														y : lat,
-														input_coord : "WGS84",
-														output_coord : "WTM"
-													},
-													type : "get",
-													success : function(obj) {
-
-														if (obj.documents.length != 0) {
-
-															var x = obj.documents[0].x;
-															var y = obj.documents[0].y;
-
-															$("input[name=lat]")
-																	.attr(
-																			"value",
-																			y);
-															$("input[name=lon]")
-																	.attr(
-																			"value",
-																			x);
-
-														}
-
-													},
-													error : function() {
-														alert("위치정보 변환 실패");
-													}
-
-												}); //ajax2
-
-									}); //navigator
-
-						}); //event
-	});
-</script>
 
 
 

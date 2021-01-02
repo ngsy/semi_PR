@@ -1,4 +1,4 @@
-package com.kh.shopInfo.model.vo;
+package com.kh.shop.model.vo;
 
 import java.util.Date; 
  
