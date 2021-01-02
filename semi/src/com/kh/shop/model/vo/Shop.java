@@ -1,4 +1,4 @@
-package com.kh.shopInfo.model.vo;
+package com.kh.shop.model.vo;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ public class Shop {
      private int shopNo;
      private String shopTitle;
      private String shopContent;
-     private int phoneNo;
+     private String phoneNo;
  	private int readCount; // 게시글 조회수
  	private int likeCount; // 게시글 조아요수
  	private Date createDate; // 게시글 작성일 
@@ -29,7 +29,7 @@ public class Shop {
  	}
 
 
-	public Shop(int shopNo, String shopTitle, String shopContent, int phoneNo, int readCount, int likeCount,
+	public Shop(int shopNo, String shopTitle, String shopContent, String phoneNo, int readCount, int likeCount,
 			Date createDate, String shopWriter, String status, int shopWriterNo, String titleImg, double lat,
 			double lon, String region1, String region2, String detailLocation) {
 		super();
@@ -52,7 +52,7 @@ public class Shop {
 	}
 
 
-	public Shop(int shopNo, String shopTitle, String shopContent, int phoneNo, int readCount, Date createDate,
+	public Shop(int shopNo, String shopTitle, String shopContent, String phoneNo, int readCount, Date createDate,
 			String shopWriter, int shopWriterNo, String titleImg) {
 		super();
 		this.shopNo = shopNo;
@@ -97,12 +97,12 @@ public class Shop {
 	}
 
 
-	public int getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 
 
-	public void setPhoneNo(int phoneNo) {
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 
@@ -235,6 +235,8 @@ public class Shop {
 				+ titleImg + ", lat=" + lat + ", lon=" + lon + ", region1=" + region1 + ", region2=" + region2
 				+ ", detailLocation=" + detailLocation + "]";
 	}
+
+
 
 
 

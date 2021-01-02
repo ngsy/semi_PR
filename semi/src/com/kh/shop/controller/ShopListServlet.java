@@ -1,4 +1,4 @@
-package com.kh.shopInfo.controller;
+package com.kh.shop.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import com.kh.shopInfo.model.service.ShopService;
-import com.kh.shopInfo.model.vo.Shop;
+import com.kh.shop.model.service.ShopService;
+import com.kh.shop.model.vo.Shop;
 
 
 /**
