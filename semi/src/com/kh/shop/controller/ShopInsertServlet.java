@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.shop.model.service.ShopService;
-import com.kh.shop.model.vo.Attachment;
+import com.kh.board.model.vo.Attachment;
 import com.kh.shop.model.vo.Shop;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;

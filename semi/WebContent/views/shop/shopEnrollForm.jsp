@@ -69,7 +69,7 @@ Member m =(Member)request.getAttribute("loginUser");
 			</table>
 
 			<div id=imgarea style="margin-left: 42%;">
-
+				<td><h5>가게대표사진</h5><img id="titleImg" width="150" height="120" border="1px"></td>
 				<td><img id="contentImg1" width="150" height="120" border="1px"></td>
 				<td><img id="contentImg2" width="150" height="120"></td>
 				<td><img id="contentImg3" width="150" height="120"></td>
@@ -80,12 +80,11 @@ Member m =(Member)request.getAttribute("loginUser");
 
 
 			<div id="fileArea">
-				<input type="file" name="file1" id="file1"
-					onchange="loadImg(this, 1);"> <input type="file"
-					name="file2" id="file2" onchange="loadImg(this, 2);"> <input
-					type="file" name="file3" id="file3" onchange="loadImg(this, 3);">
-				<input type="file" name="file4" id="file4"
-					onchange="loadImg(this, 4);">
+			   
+		        <input type="file" name="file1" id="file1" onchange="loadImg(this, 1);" > 
+				<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);">
+				<input type="file" name="file3" id="file3" onchange="loadImg(this, 3);">
+				<input type="file" name="file4" id="file4" onchange="loadImg(this, 4);">
 			</div>
 			<br>
 			<br>
@@ -96,7 +95,7 @@ Member m =(Member)request.getAttribute("loginUser");
 
 
 				<button type="submit" class="btn btn-primary btn-primary"
-					id="joinBtn" >가입하기</button>
+					id="joinBtn" >홍보하기</button>
 
 			</div>
 
@@ -112,15 +111,17 @@ Member m =(Member)request.getAttribute("loginUser");
 <script>
 	$(function() {
 		$("#fileArea").hide();
-	
-		$("#contentImg1").click(function() {
+		$("#titleImg").click(function(){
 			$("#file1").click();
 		});
-		$("#contentImg2").click(function() {
+		$("#contentImg1").click(function() {
 			$("#file2").click();
 		});
-		$("#contentImg3").click(function() {
+		$("#contentImg2").click(function() {
 			$("#file3").click();
+		});
+		$("#contentImg3").click(function() {
+			$("#file3\4").click();
 		});
 	});
 
@@ -138,14 +139,14 @@ Member m =(Member)request.getAttribute("loginUser");
 			reader.onload = function(e) {//파일 읽기가 다완료 되면 실행할 메소드 
 				switch (num) {
 
-	
-				case 1:
+				case 1 : $("#titleImg").attr("src", e.target.result); break;
+				case 2:
 					$("#contentImg1").attr("src", e.target.result);
 					break;
-				case 2:
+				case 3:
 					$("#contentImg2").attr("src", e.target.result);
 					break;
-				case 3:
+				case 4:
 					$("#contentImg3").attr("src", e.target.result);
 					break;
 				}

@@ -28,6 +28,20 @@ public class Shop {
  		
  	}
 
+   
+	public Shop(int shopNo, String shopTitle, String shopContent, String phoneNo, int readCount, Date createDate, String detailLocation,
+			String shopWriter) {
+		super();
+		this.shopNo = shopNo;
+		this.shopTitle = shopTitle;
+		this.shopContent = shopContent;
+		this.phoneNo = phoneNo;
+		this.readCount = readCount;
+		this.createDate = createDate;
+		this.shopWriter = shopWriter;
+		this.detailLocation = detailLocation;
+	}
+
 
 	public Shop(int shopNo, String shopTitle, String shopContent, String phoneNo, int readCount, int likeCount,
 			Date createDate, String shopWriter, String status, int shopWriterNo, String titleImg, double lat,

@@ -66,8 +66,8 @@
 		
 			$(function(){
 				$(".thumbnail").click(function(){
-					var bId = $(this).children().eq(0).val();
-					location.href="<%=contextPath%>/detail.sh?bId=" + bId;
+					var sNo = $(this).children().eq(0).val();
+					location.href="<%=contextPath%>/detail.sh?sNo=" + sNo;
 				});
 			});
 		</script>
