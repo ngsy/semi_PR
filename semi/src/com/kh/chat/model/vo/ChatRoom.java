@@ -7,18 +7,26 @@ public class ChatRoom {
 	private int mno1;
 	private int mno2;
 	private String mName;
+	private String lastChat;
+	private int unreadCount;
 	
 	public ChatRoom() {
 		
 	}
 	
-	public ChatRoom(int cRNO, int mno1, int mno2, String mName) {
+	
+
+	public ChatRoom(int cRNO, int mno1, int mno2, String mName, String lastChat, int unreadCount) {
 	
 		this.cRNO = cRNO;
 		this.mno1 = mno1;
 		this.mno2 = mno2;
 		this.mName = mName;
+		this.lastChat = lastChat;
+		this.unreadCount = unreadCount;
 	}
+
+
 
 	public int getcRNO() {
 		return cRNO;
@@ -50,6 +58,38 @@ public class ChatRoom {
 
 	public void setmName(String mName) {
 		this.mName = mName;
+	}
+
+
+
+	public String getLastChat() {
+		return lastChat;
+	}
+
+
+
+	public void setLastChat(String lastChat) {
+		this.lastChat = lastChat;
+	}
+
+
+
+	public int getUnreadCount() {
+		return unreadCount;
+	}
+
+
+
+	public void setUnreadCount(int unreadCount) {
+		this.unreadCount = unreadCount;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ChatRoom [cRNO=" + cRNO + ", mno1=" + mno1 + ", mno2=" + mno2 + ", mName=" + mName + ", lastChat="
+				+ lastChat + ", unreadCount=" + unreadCount + "]";
 	}
 	
 	
