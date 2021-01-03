@@ -3,21 +3,23 @@
     
 <%@ include file ="../common/header.jsp" %>
 
+	<%
 
-<%
+//Member m =(Member)request.getAttribute("loginUser");	
+	
+	System.out.println("loginUser "+ loginUser);
+	System.out.println("m.getId: "+ loginUser.getId());
+	
+	String userId = loginUser.getId();
+	String userPwd = loginUser.getPwd();
+	String userName = loginUser.getM_name();
+	String originPwd =(String)session.getAttribute("originPwd");
 
-Member m =(Member)request.getAttribute("loginUser");	
+	String phone =loginUser.getPhone();
+	String email =loginUser.getEmail();
 
-String userId = m.getId();
-String userPwd = m.getPwd();
-String userName = m.getM_name();
-String originPwd =(String)session.getAttribute("originPwd");
-
-String phone =m.getPhone();
-String email =m.getEmail();
 
 %>
-
 
 
   		<div class="card shadow mb-4">
@@ -46,8 +48,8 @@ String email =m.getEmail();
 				    <div class="tab-content" id="nav-tabContent">
 				     
 				<div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><input type=text>
-				     			 	
-		<form id="updateForm" action="<%=request.getContextPath()%>/update.me" method="post">
+				
+	<form id="updateForm" action="<%=request.getContextPath()%>/update.me" method="post">
 			<table>
 				<tr>
 					<td width="200px"> 아이디</td>
