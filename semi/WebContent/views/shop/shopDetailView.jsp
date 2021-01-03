@@ -48,12 +48,16 @@
 		
 
 
-
+   <div>
+   <th>사진</th>
   <% for(int i=1; i<fileList.size(); i++){ %>
  
       <img width="200px" height="150px"  src="<%=contextPath%>/resources/board_upfiles/<%=fileList.get(i).getChangeName()%>" class="mg-fluid">
  
 	<% } %>
+
+   </div>
+
 
 
 	

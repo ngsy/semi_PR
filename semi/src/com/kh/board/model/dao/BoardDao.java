@@ -68,7 +68,7 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 
 		String sql = prop.getProperty("insertAttachment");
-
+	
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, at.getOriginName());
@@ -76,7 +76,7 @@ public class BoardDao {
 			pstmt.setString(3, at.getFilePath());
 
 			result = pstmt.executeUpdate();
-
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
