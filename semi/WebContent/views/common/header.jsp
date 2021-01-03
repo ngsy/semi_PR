@@ -32,7 +32,6 @@ String msg =(String)session.getAttribute("msg");
         
            <link href="<%=contextPath%>/resources/css/styles.css" rel="stylesheet" /> <!--css 링크 바꿀부분-->
          <script src="<%=contextPath%>/resources/js/jquery-3.5.1.min.js" ></script>
-		  <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/chat.js"></script>
 		
                      
 		 <!--summernote cdn-->
@@ -131,7 +130,7 @@ String msg =(String)session.getAttribute("msg");
 		    <li><a class="dropdown-item" href="<%=contextPath%>/list.re?page=1">관리하기</a></li>
 		    
 		    <li><hr></li>
-		    <li><a id="logoutMember"  href="<%= request.getContextPath() %>/logout.me">로그아웃</a></li>
+		    <li><a id="logoutMember"  href="<%= request.getContextPath() %>/logout.me" onclick="disconnect();">로그아웃</a></li>
 		  </ul>
 		</div>
 		            
@@ -160,21 +159,12 @@ String msg =(String)session.getAttribute("msg");
         </nav>
         
         <script>
-	/*       	$("#sidebarBtn").on("click",function(){
-	      		var status=$("#sidebar-wrapper").css("display");
-	      		
-	      		
-	      		
-	      	
-	      		if(status=="none"){
-	      			$("#sidebar-wrapper").css("display","block");
-	      		}else if(status=="block"){
-	      			$("#sidebar-wrapper").css("display","none");
-
-	      		}
-	      		
-	      	}); */
-	      	
+        $(function(){
+			function disconnect(){
+						chatListWS.close();	
+						}
+        });
+			
 	    
         </script>
         

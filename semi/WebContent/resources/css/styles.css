@@ -11791,7 +11791,7 @@ img {vertical-align: middle;}
 #chatSendBtn{
 	flex:1 1 25%;
 }
-#accordionSidebar{
+#accordionSidebar ,#accordianSidebar2{
 	flex :1 1 auto;
 }
 #sidebar-wrapper{
@@ -11804,13 +11804,106 @@ img {vertical-align: middle;}
 	flex : 1 1 100%;
 	
 }
+.chatRoomRemoveBtn {
+	padding-top:0px;
+}
 
 
+  .sidebar .nav-item .firstRow span {
+    font-size: 1 rem;
+    font-weight:900;
+    display: inline;
+  }
+  
+    .sidebar .nav-item .secondRow span {
+    font-size: 0.85rem;
+    display: inline;
+  }
+
+  
+  
+   
+   .sidebar .nav-item{
+   		padding:10px;
+   }
+
+   .sidebar .nav-item .secondRow{
+ 		display:flex;
+ 
+   }
+.sidebar .nav-item .secondRow .firstCol{
+	flex : 1 1 90%;
+}
+
+.sidebar .nav-item .secondRow .secondCol{
+	flex : 1 1 10%;
+}
+.lastChat{
+	color:#828282;
+}
+.chatUnreadCount{
+	background-color:#828282;
+	color:#fff;
+	border-radius:20px;
+	padding-left:3px;
+	padding-right:3px;
+
+}
+#sidebar2{
+	display:none;
+}
+#exitChatBtn{
+	padding:0px 0px 0px 10px;
+	
+}
+
+.myChat{
+	background-color:#FFFA82;
+	
+	font-size:0.8rem;
+	padding-top:2px;
+	padding-bottom:2px;
+	padding-left:8px;
+	padding-right:8px;
+	border-radius:10px;
+
+}
+
+.otherChat{
+	background-color:#fff;
+	
+	font-size:0.8rem;
+	padding-top:2px;
+	padding-bottom:2px;
+	padding-left:8px;
+	padding-right:8px;
+	border-radius:10px;
+	
+}
+#chatView{
+	padding:5px;
+	
+}
 
 
-
-
-
+.time{
+		font-size:0.3rem;
+		color:#828282;
+		
+}
+.unread{
+		font-size:0.5rem;
+		color:#fff;
+		margin-left:5px;
+		margin-right:5px;
+}
+.chatDiv{
+	display:block;
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	
+}
 
 
 

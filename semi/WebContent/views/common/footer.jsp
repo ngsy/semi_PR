@@ -18,15 +18,35 @@
 	  
 	  $(function(){
 		
-	<% if(loginUser2!=null){ %>  //로그인 했을 때
-	 var mno=<%=mno%>;
-	 
-		getChatRoomList(mno);
-	 
-	 
+		<% if(loginUser2!=null){ %>  //로그인 했을 때
+		 mno=<%=mno%>;
+		 
+		 
+		 getChatRoomList();
+			
+	
+		 chatListWS=new WebSocket("ws://localhost:8090/semi/chatList");
 
-	  
-	  <% }%>
+			// WebSocket 서버와 접속이 되면 호출되는 함수
+			chatListWS.onopen = function(message) {
+				chatListWS.send(mno);
+			};
+			// WebSocket 서버와 접속이 끊기면 호출되는 함수
+			chatListWS.onclose = function(message) {
+			
+			};
+			// WebSocket 서버와 통신 중에 에러가 발생하면 요청되는 함수
+			chatListWS.onerror = function(message) {
+			
+			};
+			// WebSocket 서버로 부터 메시지가 오면 호출되는 함수
+			chatListWS.onmessage = function(message) {
+			
+
+			
+			};  
+		  
+		  <% }%>
 	  });
   
   
@@ -89,9 +109,7 @@
 	    	<ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar">
 				<div id="sidebar-header-wrapper" class="d-flex">
 				
-				<div class="align-items-center d-flex" id="leftBtn">
-					<button id="exitChatBtn" class="btn color-white" ><i class="fas fa-arrow-left " ></i></button>	
-				</div>
+
 	     		 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
 			        	    	
 			        
@@ -102,25 +120,16 @@
 		        	<div class="sidebar-brand-text mx-3">채팅</div>
 	      		</a>
 	      		</div>
-<!-- 			     Divider
+			     <!-- Divider -->
 			     <hr class="sidebar-divider my-0">
 	      		
-	   		     Nav Item - Total
-			      <li class="nav-item active hoverStyle">
-			        <a class="nav-link"  >
-			          <i class="fas fa-fish"></i>
-			          <span>채팅방1</span></a>
-			      </li> -->
-			     
-					
-					<div  id="chatView">
-					
-					</div>
-					<div id="chatSend">
-						<textarea id="chatWriteArea" class="form-control"></textarea>
-						<button id="chatSendBtn" class="btn btn-primary">Send</button>
-					</div>
-				
+	   		    <!--  Nav Item - Total -->
+			   	 <li class="nav-item active hoverStyle" data-crno='+list[i].crno+'>
+			   	 <div  class="firstRow color-white"><i class="fas fa-caret-right"></i><span>&nbsp;&nbsp;&nbsp;채팅방이름</span><button  class="btn float-right color-white chatRoomRemoveBtn"><i class="fas fa-times "></i></button></div>
+			   	<div  class="secondRow"> <div class="firstCol"><span class="lastChat">&nbsp;&nbsp;&nbsp; 마지막 채팅내용</span></div><div class="secondCol"><span class="float-right chatUnreadCount">300</span></div></div>
+			   	 
+			   	 
+			   </li>
 	
 	 
 	    	</ul>
@@ -130,7 +139,51 @@
     	</div>
     	<!-- sidebar end -->
     	
-  
+  		<div id="sidebar2" >
+		    <!-- 	Sidebar -->
+	  	<ul class="navbar-nav  sidebar sidebar-dark accordion" > 
+				<div id="sidebar-header-wrapper" class="d-flex">
+				
+				<div class="align-items-center d-flex" id="leftBtn">
+					<button id="exitChatBtn" class="btn color-white" ><i class="fas fa-arrow-left " ></i></button>	
+				</div>
+	     		 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+			        	    	
+			  
+		        	<div class="sidebar-brand-text mx-3" id="chatRoomName">채팅</div>
+	      		</a>
+	      		</div>
+			     <!-- Divider -->
+			     <hr class="sidebar-divider my-0">
+	      		
+
+						
+			     
+					
+			 		<div  id="chatView">
+						<div class="chatDiv">
+							<span class="myChat float-right">안녕하세요^^fkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfk</span><br>
+							<span class="time float-right">2020/01/02 23:08</span><span class="unread float-right">1</span>
+						</div>
+						<div class="chatDiv">
+							<span class="otherChat float-left">반가워요!!fkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfk</span><br>
+							<span class="time float-left">2020/01/02 23:08</span>
+						</div>
+
+					</div>
+					<div id="chatSend">
+						<textarea id="chatWriteArea" class="form-control"></textarea>
+						<button id="chatSendBtn" class="btn btn-primary">Send</button>
+					</div> 
+				
+	
+	 
+	    	 </ul> 
+	    	
+	    	
+    	
+    	</div>
+    	<!-- sidebar2 end -->
 	</div>
 	<!--sidebar-wrapper end
 	-->
@@ -157,6 +210,7 @@
         <script src="assets/mail/contact_me.js"></script> 
         <!-- Core theme JS-->
         <script src="<%=request.getContextPath() %>/resources/js/scripts.js"></script> <!-- js 바꿔야할곳-->
+		  <script  src="<%=request.getContextPath()%>/resources/js/chat.js"></script>
 
 </body>
 </html>
