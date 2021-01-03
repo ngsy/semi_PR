@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.kh.notice.model.vo.*" %>
+<%@page import="com.kh.qna.model.vo.*" %>
 <%
-Notice n =(Notice)request.getAttribute("notice"); 
+Qna q =(Qna)request.getAttribute("qna"); 
 %>
 <%@ include file="../common/header.jsp"%>
 
@@ -16,11 +16,11 @@ Notice n =(Notice)request.getAttribute("notice");
 
 		<div class="container">
 
-			<form id="updateForm" action="<%=contextPath%>/update.no"" method="post">
-			<input type="hidden" name="nno" value="<%= n.getNoticeNo() %>">
+			<form id="updateForm" action="<%=contextPath%>/update.qo"" method="post">
+			<input type="hidden" name="qno" value="<%= q.getQnaNo() %>">
 				<div class="form-group">
 					<label for="title">제목</label> <input type="text"
-						class="form-control" placeholder="title" id="title" name="title" value="<%= n.getNoticeTitle() %>">
+						class="form-control" placeholder="title" id="title" name="title" value="<%= q.getQnaTitie() %>">
 				</div>
 
 
@@ -28,7 +28,7 @@ Notice n =(Notice)request.getAttribute("notice");
 				<div class="form-group">
 					<label for="content">내용</label>
 					<textarea class="form-control" rows="5" id="summernote"
-						name="content"><%= n.getNoticeContent() %></textarea>
+						name="content"><%= q.getQnaContent() %></textarea>
 				</div>
 
 

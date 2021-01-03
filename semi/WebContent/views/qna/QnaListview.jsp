@@ -1,9 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList,com.kh.qna.model.vo.*" %>
+    
+<%@ page import="java.util.ArrayList, com.kh.qna.model.vo.*"%>
 <% 
 	ArrayList<Qna> list = (ArrayList<Qna>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
 %>
+
 <%@ include file="../common/header.jsp"%>
 
 <div class="card shadow mb-4">
@@ -27,35 +35,90 @@
          	<% } %>
 			</nav>
 	
-			<table class="table table-striped table-hover">
+			<table class="table table-striped table-hover listArea">
 				<thead>
 					<tr>
 						<th scope="col">글번호</th>
 						<th scope="col">글제목</th>
 						<th scope="col">작성자</th>
+						<th scope="col">조회수</th>						
 						<th scope="col">작성일</th>
 					</tr>
 				</thead>
 				<tbody>
-				
+					<%if(list.isEmpty()){ %>
+				<tr>
+					<td colspan="6">조회된 리스트가 없습니다.</td>
+				</tr><%}else{ %>
+					<% for(Qna q : list){ %>
+					<tr>
+							<td scope="row"><%= q.getQnaNo() %></td>
+							<td><%= q.getQnaTitie() %></td>
+							<td><%= q.getQnaWriter() %></td>
+							<td><%= q.getQnaCount() %></td>
+							<td><%= q.getQnaDate() %></td>
+					</tr>
+						<%} %>
+				<%} %>
+					
 				</tbody>
 			</table>
 
-	
+	  <br>
+	   <br>
+	   	
+	   <br>
+	   <br>
+<div class="pagingArea" align="center">
+			<!-- 맨 처음으로 (<<) -->
+			<button onclick="location.href='<%=contextPath%>/list.qo?currentPage=1'"> &lt;&lt; </button>
+		
+			<!-- 이전페이지로(<) -->
+			<%if(currentPage == 1){ %>
+			<button disabled> &lt; </button>
+			<%}else{ %>
+			<button onclick="location.href='<%= contextPath %>/list.qo?currentPage=<%= currentPage-1 %>'"> &lt; </button>
+			<%} %>
+			
+			<!-- 페이지 목록 -->
+			<%for(int p=startPage; p<=endPage; p++){ %>
+				
+				<%if(p == currentPage){ %>
+				<button disabled> <%= p %> </button>
+				<%}else{ %>
+				<button onclick="location.href='<%=contextPath %>/list.qo?currentPage=<%= p %>'"> <%= p %> </button>
+				<%} %>
+				
+			<%} %>
+			
+			<!-- 다음페이지로(>) -->
+			<%if(currentPage == maxPage){ %>
+			<button disabled> &gt; </button>
+			<%}else { %>
+			<button onclick="location.href='<%= contextPath %>/list.qo?currentPage=<%= currentPage+1 %>'"> &gt; </button>
+			<%} %>
+		
+			<!-- 맨 끝으로 (>>) -->
+			<button onclick="location.href='<%=contextPath%>/list.qo?currentPage=<%=maxPage%>'"> &gt;&gt; </button>
+		</div> 
 
-		<nav aria-label="Page navigation example" align="center">
-			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-			</ul>
-		</nav>
+
+		<br><br>
+
+	
 		<script>
-			$("#defaultModalBtn").on("click", function() {
-				$("#defaultModal").modal("show");
+		<%if (!list.isEmpty()) {%>
+		$(function(){
+			$(".listArea>tbody>tr").click(function(){
+				console.log("먹어?")
+				var qno = $(this).children().eq(0).text();
+				console.log(qno)
+				
+			
+				location.href="<%= contextPath %>/detail.qo?qno=" + qno;
 			});
+		});
+		<% } %>
 		</script>
 
 
