@@ -8,28 +8,43 @@ public class Qna {
 	private String qnaContent; //내용
 	private Date qnaDate; //작성일
 	private String qnaWriter; // 작성자 (번호 또는 이름)
-	private String qnastatus; // 상태값(Y, N)
+	private String qnaStatus; // 상태값(Y, N)
+	private int qnaCount;
+	private int qnaWriterNo;
 	
 	public Qna() {
 		
 	}
-	public Qna(int qnaNo, String qnaTitie, String qnaContent, Date qnaDate, String qnaWriter, String qnastatus) {
+	public Qna(int qnaNo, String qnaTitie, String qnaContent, Date qnaDate, String qnaWriter, String qnaStatus, int qnaCount ) {
 		super();
 		this.qnaNo = qnaNo;
 		this.qnaTitie = qnaTitie;
 		this.qnaContent = qnaContent;
 		this.qnaDate = qnaDate;
 		this.qnaWriter = qnaWriter;
-		this.qnastatus = qnastatus;
+		this.qnaStatus = qnaStatus;
 	}
 	
-	public Qna(int qnaNo, String qnaTitie, String qnaContent, Date qnaDate, String qnaWriter) {
+	public Qna(int qnaNo, String qnaTitie, String qnaWriter, int qnaCount, Date qnaDate) {
+		super();
+		this.qnaNo = qnaNo;
+		this.qnaTitie = qnaTitie;
+		this.qnaWriter = qnaWriter;
+		this.qnaCount = qnaCount;
+		this.qnaDate = qnaDate;
+	}
+	
+	
+	public Qna(int qnaNo, String qnaTitie, String qnaContent,  String qnaWriter, int qnaCount,
+			Date qnaDate, int qnaWriterNo) {
 		super();
 		this.qnaNo = qnaNo;
 		this.qnaTitie = qnaTitie;
 		this.qnaContent = qnaContent;
-		this.qnaDate = qnaDate;
 		this.qnaWriter = qnaWriter;
+		this.qnaCount = qnaCount;
+		this.qnaDate = qnaDate;
+		this.qnaWriterNo = qnaWriterNo;
 	}
 	public int getQnaNo() {
 		return qnaNo;
@@ -61,16 +76,30 @@ public class Qna {
 	public void setQnaWriter(String qnaWriter) {
 		this.qnaWriter = qnaWriter;
 	}
-	public String getQnastatus() {
-		return qnastatus;
+	public String getQnaStatus() {
+		return qnaStatus;
 	}
-	public void setQnastatus(String qnastatus) {
-		this.qnastatus = qnastatus;
+	public void setQnaStatus(String qnaStatus) {
+		this.qnaStatus = qnaStatus;
+	}
+	
+	public int getQnaCount() {
+		return qnaCount;
+	}
+	public void setQnaCount(int qnaCount) {
+		this.qnaCount = qnaCount;
+	}
+	
+	public int getQnaWriterNo() {
+		return qnaWriterNo;
+	}
+	public void setQnaWriterNo(int qnaWriterNo) {
+		this.qnaWriterNo = qnaWriterNo;
 	}
 	@Override
 	public String toString() {
 		return "Qna [qnaNo=" + qnaNo + ", qnaTitie=" + qnaTitie + ", qnaContent=" + qnaContent + ", qnaDate=" + qnaDate
-				+ ", qnaWriter=" + qnaWriter + ", qnastatus=" + qnastatus + "]";
+				+ ", qnaWriter=" + qnaWriter + ", qnaStatus=" + qnaStatus + ", qnaCount" + qnaCount + "qnaWriterNo" + qnaWriterNo + "]";
 	}
 	
 	

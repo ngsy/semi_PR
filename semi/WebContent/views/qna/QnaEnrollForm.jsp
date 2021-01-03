@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date, java.text.SimpleDateFormat" %>
+<%
+	Date date = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
+	String today = sdf.format(date);
+%>
 <%@ include file="../common/header.jsp"%>
 
 
@@ -12,7 +19,8 @@
 	<div class="card-body">
 
 		<div class="container">
-
+			
+			<form action="<%= contextPath %>/insert.qo" method="post">
 			<form action="" method="post">
 				<div class="form-group">
 					<label for="title">제목</label> <input type="text"

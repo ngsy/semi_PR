@@ -17,7 +17,7 @@
 				if (loginUser != null) {
 			%>
 			<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정</button>
-			<button class="btn btn-danger" id="delBtn" onclick="deleteBoard();">삭제</button>
+			<button class="btn btn-danger" id="delBtn" onclick="deleteNotice();">삭제</button>
 			<%
 				}
 			%>
@@ -35,17 +35,17 @@
 			       </thead>
 			    <tbody>  
 			    <tr>
-			      <td style="width:20%; text-align:left">작성자|</td>
+			      <td style="width:20%; text-align:left">작성자 :</td>
 			      <td colspan="2" style="text-align:left"><%= n.getNoticeWriter() %></td>
 			    </tr>
 			    <tr>
-			      <td style="width:20%; text-align:left">작성일자|</td>
+			      <td style="width:20%; text-align:left">작성일자 : </td>
 			      <td colspan="2" style="text-align:left"><%= n.getCreateDate() %></td>
 			    </tr>
 			    
 			    
 			     <tr>
-			      <td style="width:20%; text-align:left">내용|</td>
+			      <td style="width:20%; text-align:left">내용 : </td>
 			      <td colspan="2" style=" height:500px; text-align:left"><%= n.getNoticeContent() %>
 			
 			      </td>
@@ -71,7 +71,7 @@
 				$("#postForm").submit();
 			}
 			
-			function deleteBoard(){
+			function deleteNotice(){
 				
 				 if (confirm("정말 삭제하시겠습니까?"))
 		   	     $("#postForm").attr("action", "<%=contextPath%>/deleteN.no");
