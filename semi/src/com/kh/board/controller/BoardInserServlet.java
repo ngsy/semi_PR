@@ -84,7 +84,7 @@ public class BoardInserServlet extends HttpServlet {
 				at.setOriginName(originName);
 				at.setChangeName(changeName);
 				
-				System.out.println(at);
+				
 
 			}
 

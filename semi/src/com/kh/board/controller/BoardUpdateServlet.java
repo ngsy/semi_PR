@@ -38,9 +38,11 @@ public class BoardUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (ServletFileUpload.isMultipartContent(request)) {
 			int maxSize = 10 * 1024 * 1024;
-			String resources = request.getSession().getServletContext().getRealPath("/resources");
-			String savePath = resources + "\\board_upfiles\\";
+				
+			String  resources= request.getSession().getServletContext().getRealPath("/resources");
+			String fileSeparator = File.separator;
 
+			String savePath = resources +fileSeparator+"board_upfiles"+fileSeparator;
 			System.out.println("savePath:" + savePath);
 
 
@@ -55,10 +57,10 @@ public class BoardUpdateServlet extends HttpServlet {
 			b.setBoardNo(bno);
 			
 			Attachment at = null;
-			if(multiRequest.getOriginalFileName("upFile") !=null) {//새로운 파일이 들어온경우
+			if(multiRequest.getOriginalFileName("upfile") !=null) {//새로운 파일이 들어온경우
 				at =new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName("upFile"));//새로 수정된 원본파일
-				at.setChangeName(multiRequest.getFilesystemName("upFile"));//새로 수정된 시스템파일명
+				at.setOriginName(multiRequest.getOriginalFileName("upfile"));//새로 수정된 원본파일
+				at.setChangeName(multiRequest.getFilesystemName("upfile"));//새로 수정된 시스템파일명
 				at.setFilePath(savePath);
 				
 				if(multiRequest.getParameter("originFile")!=null) {//기본파일에 있엇다면 ->첨부파일 테이블에 해당파일번호 찾아서 업데이트
