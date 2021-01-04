@@ -3,6 +3,7 @@
 <%@ page import = "com.kh.qna.model.vo.*"  %>
 <%
 	Qna q = (Qna)request.getAttribute("qna");
+	Reply r = (Reply)request.getAttribute("reply");
 %>
 <%@ include file="../common/header.jsp"%>
 
@@ -131,6 +132,8 @@
 		   </table>
 		</div>
 	</div> 
+	
+	
 	<script>
 	  $(function(){
 		 selectReplyList(); 
@@ -167,9 +170,9 @@
 				var value = "";
 				for(var i in list){
 					value += '<tr>' + 
-								'<td width="100px" height="150px" ">작성자|<br>' + list[i].replyWriter+'<br>'+'<div style=" font-size:5px; color:#7CAA7A;">' +list[i].createDate+'</div>' + '</td>' +
+								'<td width="100px" height="150px" ">작성자 <br>' + list[i].replyWriter+'<br>'+'<div style=" font-size:5px; color:#7CAA7A;">' +list[i].createDate+'</div>' + '</td>' +
 								'<td width="200px" height="150px">' + list[i].replyContent + '</td>' + 
-								'<td width="100px" >' +'<button class="btn btn-danger" id="delRBtn" onclick="" style="width:50px; font-size:5px;"> 삭제 </button>'+
+								'<td width="100px" >' +'<button class="btn btn-danger" id="delRBtn" onclick="deleteQReply" style="width:50px; font-size:5px;"> 삭제 </button>'+
 								'&nbsp'+'<button class="btn btn-lg border-0  " id="angrybutton"></i> <i class="fas fa-angry" style="font-size: 25px; "></i></button>' +'</td>' + 			
 							 '</tr>';
 				}
@@ -180,7 +183,11 @@
 			}  
 		  });
 	  }
-		</script>
+		
+          
+    	</script>
+
+
 	</div>
 
 

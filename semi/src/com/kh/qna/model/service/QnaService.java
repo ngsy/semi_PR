@@ -125,4 +125,19 @@ public class QnaService {
 		return list;
 	}
 
+	public int deleteQnaReply(int rqno) {
+ Connection conn = getConnection();
+		 
+		 int result = new QnaDao().deleteQnaRelpy(conn, rqno);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 }

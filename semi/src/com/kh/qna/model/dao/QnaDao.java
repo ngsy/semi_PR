@@ -268,6 +268,28 @@ public class QnaDao {
 		return list;
 	}
 
+	public int deleteQnaRelpy(Connection conn, int rqno) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteQnaReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rqno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 
 	
 }

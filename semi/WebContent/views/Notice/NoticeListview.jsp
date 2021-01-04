@@ -27,7 +27,7 @@
 				<form class="d-flex">
 					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search"
 						aria-label="Search" align="right">
-					<button class="btn btn-outline-success" type="submit">search</button>
+					<button class="btn btn-outline-success" type="submit" >search</button>
 					
 				
 					
@@ -121,6 +121,7 @@
 			});
 		});
 		<% } %>
+		
 		
 		</script>
 
