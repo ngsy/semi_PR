@@ -209,4 +209,50 @@ public class ShopDao {
 		return list;
 	}
 
+
+
+	public int deleteShop(Connection conn, int sNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteShop");
+		try {
+
+		
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sNo);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+
+	public int deleteAttachment(Connection conn, int sNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteAttachment");
+		try {
+
+		
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sNo);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
 }

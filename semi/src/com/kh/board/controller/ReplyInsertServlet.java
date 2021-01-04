@@ -32,26 +32,26 @@ public class ReplyInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String content =request.getParameter("content");
-			int bId=Integer.parseInt(request.getParameter("bId"));
-			int writer= ((Member)request.getSession().getAttribute("loginUser")).getM_no();
-			
-			Reply r= new Reply();
-			
-			r.setReplyContent(content);
-			r.setRefBoardId(bId);
-			r.setReplyWriter(String.valueOf(writer));
-			
-			int result =new BoardService().insertReply(r);
-			PrintWriter out=response.getWriter();
-			
-			if(result>0) {
-				out.print("sucess");
-			}else {
-				out.print("fail");
-			}
-			 out.flush();
-			 out.close();
+		String content =request.getParameter("content");
+		int bId=Integer.parseInt(request.getParameter("bId"));
+		int writer= ((Member)request.getSession().getAttribute("loginUser")).getM_no();
+		
+		Reply r= new Reply();
+		
+		r.setReplyContent(content);
+		r.setRefBoardId(bId);
+		r.setReplyWriter(String.valueOf(writer));
+		
+		int result =new BoardService().insertReply(r);
+		PrintWriter out=response.getWriter();
+		
+		if(result>0) {
+			out.print("sucess");
+		}else {
+			out.print("fail");
+		}
+		 out.flush();
+		 out.close();
 	}
 
 	/**

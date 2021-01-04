@@ -9,6 +9,7 @@ import static com.kh.common.JDBCTemplate.rollback;
 
 import com.kh.member.model.vo.Member;
 import com.kh.shop.model.dao.ShopDao;
+import com.kh.board.model.dao.BoardDao;
 import com.kh.board.model.vo.Attachment;
 import com.kh.shop.model.vo.Shop;
 
@@ -69,6 +70,21 @@ public class ShopService {
 		
 		close(conn);
 		return list;
+	}
+	
+	
+	public int deleteShop(int sNo) {
+		Connection conn = getConnection();
+		int result1 = new ShopDao().deleteShop(conn, sNo);
+		int result2 = new ShopDao().deleteAttachment(conn, sNo);
+		
+		if(result1>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1;
 	}
 
 }
