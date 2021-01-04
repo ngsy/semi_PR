@@ -17,14 +17,6 @@ public class Reply {
 	
 	
 
-	public Reply(int replyId, String replyContent, String replyWriter, Date createDate,int replyWriterNo) {
-		super();
-		this.replyId = replyId;
-		this.replyContent = replyContent;
-		this.replyWriter = replyWriter;
-		this.createDate = createDate;
-		this.replyWriterNo = replyWriterNo;
-	}
 
 
 
@@ -51,6 +43,26 @@ public class Reply {
 		this.modifyDate = modifyDate;
 		this.status = status;
 	}
+     
+	
+
+
+
+
+
+	public Reply(int replyId, String replyContent, String replyWriter, Date createDate, int replyWriterNo) {
+		super();
+		this.replyId = replyId;
+		this.replyContent = replyContent;
+		this.replyWriter = replyWriter;
+		this.createDate = createDate;
+		this.replyWriterNo = replyWriterNo;
+	}
+
+
+
+
+
 
 	public int getReplyId() {
 		return replyId;
@@ -108,12 +120,9 @@ public class Reply {
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "Reply [replyId=" + replyId + ", replyContent=" + replyContent + ", refBoardId=" + refBoardId
-				+ ", replyWriter=" + replyWriter + ", createDate=" + createDate + ", modifyDate=" + modifyDate
-				+ ", status=" + status + "]";
-	}
+
+
+
 	
 	
 }

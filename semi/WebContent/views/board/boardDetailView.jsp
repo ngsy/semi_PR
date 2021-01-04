@@ -8,6 +8,7 @@
 Attachment at = (Attachment) request.getAttribute("at");
 Reply r = (Reply) request.getAttribute("r");
 %>
+
 <%@ include file="../common/header.jsp"%>
 
 
@@ -20,8 +21,7 @@ Reply r = (Reply) request.getAttribute("r");
 			<%
 				if (loginUser != null && loginUser.getId().equals(b.getBoardWriter())) {
 			%>
-			<button class="btn btn-primary" id="updateBtn"
-				onclick="updateForm();">수정</button>
+			<button class="btn btn-primary" id="updateBtn"	onclick="updateForm();">수정</button>
 			<button class="btn btn-danger" id="delBtn" onclick="deleteBoard();">삭제</button>
 			<%
 				}
@@ -86,10 +86,16 @@ Reply r = (Reply) request.getAttribute("r");
 
 						<tr>
 							<td style="width: 20%; text-align: left">내용|</td>
-							<td colspan="2" style="height: 500px; text-align: left"><%=b.getBoardContent()%>
-
-							</td>
-
+							<td colspan="2" style="height: 500px; text-align: left">
+							<%if(at !=null) {%> 
+							<p ><img width="300px" height="250px" src="<%=contextPath%>/resources/board_upfiles/<%=at.getChangeName()%>" class="mg-fluid">  </p>
+                            <p><%=b.getBoardContent()%></p>
+                            </td>
+                           	<%
+									} else {
+								%><p><%=b.getBoardContent()%></p> <%
+									}
+								%>
 						</tr>
 
 					</tbody>
@@ -128,132 +134,162 @@ Reply r = (Reply) request.getAttribute("r");
 		</div>
 		<br> <br>
 
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				댓글 <span class="pull-right">
-					<button type="button" class="btn btn-primary btn-xs"
-						data-toggle="modal" data-target="#replyModal">쓰기</button>
-				</span>
-			</div>
-			<div class="panel-body">
-				<ul class="list-group" id="replyList">
-					<li class="ligth-group-item">데이터를 불러오는 중입니다.</li>
-					<li class="ligth-group-item">데이터를 불러오는 중입니다.</li>
-					<li class="ligth-group-item">데이터를 불러오는 중입니다.</li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- Modal시작ㄴ-->
-		<div class="modal fade" id="replyModal" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-					
-						<h4 class="modal-title">댓글작성</h4>
-					</div>
-
-					<div class="modal-body" >
-						<form id="replyWriteForm">
-							<!-- 글번호 입력  -->
-							<input type="hidden" class="form-control" id="no" name="no"	value="<%=b.getBoardNo()%>" />
-							<!-- 내용 입력  -->
-							<div class="form-group">
-								<label for="content">내용</label>
-								<textarea class="form-control" rows="3" id="content"
-									name="content" required="required"></textarea>
-							</div>
-							<!-- 작성자입력-->
-							<div class="form-group">
-								<label for="writer">작성자</label>
-								<textarea type="text" class="form-control" id="writer"
-									name="writer" required="required"></textarea>
-							</div>
-							<!-- 비번입력-->
-							<div class="form-group">
-								<label for="pw">비밀번호</label>
-								<textarea type="text" class="form-control" id="pw" name="pw"
-									required="required"></textarea>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<div class="btn-group">
-						    <button type="button" class="btn btn-outline-primary" id="replyWriteBtn" >쓰기</button>
-						    <button type="reset" class="btn btn-outline-primary" id="replyReset" >새로입력</button>
-							<button type="button" class="btn btn-outline-primary"  data-dismiss="modal">취소</button>
-						</div>
-						</div>
-					</div>
-<!-- modal contents끝-->
-				</div>
-			</div>
-
-<!-- modal 끝-->
 
 
-<script>
-	  $(function(){
-		  
-		  $("#replyList")
+	<!-- 댓글 관련 영역 -->
+	<div class="replyArea">
+		<!-- 댓글 작성하는 div -->
 	
-		$("#replyWriteBtn").click(function(){
-			var no=$("#no").val();
-			var content =$("#content").val();
-			var writer =$("#writer").val();
-			var pw =$("#pw").val();
+			
+				<% if(loginUser != null){ %>
+					
+				<div class="input-group mb-3" style="width:800px; margin-left:25%;">
+				
+				
+				  <textarea class="form-control" id="replyContent"  style="resize:none; text-align:left;"  rows="3" placeholder="댓글을 작성해주세요"></textarea>	  
+			
+				 <button type="submit" class="btn btn-primary mb-3"id="addReply" "> 등록</button>
+				</div>
+				
+				<% }else{ %>
+				<div class="input-group mb-3" style="width:800px; margin-left:25%;">
+				<textarea class="form-control" id="replyContent"  style="resize:none; text-align:center;"  rows="3" placeholder="로그인 후  댓글을 작성해 주세요"></textarea>
+					</div>
+				<% } %>
+	
 		
-			var reply={
-				no:no,
-			content:content,
-			writer:writer,
-			pw:pw
-			}
+		
+		<!-- 댓글 리스트들 보여주는 div -->
+		<div id="replyListArea" >
+			<table class="table datarow" id="replyList" align="center"  style="width:800px;" >
+			 <thead>
+			     <tr>
+				  
+				    </tr>
+			 	</thead>
+				<!-- <tr>
+					<td width="100px">admin</td>
+					<td width="330px">댓글작성내용</td>
+					<td width="150px">2020년 1월 23일</td>
+				</tr>
+				<tr>
+					<td width="100px">user01</td>
+					<td width="330px">댓글작성내용</td>
+					<td width="150px">2020년 1월 22일</td>
+				</tr>
+				<tr>
+					<td width="100px">test01</td>
+					<td width="330px">댓글작성내용</td>
+					<td width="150px">2020년 1월 20일</td>
+				</tr> -->
+			
+			</table>
+		</div>
+	</div> 
+	<script>
+	  $(function(){
+		 selectReplyList(); 
+		$("#addReply").click(function(){
+			var content =$("#replyContent").val();
+			var bId=<%=b.getBoardNo()%>;
+			
 			$.ajax({
 				url:"rinsert.bo",
 				type:"post",
-				data:{reply
+				data:{
+					content:content,
+					bId:bId
 				},
 				success:function(){
-					//console.log(status);
-				  alert("성공적으로 댓글이 등록되었습니다");
-				  //댓글리스트 뿌려주기 
-					$("#replyList").load("replayList.jsp?no="+"<%=b.getBoardNo()%>");
-				
+
 					
+					
+					
+						selectReplyList();
+						$("#replyContent").val("");
+						
+				
+
 				},
 				error:function(){
 					console.log("ajax 통신실패");
-					  alert("성공적으로 댓글이 등록되었습니다");
 				}
 			});
-			clear();
-			$("#replyModal").modal("hide");
-		
 		}); 
-		$("#replyReset").click(function(){
-			clear();
-		});
-		function clear(){
-			$("#content").val("");
-			$("#writer").val("");
-			$("#pw").val("");
-		}
 		 
 	  });
+	  function selectReplyList(){
+		  $("#replyList").empty();
+		  $.ajax({
+			url:"rlist.bo",
+			data:{bId:<%=b.getBoardNo()%>},
+			type:"get",
+			success:function(list){
+				console.log(list);
+                var writer='{}'
+			
+				var value = "";
+				for(var i in list){
+					value += '<tr class="">' + 
+								'<td width="100px" height="150px" ">작성자|<br>' + list[i].replyWriter+'<br>'+'<div style=" font-size:5px; color:#7CAA7A;">' +list[i].createDate+'</div>' + '</td>' +
+								'<td width="200px" height="150px">' + list[i].replyContent + '</td>' + 
+								'<td width="100px" >' +'<button class="btn btn-danger" id="delRBtn" onclick="" style="width:50px; font-size:5px;"> 삭제 </button>'
+							 	+'<button class="btn btn-lg border-0  " id="angrybutton"></i> <i class="fas fa-angry" style="font-size: 25px; "></i></button>' +'</td>' + 
+							
+							 '</tr>';
+				}
+				
+				   $("#replyList").html(value);
+				
+				
+	
+			},
+			error:function(){
+				console.log("댓글실패 ");
+			}
+			  
+		  });
+	  }
+	</script>
+	
+	<script>
 
-	  </script>
+$("#replyList").on("click","#delRBtn",function(){
+	alert("댓글삭제클릭");
+	var item=$(this).closest(".datarow");
+	var rno=item.find(".rno").text();
+	$("#delrno").val(rno);
+	//비밀번호 지우기
+	$("#delpw").val("");
 
+});
 
+$("#replyDelBtn").click(function(){
+	var reply={
+			rno:$("#delrno").val(),
+			pw:$("#delpw").val(),
+			
+	}
+	$.ajax({
+		type:"post",
+		data:reply,
+		url:"rdelte.bo",
+		dataType:"text",
+		success:function(result,status,xhr){
+		alert(result);	
+		},
+		error:function(xhr,status,error){
+			console.log("ajax 통신실패");
+			  alert("댓글삭제중 오류가 발생하였씁니다 ");
+			  alert(xhr+ status+error);
+		}
+	});
+});
+</script>
 		</div>
 		<!-- card-body end -->
 	</div>
 	<!-- card end -->
-
-
-
 
 
 	<%@ include file="../common/footer.jsp"%>

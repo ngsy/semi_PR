@@ -147,4 +147,21 @@ public class BoardService {
 
 
 
+
+	public int deleteReplyBoard(String pw, int rId) {
+		Connection conn = getConnection();
+		int result1 = new BoardDao().deleteReplyBoard(conn, pw,rId);
+
+		
+		if(result1>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1;
+	}
+
+
+
 }

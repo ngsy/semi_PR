@@ -246,7 +246,6 @@ public class BoardDao {
 			pstmt.setString(1,r.getReplyContent());
 			pstmt.setInt(2, r.getRefBoardId());
 			pstmt.setString(3, r.getReplyWriter());
-			
 			result=pstmt.executeUpdate();
 			
 			
@@ -280,7 +279,8 @@ public class BoardDao {
 					            rs.getString("REPLY_CONTENT"),
 					            rs.getString("ID"),
 					            rs.getDate("R_WRITE_DATE"),
-			                      rs.getInt("M_NO"))) ;
+					            rs.getInt("M_NO")
+					              )) ;
 					
 		}
 		} catch (SQLException e) {
@@ -415,6 +415,29 @@ public class BoardDao {
 
 
 
+
+	public int deleteReplyBoard(Connection conn, String pw, int rId) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteReply");
+		try {
+
+	
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rId);
+			pstmt.setString(2,pw);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
 
 	
 }
