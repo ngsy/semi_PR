@@ -11,7 +11,9 @@
 
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">게시판상세보기</div>
+	<div class="card-header py-3"><h2>가게상세보기</h2></div>
+
+
 
 	<div class="card-body">
          	<div class="btn3" style="margin-left:70%;">
@@ -49,7 +51,7 @@
 <div class="panel panel-default ">
    <div class="panel-heading"  style="background:#fff;">우리가게사진 </div>
  
-  <% for(int i=1; i<fileList.size(); i++){ %>
+  <% for(int i=0; i<fileList.size(); i++){ %>
    <div class="panel-body" style="display:inline-block;"  >
       <span ><img width="300px" height="250px" src="<%=contextPath%>/resources/board_upfiles/<%=fileList.get(i).getChangeName()%>" class="mg-fluid">  </span>
      
@@ -107,23 +109,22 @@
 		</div> <!-- container -->
 		
 		
+<!--  
 
-
- <!-- 추천/신고/채팅버튼 -->
-          <!-- 추천-->
-       <!--  <div class="btn1"  style="margin-left:1150px;">
+  <div class="btn1"  style="margin-left:1150px;">
          	<button class="btn btn-lg border-0  " id="likeBtn"  >
 			<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
-			 </button> -->
-			 <!-- 신고-->
-           	<button class="btn btn-lg border-0  " id="angryBtn"  >
+			 </button> 
+			
+          	<button class="btn btn-lg border-0  " id="angryBtn"  >
 			</i> <i class="fas fa-angry" style="font-size: 30px; "></i>
             </button>
-             <!-- 채팅-->
+           
            	<button class="btn btn-lg border-0  " id="chatBtn" >
             <i class="far fa-comment-dots" style="font-size: 30px;"></i>  
             </button>
-         </div>
+         </div>  
+-->
 
 
 

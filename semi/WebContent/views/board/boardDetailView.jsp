@@ -16,7 +16,7 @@ Reply r = (Reply) request.getAttribute("r");
 
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3"><h2>게시물상세보기<h2></h2></div>
+	<div class="card-header py-3"><h2>게시판상세보기<h2></h2></div>
 
 	<div class="card-body">
 
@@ -122,13 +122,13 @@ Reply r = (Reply) request.getAttribute("r");
 				}
 			%>
  		
- 			<button class="btn btn-lg border-0  float-right" id="likeBtn">
+ 		<!--button class="btn btn-lg border-0  float-right" id="likeBtn">
 				<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
 			</button>
 			
 			<button class="btn btn-lg border-0 float-right " id="angryBtn">
 				</i> <i class="fas fa-angry" style="font-size: 30px;"></i>
-			</button>
+			</button>  -->	
  		
  		
  		</div>
@@ -141,53 +141,44 @@ Reply r = (Reply) request.getAttribute("r");
 		<br> <br>
 
 
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				댓글 <span class="pull-right">
-					<button type="button" class="btn btn-primary btn-xs"
-						data-toggle="modal" data-target="#replyModal">쓰기</button>
-				</span>
-			</div>
-			<div class="panel-body">
-				<ul class="list-group" id="replyList">
-				
-				</ul>
-			</div>
-		</div>
-
-
-
-	<!-- 댓글 관련 영역 -->
-
-
-
- <div  style="background:#fff;  border-line:none;">
-		<!-- 댓글 작성하는 div -->
 	
+		
 			
+				
 				<% if(loginUser != null){ %>
 					
-				<div class="input-group mb-3" style="width:800px; margin-left:30%;">
+				<div class="input-group mb-3" style="width:800px; margin-left:25%; background:#f7f7f7;">
 				
 				
 				  <textarea class="form-control" id="replyContent"  style="resize:none; text-align:left;"  rows="3" placeholder="댓글을 작성해주세요"></textarea>	  
 			
-				 <button type="submit" class="btn btn-primary mb-3"id="addReply" "> 등록</button>
-
+				 <button type="submit" class="btn btn-primary mb-3"id="addReply" > 등록</button>
 				</div>
 				
 				<% }else{ %>
-				<div class="input-group mb-3" style="width:800px; ">
+				<div class="input-group mb-3" style="width:800px; margin-left:25%;">
 				<textarea class="form-control" id="replyContent"  style="resize:none; text-align:center;"  rows="3" placeholder="로그인 후  댓글을 작성해 주세요"></textarea>
 					</div>
 				<% } %>
+
+
+
+
+	<!-- 댓글 관련 영역 -->
+	<div class="replyArea">
+		<!-- 댓글 작성하는 div -->
 	
 		
-	
+		
+		
 		<!-- 댓글 리스트들 보여주는 div -->
-
-			<table class="table" id="replyList" align="center"  style="width:800px; " >
-		  <tbody>
+		<div id="replyListArea" >
+			<table class="table" id="replyList" align="center"  style="width:800px;">
+			 <thead>
+			     <tr>
+				  
+				    </tr>
+			 	</thead>
 				<!-- <tr>
 					<td width="100px">admin</td>
 					<td width="330px">댓글작성내용</td>
@@ -205,10 +196,8 @@ Reply r = (Reply) request.getAttribute("r");
 				</tr> -->
 			
 			</table>
-	
- </div>
-
-
+		</div>
+	</div> 
 	<script>
 	  $(function(){
 		 selectReplyList(); 
@@ -249,11 +238,11 @@ Reply r = (Reply) request.getAttribute("r");
 			type:"get",
 			success:function(list){
 				console.log(list);
-                var writer='{}'
+
 			
 				var value = "";
 				for(var i in list){
-					value += '<tr class="">' + 
+					value += '<tr>' + 
 								'<td width="100px" height="150px" ">작성자|<br>' + list[i].replyWriter+'<br>'+'<div style=" font-size:5px; color:#7CAA7A;">' +list[i].createDate+'</div>' + '</td>' +
 								'<td width="200px" height="150px">' + list[i].replyContent + '</td>' + 
 								'<td width="100px" >' +'<button class="btn btn-danger" id="delRBtn" onclick="" style="width:50px; font-size:5px;"> 삭제 </button>'
@@ -274,7 +263,12 @@ Reply r = (Reply) request.getAttribute("r");
 		  });
 	  }
 	</script>
-	
+
+
+<script>
+
+
+</script>
 	<script>
 
 $("#replyList").on("click","#delRBtn",function(){
