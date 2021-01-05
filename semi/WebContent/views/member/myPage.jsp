@@ -13,8 +13,8 @@
 	String userId = loginUser.getId();
 	String userPwd = loginUser.getPwd();
 	String userName = loginUser.getM_name();
-	String phone =loginUser.getPhone();
-	String email =loginUser.getEmail();
+	String phone = loginUser.getPhone();
+	String email = loginUser.getEmail();
 	
 
 	String originPwd=(String)session.getAttribute("originPwd");
@@ -106,7 +106,7 @@
 						
 						<br><br>
 				      <div align="center">
-				      	<button type="submit" class="btn btn-primary btn-primary" id="updateBtn"  >수정하기</button>
+				      	<button type="submit" class="btn btn-primary btn-primary" id="updateBtn" >수정하기</button>
 				        
 				        </div>
 				        
@@ -121,7 +121,7 @@
 				      
 				      	<form id="updatePwdForm" action="<%= request.getContextPath() %>/updatePwd.me" method="post">
 							
-							pwdCk =prompt("비밀번호를 입력해주새요");
+							
 							
 							<table align="center">
 								<tr>
