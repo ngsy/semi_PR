@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 *    > filterName을 통해서 어떤 역할을 하는 필터인지 지정해주고
 	  > urlPatterns를 통해서 어떠한 서블릿을 가기전에 거칠 것인지를 지정해준다. --> /*로 지정하게 되면 모든 서블릿을 뜻한다. 
 */
-//@WebFilter(filterName="encodingFilter",urlPatterns="/*")
+@WebFilter(filterName="encodingFilter",urlPatterns="/*")
 public class EncodingFilter implements Filter {
 
     /**
