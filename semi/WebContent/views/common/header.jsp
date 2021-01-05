@@ -13,7 +13,8 @@ String msg =(String)session.getAttribute("msg");
 
 
 
-%>       
+%>
+       
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,7 +104,7 @@ String msg =(String)session.getAttribute("msg");
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger asklogin"  href="<%=request.getContextPath() %>/list.sh">우리마을가게홍보</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/list.no">공지사항</a></li>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/views/FAQ/FAQ.jsp">FAQ</a></li>
-                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath() %>/list.qo">Q&A</a></li>                    	
+                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger asklogin" href="<%=request.getContextPath() %>/list.qo">Q&A</a></li>                    	
  <%--                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">|</a></li>
                     <%if(loginUser ==null){ %>
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<%=request.getContextPath()%>/views/member/memberloginForm.jsp" >로그인</a></li>
