@@ -143,7 +143,7 @@ public class BoardDao {
 			
 			while (rset.next()) {
 				list.add(new Board(rset.getInt("BOARD_NUMBER"),
-						rset.getString("BOARD_TITLE"),rset.getString("ID"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE")));
+						rset.getString("BOARD_TITLE"),rset.getString("M_NAME"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE")));
 
 			}
 		} catch (SQLException e) {
@@ -193,7 +193,7 @@ public class BoardDao {
 
 			if (rset.next()) {
 				b = new Board(rset.getInt("BOARD_NUMBER"),
-						rset.getString("BOARD_TITLE"),rset.getString("BOARD_CONTENT"),rset.getString("ID"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE"),rset.getInt("M_NO"));
+						rset.getString("BOARD_TITLE"),rset.getString("BOARD_CONTENT"),rset.getString("M_NAME"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE"),rset.getInt("M_NO"));
 
 
 			}

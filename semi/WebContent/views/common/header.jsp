@@ -159,11 +159,12 @@ String msg =(String)session.getAttribute("msg");
         </nav>
         
         <script>
-        $(function(){
+        
 			function disconnect(){
 						chatListWS.close();	
+						chatWS.close();
 						}
-        });
+        
 			
 	    
         </script>

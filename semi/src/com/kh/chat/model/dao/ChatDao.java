@@ -180,4 +180,159 @@ public class ChatDao {
 		}
 		return list;
 	}
+	public int getChatRoom(Connection conn, int sender, int receiver) {
+		int crno=0;
+		
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		
+		String sql=prop.getProperty("getChatRoom");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sender);
+			pstmt.setInt(2, receiver);
+			pstmt.setInt(3, receiver);
+			pstmt.setInt(4, sender);
+			
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				crno=rset.getInt(1);
+			}
+
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+			
+		}
+		
+		
+		
+		
+		return crno;
+	}
+	public void readMyMessage(Connection conn, int crno, int chatSender) {
+		
+		int result=0;
+		
+		PreparedStatement pstmt=null;
+		
+		String sql=prop.getProperty("readMyMessage");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, crno);
+			pstmt.setInt(2, chatSender);
+			
+			result=pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+			
+		}
+		
+		
+
+		
+		
+	}
+	public int insertChat(Connection conn, Chat chat) {
+		
+		int result=0;
+		
+		PreparedStatement pstmt=null;
+		
+		String sql=prop.getProperty("insertChat");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, chat.getChatContent());
+			pstmt.setInt(2,chat.getCrno());
+			pstmt.setInt(3, chat.getChatReceiver());
+			pstmt.setInt(4, chat.getChatSender());
+			pstmt.setString(5, chat.getReadStatus());
+			
+			result=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+			
+		}
+		
+		return result;
+	}
+	public int insertChatRoom(Connection conn, int sender, int receiver) {
+		
+		int result=0;
+		
+		PreparedStatement pstmt=null;
+		
+		String sql=prop.getProperty("insertChatRoom");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sender);
+			pstmt.setInt(2, receiver);
+			
+			result=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+			
+		}
+		
+		
+		
+		return result;
+	}
+	public void setName(Connection conn,ChatRoom cr) {
+		PreparedStatement pstmt=null;
+		ResultSet rset=null;
+		
+		String sql=prop.getProperty("setName");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, cr.getMno2());
+			
+			rset=pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				cr.setmName(rset.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+			
+		}
+		
+		
+		
+	}
 }

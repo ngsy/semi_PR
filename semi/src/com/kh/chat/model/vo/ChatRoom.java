@@ -9,22 +9,44 @@ public class ChatRoom {
 	private String mName;
 	private String lastChat;
 	private int unreadCount;
+	private String existRoom;
 	
 	public ChatRoom() {
 		
 	}
-	
-	
 
-	public ChatRoom(int cRNO, int mno1, int mno2, String mName, String lastChat, int unreadCount) {
-	
+
+	public ChatRoom(int cRNO, int mno1, int mno2, String mName, String lastChat, int unreadCount, String existRoom) {
+		
 		this.cRNO = cRNO;
 		this.mno1 = mno1;
 		this.mno2 = mno2;
 		this.mName = mName;
 		this.lastChat = lastChat;
 		this.unreadCount = unreadCount;
+		this.existRoom = existRoom;
 	}
+
+
+
+
+
+
+	public String getExistRoom() {
+		return existRoom;
+	}
+
+
+
+
+
+
+	public void setExistRoom(String existRoom) {
+		this.existRoom = existRoom;
+	}
+
+
+
 
 
 
@@ -86,11 +108,18 @@ public class ChatRoom {
 
 
 
+
+
+
 	@Override
 	public String toString() {
 		return "ChatRoom [cRNO=" + cRNO + ", mno1=" + mno1 + ", mno2=" + mno2 + ", mName=" + mName + ", lastChat="
-				+ lastChat + ", unreadCount=" + unreadCount + "]";
+				+ lastChat + ", unreadCount=" + unreadCount + ", existRoom=" + existRoom + "]";
 	}
+
+
+
+
 	
 	
 	

@@ -14,11 +14,19 @@ public class Chat {
 	public Chat() {
 		
 	}
-
+	public Chat(int sender,int receiver) {
+		this.chatSender=sender;
+		this.chatReceiver=receiver;
+		this.chatContent=null;
+		this.chatDate=null;
+		this.crno=0;
+		readStatus=null;
+		
+	}
 	
 
 	public Chat(String chatContent, String chatDate, int crno, int chatReceiver, int chatSender, String readStatus) {
-		super();
+		
 		this.chatContent = chatContent;
 		this.chatDate = chatDate;
 		this.crno = crno;
