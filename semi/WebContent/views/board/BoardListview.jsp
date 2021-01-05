@@ -21,14 +21,14 @@
 				<h2  >우리마을 게시판</h2>
 </div>
 
-
+	<div class="card-body">
 		
 	
 		<% if(loginUser != null){ %>
          	<a href="enrollForm.bo" class="btn btn-primary float-right" >글쓰기</a>
          	<% } %>
-			</nav>
-        
+		
+        <br><br>
 	
 			<table class="table table-striped table-hover listArea" >
 				<thead>

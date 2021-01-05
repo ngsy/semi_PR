@@ -28,8 +28,7 @@
 				</div>
 
 				<div class="mb-3">
-					<label for="formFileMultiple" class="form-label">파일첨부</label> <input class="form-control" type="file"
-						id="formFileMultiple" multiple name="upfile">
+					<label for="formFileMultiple" class="form-label">파일첨부</label> <input class="form-control" type="file" 	id="formFileMultiple"  name="upfile">
 				</div>
 
 

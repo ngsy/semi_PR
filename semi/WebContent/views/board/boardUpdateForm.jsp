@@ -12,13 +12,13 @@ Attachment at =(Attachment)request.getAttribute("at");
 <html>
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">우리마을 게시글</div>
+	<div class="card-header py-3"><h2>우리마을 게시글 수정하기<h2></h2></div>
 
 	<div class="card-body">
 
 		<div class="container">
 
-			<form id="insertForm" action="<%=contextPath%>//update.bo"" method="post" enctype="multipart/form-data">
+			<form id="insertForm" action="<%=contextPath%>/update.bo"" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="bno" value="<%= b.getBoardNo() %>">
 				<div class="form-group">
 					<label for="title">제목</label> <input type="text"
@@ -39,11 +39,11 @@ Attachment at =(Attachment)request.getAttribute("at");
 							<%= at.getOriginName() %> <br>
 							<input type='hidden' name='originFile' value='<%=at.getChangeName()%>'>
 							<input type='hidden' name='originFileNo' value='<%=at.getFileNo()%>'>
-						<% }%>			
-					 <input class="form-control" type="file"id="formFileMultiple" multiple name="upfile">
+						<% }%>		
+						
+					 <input class="form-control" type="file" id="formFileMultiple"    name="upfile">
 				</div>
-
-
+      
 				<button type="submit" class="btn btn-primary">글수정 </button>
 				<button class="btn btn-danger"onclick="location.href='<%=contextPath%>/list.bo?currentPage=1';">취소하기</button>
 		

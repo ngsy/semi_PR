@@ -401,7 +401,7 @@ public class BoardDao {
 			pstmt.setString(1, at.getOriginName());
 			pstmt.setString(2, at.getChangeName());
 			pstmt.setString(3, at.getFilePath());
-
+			pstmt.setInt(4, at.getRefBoardNo());
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
