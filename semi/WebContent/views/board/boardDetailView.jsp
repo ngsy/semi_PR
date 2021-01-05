@@ -432,9 +432,9 @@ $("#replyDelBtn").click(function(){
 	<!-- card end -->
 <script>
 
-var boardModal=$("boardReportModal");
-var replyModal=$("replyReportModal");
-var userModal=$("userReportModal");
+var boardModal=$("#boardReportModal");
+var replyModal=$("#replyReportModal");
+var userModal=$("#userReportModal");
 
 
 //모달에서 보내기 버튼 클릭했을 때

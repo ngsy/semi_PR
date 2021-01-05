@@ -210,23 +210,27 @@ public class ChatWS {
 						cr.setUnreadCount(0);
 						cr.setExistRoom("N");
 						cs.setName(cr);
-					
+						System.out.println(cr);
 						
 						clWS.sendChatRoomMessage(chat.getChatSender(), cr);
-						System.out.println(cr);
-						ChatRoom cr2 =new ChatRoom();
 						
-						cr2.setcRNO(crno); //채팅받는사람에게 갈 메세지 
-						cr2.setMno1(chat.getChatReceiver());
-						cr2.setMno2(chat.getChatSender());
-						cr2.setLastChat(chat.getChatContent());
-						cr2.setUnreadCount(1);
-						cr2.setExistRoom("N");
-						cs.setName(cr2);
+						if(clWS.isLogin(chat.getChatReceiver())) { //로그인중이면
 						
+							ChatRoom cr2 =new ChatRoom();
+							
+							cr2.setcRNO(crno); //채팅받는사람에게 갈 메세지 
+							cr2.setMno1(chat.getChatReceiver());
+							cr2.setMno2(chat.getChatSender());
+							cr2.setLastChat(chat.getChatContent());
+							cr2.setUnreadCount(1);
+							cr2.setExistRoom("N");
+							cs.setName(cr2);
+							
+							
+							clWS.sendChatRoomMessage(chat.getChatReceiver(), cr2);
+							System.out.println(cr2);
+						}
 						
-						clWS.sendChatRoomMessage(chat.getChatReceiver(), cr2);
-						System.out.println(cr2);
 						chat.setCrno(crno);
 						chat.setReadStatus("N");
 						
