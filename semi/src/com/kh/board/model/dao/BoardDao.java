@@ -439,5 +439,39 @@ public class BoardDao {
 		return result;
 	}
 
+	public ArrayList<Board> selectTopList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<Board> list = new ArrayList<>();
+		
+		String sql = prop.getProperty("selectTopList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {//BOARD_NO, BOARD_TITLE, COUNT, CHANGE_NAME 
+				Board b = new Board();
+				b.setBoardNo(rs.getInt("SHOP_"));
+				b.setBoardTitle(rs.getString("SHOP_TITLE"));
+			    b.setReadCount(rs.getInt("SHOP_READ_COUNT"));
+			    b.setCreateDate(rs.getDate("SHOP_WRITE_DATE"));
+				b.setTitleImg(rs.getString("FILE_CHANGED"));
+				
+				list.add(b);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		
+		return list;
+	}
+
 	
 }
