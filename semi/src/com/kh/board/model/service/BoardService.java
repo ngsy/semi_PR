@@ -165,7 +165,7 @@ public class BoardService {
 	public ArrayList<Board> selectTopList() {
 		Connection conn = getConnection();
 		ArrayList<Board> list = new BoardDao().selectTopList(conn);
-		 close(conn);
+		 close(conn);//깃허브용 
 		return list;
 	}
 

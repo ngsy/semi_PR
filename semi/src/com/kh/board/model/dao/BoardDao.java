@@ -453,7 +453,7 @@ public class BoardDao {
 			
 			while(rs.next()) {//BOARD_NO, BOARD_TITLE, COUNT, CHANGE_NAME 
 				Board b = new Board();
-				b.setBoardNo(rs.getInt("SHOP_NUMBER"));
+				b.setBoardNo(rs.getInt("SHOP_"));
 				b.setBoardTitle(rs.getString("SHOP_TITLE"));
 			    b.setReadCount(rs.getInt("SHOP_READ_COUNT"));
 			    b.setCreateDate(rs.getDate("SHOP_WRITE_DATE"));

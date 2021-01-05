@@ -94,7 +94,7 @@ public class ShopService {
 		Connection conn = getConnection();
 		ArrayList<Shop> list = new ShopDao().selectShTopList(conn);
 		 close(conn);
-		return list;
+		return list;//
 	}
 
 }

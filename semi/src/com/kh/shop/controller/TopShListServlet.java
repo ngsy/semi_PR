@@ -35,7 +35,7 @@ public class TopShListServlet extends HttpServlet {
 		ArrayList<Shop> list =new ShopService().selectShTopList();
 		
 		response.setContentType("application/json;charset=utf-8");
-		new Gson().toJson(list,response.getWriter());
+		new Gson().toJson(list,response.getWriter());//
 
 	}
 
