@@ -54,7 +54,7 @@ Reply r = (Reply) request.getAttribute("r");
 							<td style="width: 20%; text-align: left">작성자|</td>
 							<td colspan="2" style="text-align: left"><%=b.getBoardWriter()%>
 											<!-- 신고-->
-								<button class="btn" id="angryBtn">
+								<button class="btn" id="userReportBtn">
 									</i> <i class="fas fa-angry" ></i>
 								</button>
 								<!-- 채팅-->
@@ -126,7 +126,7 @@ Reply r = (Reply) request.getAttribute("r");
 				<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
 			</button>
 			
-			<button class="btn btn-lg border-0 float-right " id="angryBtn">
+			<button class="btn btn-lg border-0 float-right " id="boardReportBtn">
 				</i> <i class="fas fa-angry" style="font-size: 30px;"></i>
 			</button>
  		
@@ -207,6 +207,124 @@ Reply r = (Reply) request.getAttribute("r");
 			</table>
 	
  </div>
+ <!--게시글 신고 모달  -->
+	<div class="modal" id="boardReportModal" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">게시물 신고</h5>
+                 </div>
+	      <div class="modal-body">
+  		       
+                             		
+	            <div class="form-group">
+				  <label  class="form-label">신고이유</label>
+					<select class="form-control reportCategory"  name="reportCategory">
+						<option  value="">----</option>
+						<option value="사기글 같아요">사기글 같아요</option>
+						<option value="증복 게시글">증복 게시글</option>
+						<option value="기타사유(내용을 적어주세요)">기타사유(내용을 적어주세요)</option>
+						
+					</select>
+	
+				</div>		
+                             		
+                             		
+                  <div class="form-group">
+					  <label  class="form-label">내용</label>
+					  <textarea class="form-control reportContent" name="reportContent" rows="3"></textarea>
+				</div>
+				
+				
+			     <button class="btn btn-primary"  id="boardReportModalSendBtn">보내기</button>	                              
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="boardReportModalHideBtn">닫기</button>
+                          
+                
+	      </div>
+	    
+	    </div>
+	  </div>
+	</div>
+
+ <!-- 사용자 신고 모달  -->
+	<div class="modal" id="userReportModal" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">사용자 신고</h5>
+                 </div>
+	      <div class="modal-body">
+  		       
+                             		
+	            <div class="form-group">
+				  <label  class="form-label">신고이유</label>
+					<select class="form-control reportCategory"  name="reportCategory">
+						<option value="">----</option>
+						<option value="비매너 사용자예요">비매너 사용자예요</option>
+						<option value="욕설을 해요">욕설을 해요</option>
+						<option value="성희롱 발언을 해요">성희롱 발언을 해요</option>
+						<option value="기타사유(내용을 적어주세요)">기타사유(내용을 적어주세요)</option>
+
+					</select>
+	
+				</div>		
+                             		
+                             		
+                  <div class="form-group">
+					  <label  class="form-label">내용</label>
+					  <textarea class="form-control reportContent" name="reportContent" rows="3"></textarea>
+				</div>
+				
+				
+			     <button class="btn btn-primary"  id="userReportModalSendBtn">보내기</button>	                              
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="userReportModalHideBtn">닫기</button>
+                          
+                
+	      </div>
+	    
+	    </div>
+	  </div>
+	</div>
+ <!--댓글 신고 모달  -->
+	<div class="modal" id="replyReportModal" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">댓글 신고</h5>
+                 </div>
+	      <div class="modal-body">
+  		       
+                             		
+	            <div class="form-group">
+				  <label  class="form-label">신고이유</label>
+					<select class="form-control reportCategory"  name="reportCategory">
+						<option value="">----</option>
+						<option value="욕설이 포함되어있어요">욕설이 포함되어있어요</option>
+						<option value="성희롱이 포함되어있어요">성희롱이 포함되어있어요</option>
+						<option value="다른 사람에게 혐오감을 줘요">다른 사람에게 혐오감을 줘요</option>
+						<option value="증복 댓글">증복 댓글</option>
+						<option value="기타사유(내용을 적어주세요)">기타사유(내용을 적어주세요)</option>
+						
+					</select>
+	
+				</div>		
+                             		
+                             		
+                  <div class="form-group">
+					  <label  class="form-label">내용</label>
+					  <textarea class="form-control reportContent" name="reportContent" rows="3"></textarea>
+				</div>
+				
+				
+			     <button class="btn btn-primary"  id="replyReportModalSendBtn">보내기</button>	                              
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="replyReportModalHideBtn">닫기</button>
+                          
+                
+	      </div>
+	    
+	    </div>
+	  </div>
+	</div>
 
 
 	<script>
@@ -257,10 +375,10 @@ Reply r = (Reply) request.getAttribute("r");
 								'<td width="100px" height="150px" ">작성자|<br>' + list[i].replyWriter+'<br>'+'<div style=" font-size:5px; color:#7CAA7A;">' +list[i].createDate+'</div>' + '</td>' +
 								'<td width="200px" height="150px">' + list[i].replyContent + '</td>' + 
 								'<td width="100px" >' +'<button class="btn btn-danger" id="delRBtn" onclick="" style="width:50px; font-size:5px;"> 삭제 </button>'
-							 	+'<button class="btn btn-lg border-0  " id="angrybutton"></i> <i class="fas fa-angry" style="font-size: 25px; "></i></button>' +'</td>' + 
+							 	+'<button class="btn btn-lg border-0  replyReportBtn" ></i> <i class="fas fa-angry" style="font-size: 25px; "></i></button>' +'</td>' + 
 							
 							 '</tr>';
-				}
+				}				
 				
 				   $("#replyList").html(value);
 				
@@ -313,6 +431,74 @@ $("#replyDelBtn").click(function(){
 		<!-- card-body end -->
 	</div>
 	<!-- card end -->
+<script>
 
+var boardModal=$("boardReportModal");
+var replyModal=$("replyReportModal");
+var userModal=$("userReportModal");
+
+
+//모달에서 보내기 버튼 클릭했을 때
+$("#boardReportModalSendBtn").on("click",function(){
+	
+	var category=boardModal.find("option:selected")
+	
+	
+	var jsonObj={objNo:<%=b.getBoardNo()%>,type:2,category:"",content:"",mno:<%=loginUser.getM_no()%>};
+	
+	
+	
+});
+
+
+
+
+//모달 보이기 , 숨기기 설정 
+$("#userReportBtn").on("click",function(){
+	
+	userModal.modal("show");
+	
+	
+});
+
+$("#replyList").on("click",".replyReportBtn",function(){
+	
+	replyModal.modal("show");
+	
+	
+});
+
+$("#boardReportBtn").on("click",function(){
+	
+	boardModal.modal("show");
+	
+	
+	
+	
+});
+
+$("#boardReportModalHideBtn").on("click",function(){
+	
+	boardModal.modal("hide");
+	
+	
+});
+
+$("#userReportModalHideBtn").on("click",function(){
+	
+	userModal.modal("hide");
+	
+	
+});
+
+$("#replyReportModalHideBtn").on("click",function(){
+	
+	replyModal.modal("hide");
+	
+	
+});
+
+
+</script>
 
 	<%@ include file="../common/footer.jsp"%>

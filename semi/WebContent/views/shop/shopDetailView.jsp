@@ -14,17 +14,7 @@
 	<div class="card-header py-3">게시판상세보기</div>
 
 	<div class="card-body">
-         	<div class="btn3" style="margin-left:70%;">
-			<%
-				if (loginUser != null && loginUser.getId().equals(s.getShopWriter())) {
-			%>
-	<!-- 	<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정</button> -->	
-			<button class="btn btn-danger" id="delBtn" onclick="deleteBoard();">삭제</button>
-			<%
-				}
-			%>
-
-		</div> <br>
+   <br>
 		
 			<form action="" id="postForm" method="post">
 			<input type="hidden" name="sNo" value="<%= s.getShopNo() %>">
@@ -72,7 +62,11 @@
 						<tr>
 							<td style="width: 20%; text-align: left">작성자|</td>
 							<td colspan="2" style="text-align: left"><%=s.getShopWriter()%> 
-							
+								<% if(loginUser.getM_no()!= s.getShopWriterNo()){%>
+								<button class="btn" id="chatBtn" data-mno2="<%=s.getShopWriterNo() %>" data-mname="<%=s.getShopWriter()%>">
+									<i class="far fa-comment-dots" ></i>
+								</button>
+								<%} %>
 							
 							</td>
 						</tr>
@@ -108,22 +102,18 @@
 		
 		
 
+			<div>
+						<%
+				if (loginUser != null && loginUser.getM_no()==s.getShopWriterNo()) {
+			%>
+	
+			<button class="btn btn-danger float-right" id="delBtn" onclick="deleteBoard();">삭제</button>
+			<%
+				}
+			%>
+ 
 
- <!-- 추천/신고/채팅버튼 -->
-          <!-- 추천-->
-       <!--  <div class="btn1"  style="margin-left:1150px;">
-         	<button class="btn btn-lg border-0  " id="likeBtn"  >
-			<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
-			 </button> -->
-			 <!-- 신고-->
-           	<button class="btn btn-lg border-0  " id="angryBtn"  >
-			</i> <i class="fas fa-angry" style="font-size: 30px; "></i>
-            </button>
-             <!-- 채팅-->
-           	<button class="btn btn-lg border-0  " id="chatBtn" >
-            <i class="far fa-comment-dots" style="font-size: 30px;"></i>  
-            </button>
-         </div>
+    		</div>	
 
 
 

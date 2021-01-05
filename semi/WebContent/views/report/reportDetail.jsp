@@ -44,11 +44,9 @@
 	   			getBtn.text("게시글 조회하기");
        		
        		
-       		<% }else if(type==3){ %>
-	   			delBtn.text("게시글 삭제하기");
-	   			getBtn.text("게시글 조회하기");
        		
-       		<% }else if(type==4){ %>
+       		
+       		<% }else if(type==3){ %>
 	   			delBtn.text("사용자 블랙리스트 추가하기");
 	   			getBtn.remove();
 	   			
