@@ -162,6 +162,13 @@ public class BoardService {
 		return result1;
 	}
 
+	public ArrayList<Board> selectTopList() {
+		Connection conn = getConnection();
+		ArrayList<Board> list = new BoardDao().selectTopList(conn);
+		 close(conn);
+		return list;
+	}
+
 
 
 }

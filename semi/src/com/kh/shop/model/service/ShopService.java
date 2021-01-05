@@ -11,6 +11,7 @@ import com.kh.member.model.vo.Member;
 import com.kh.shop.model.dao.ShopDao;
 import com.kh.board.model.dao.BoardDao;
 import com.kh.board.model.vo.Attachment;
+import com.kh.board.model.vo.Board;
 import com.kh.shop.model.vo.Shop;
 
 public class ShopService {
@@ -85,6 +86,15 @@ public class ShopService {
 		}
 		close(conn);
 		return result1;
+	}
+
+
+
+	public ArrayList<Shop> selectShTopList() {
+		Connection conn = getConnection();
+		ArrayList<Shop> list = new ShopDao().selectShTopList(conn);
+		 close(conn);
+		return list;
 	}
 
 }
