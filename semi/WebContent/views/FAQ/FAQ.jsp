@@ -23,25 +23,25 @@
         <!--button type="button" class="showAll">답변 모두 여닫기</button-->
     </div>
     <ul class="faqBody">
-        <li class="article" id="a1">
-            <p class="q"><a href="#a1">질문1. 품앗이가 무엇인가요?</a></p>
+        <li class="article" id="a1" >
+            <p class="q"><a href="#a1">질문1. 품앗이란 무엇인가요??</a></p>
             <p class="a">품앗이란 <br>
             	                    세상에 둘도 없는것이다. </p>
         </li>
         <li class="article" id="a2">
-            <p class="q"><a href="#a2">질문2</a></p>
+            <p class="q"><a href="#a2">질문2. 탈퇴를 하고 싶은데 어떻게 해야되나요?</a></p>
             <p class="a">답변2입니다.</p>
         </li>
         <li class="article" id="a3">
-            <p class="q"><a href="#a3">질문3</a></p>
+            <p class="q"><a href="#a3">질문3. 채팅은 어떻게 하는 건가요?</a></p>
             <p class="a">답변3</p>
         </li>
          <li class="article" id="a4">
-            <p class="q"><a href="#a4">질문4</a></p>
+            <p class="q"><a href="#a4">질문4. 아이디랑 비번이 기억이 안나요</a></p>
             <p class="a">답변4</p>
         </li>
          <li class="article" id="a5">
-            <p class="q"><a href="#a5">질문5</a></p>
+            <p class="q"><a href="#a5">질문5. 품앗이 거래는 어떻게 하는건가요?</a></p>
             <p class="a">답변5</p>
         </li>
         
