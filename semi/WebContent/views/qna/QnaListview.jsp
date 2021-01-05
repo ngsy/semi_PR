@@ -25,11 +25,7 @@
 
 			<nav class="navbar navbar-light bg-light" id="navibar1">
 
-				<form class="d-flex">
-					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search"
-						aria-label="Search" align="right">
-					<button class="btn btn-outline-success" type="submit">search</button>
-				</form>
+				
 			<% if(loginUser != null){ %>
          	<a href="enrollForm.qo" class="btn btn-primary float-right" >글쓰기</a>
          	<% } %>

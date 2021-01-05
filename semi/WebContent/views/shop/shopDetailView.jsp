@@ -11,7 +11,9 @@
 
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">게시판상세보기</div>
+	<div class="card-header py-3"><h2>가게상세보기</h2></div>
+
+
 
 	<div class="card-body">
    <br>
@@ -39,7 +41,7 @@
 <div class="panel panel-default ">
    <div class="panel-heading"  style="background:#fff;">우리가게사진 </div>
  
-  <% for(int i=1; i<fileList.size(); i++){ %>
+  <% for(int i=0; i<fileList.size(); i++){ %>
    <div class="panel-body" style="display:inline-block;"  >
       <span ><img width="300px" height="250px" src="<%=contextPath%>/resources/board_upfiles/<%=fileList.get(i).getChangeName()%>" class="mg-fluid">  </span>
      
@@ -101,6 +103,8 @@
 		</div> <!-- container -->
 		
 		
+<!--  
+
 
 			<div>
 						<%
@@ -114,6 +118,7 @@
  
 
     		</div>	
+
 
 
 

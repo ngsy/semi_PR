@@ -40,18 +40,21 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		Member updateM = new MemberService().updateMember(new Member(userId,userName,phone,email));
 		
+	
+
 		if(updateM != null) {
-			request.getSession().setAttribute("msg", "회원정보를 수정 완료.");
-			request.getSession().setAttribute("logintUser",updateM);
+			request.setAttribute("alarm", "회원정보 수정 완료.");
+			request.getSession().setAttribute("loginUser",updateM);
 			
-			response.sendRedirect(request.getContextPath());
 			
 		}else {
-			request.setAttribute("msg", "회원정보 수정 실패.");
+			request.setAttribute("alarm", "회원정보 수정 실패.");
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
+		
 		}
+		
+		RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
+		view.forward(request, response);
 	
 	
 		

@@ -42,12 +42,17 @@ public class MemberPwdUpdateServlet extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
 		if(updateMem !=null) {
 
-			request.setAttribute("msg", "성공적으로 비밀번호를 변경하였습니다.");
+			request.setAttribute("alarm", "비밀번호 변경 성공!");
 			request.getSession().setAttribute("loginUser", updateMem);
 			
+			
+			
 		}else {
-			request.setAttribute("msg", "비밀번호 변경에 실패하였습니다.");
+			request.setAttribute("alarm", "비밀번호 변경 실패! 현재비밀번호를 확인하세요");
+		
+			System.out.println("비밀번호 변경 실패");
 		}
+
 		
 		view.forward(request, response);
 	}
