@@ -14,11 +14,7 @@ public class Shop {
 	private String status; // 게시글 상태값(Y, N)
 	private int shopWriterNo;
 	private String titleImg;
-	private double lat; //위도
-	private double lon; //경도
-	
- 	 private String region1;
- 	 private String region2;
+
  	 private String detailLocation;
  	//SHOP_NUMBER, SHOP_TITLE, SHOP_CONTENT, SHOP_LOCATION,
  	//SHOP_PHONENO, SHOP_READ_COUNT, SHOP_LIKE_COUNT, SHOP_WRITE_DATE, SHOP_STATUS, M_NO,REGION1, REGION2, DETAILLOCATION
@@ -31,7 +27,7 @@ public class Shop {
    
 	public Shop(int shopNo, String shopTitle, String shopContent, String phoneNo, int readCount, Date createDate, String detailLocation,
 			String shopWriter) {
-		super();
+		
 		this.shopNo = shopNo;
 		this.shopTitle = shopTitle;
 		this.shopContent = shopContent;
@@ -41,12 +37,44 @@ public class Shop {
 		this.shopWriter = shopWriter;
 		this.detailLocation = detailLocation;
 	}
+	
+	public Shop(int shopNo, String shopTitle, String shopContent, String phoneNo, int readCount, Date createDate, String detailLocation,
+			String shopWriter,int shopWriterNo) {
+		
+		this.shopNo = shopNo;
+		this.shopTitle = shopTitle;
+		this.shopContent = shopContent;
+		this.phoneNo = phoneNo;
+		this.readCount = readCount;
+		this.createDate = createDate;
+		this.shopWriter = shopWriter;
+		this.detailLocation = detailLocation;
+		this.shopWriterNo=shopWriterNo;
+	}
+
+
+
+
+
+	public Shop(int shopNo, String shopTitle, String shopContent, String phoneNo, int readCount, Date createDate,
+			String shopWriter, int shopWriterNo, String titleImg) {
+		
+		this.shopNo = shopNo;
+		this.shopTitle = shopTitle;
+		this.shopContent = shopContent;
+		this.phoneNo = phoneNo;
+		this.readCount = readCount;
+		this.createDate = createDate;
+		this.shopWriter = shopWriter;
+		this.shopWriterNo = shopWriterNo;
+		this.titleImg = titleImg;
+	}
 
 
 	public Shop(int shopNo, String shopTitle, String shopContent, String phoneNo, int readCount, int likeCount,
-			Date createDate, String shopWriter, String status, int shopWriterNo, String titleImg, double lat,
-			double lon, String region1, String region2, String detailLocation) {
-		super();
+			Date createDate, String shopWriter, String status, int shopWriterNo, String titleImg,
+			String detailLocation) {
+		
 		this.shopNo = shopNo;
 		this.shopTitle = shopTitle;
 		this.shopContent = shopContent;
@@ -58,26 +86,7 @@ public class Shop {
 		this.status = status;
 		this.shopWriterNo = shopWriterNo;
 		this.titleImg = titleImg;
-		this.lat = lat;
-		this.lon = lon;
-		this.region1 = region1;
-		this.region2 = region2;
 		this.detailLocation = detailLocation;
-	}
-
-
-	public Shop(int shopNo, String shopTitle, String shopContent, String phoneNo, int readCount, Date createDate,
-			String shopWriter, int shopWriterNo, String titleImg) {
-		super();
-		this.shopNo = shopNo;
-		this.shopTitle = shopTitle;
-		this.shopContent = shopContent;
-		this.phoneNo = phoneNo;
-		this.readCount = readCount;
-		this.createDate = createDate;
-		this.shopWriter = shopWriter;
-		this.shopWriterNo = shopWriterNo;
-		this.titleImg = titleImg;
 	}
 
 
@@ -191,46 +200,6 @@ public class Shop {
 	}
 
 
-	public double getLat() {
-		return lat;
-	}
-
-
-	public void setLat(double lat) {
-		this.lat = lat;
-	}
-
-
-	public double getLon() {
-		return lon;
-	}
-
-
-	public void setLon(double lon) {
-		this.lon = lon;
-	}
-
-
-	public String getRegion1() {
-		return region1;
-	}
-
-
-	public void setRegion1(String region1) {
-		this.region1 = region1;
-	}
-
-
-	public String getRegion2() {
-		return region2;
-	}
-
-
-	public void setRegion2(String region2) {
-		this.region2 = region2;
-	}
-
-
 	public String getDetailLocation() {
 		return detailLocation;
 	}
@@ -246,13 +215,10 @@ public class Shop {
 		return "Shop [shopNo=" + shopNo + ", shopTitle=" + shopTitle + ", shopContent=" + shopContent + ", phoneNo="
 				+ phoneNo + ", readCount=" + readCount + ", likeCount=" + likeCount + ", createDate=" + createDate
 				+ ", shopWriter=" + shopWriter + ", status=" + status + ", shopWriterNo=" + shopWriterNo + ", titleImg="
-				+ titleImg + ", lat=" + lat + ", lon=" + lon + ", region1=" + region1 + ", region2=" + region2
-				+ ", detailLocation=" + detailLocation + "]";
+				+ titleImg + ", detailLocation=" + detailLocation + "]";
 	}
+	
+	
 
 
-
-
-
- 	 
 }

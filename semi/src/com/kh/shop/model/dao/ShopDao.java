@@ -160,7 +160,7 @@ public class ShopDao {
 			if (rset.next()) {
 				s = new Shop(rset.getInt("SHOP_NUMBER"), rset.getString("SHOP_TITLE"), rset.getString("SHOP_CONTENT"),
 						rset.getString("SHOP_PHONENO"),  rset.getInt("SHOP_READ_COUNT"),
-						rset.getDate("SHOP_WRITE_DATE"),rset.getString("DETAILLOCATION"),rset.getString("ID"));
+						rset.getDate("SHOP_WRITE_DATE"),rset.getString("DETAILLOCATION"),rset.getString("M_NAME"),rset.getInt("M_NO"));
 
 			}
 		} catch (SQLException e) {
