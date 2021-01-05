@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList,com.kh.board.model.vo.*" %>
-
+  
 <% 
 	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
@@ -21,17 +21,8 @@
 				<h2  >우리마을 게시판</h2>
 </div>
 
-	<div class="card-body">
 
-
-
-			<nav class="navbar navbar-light bg-light" id="navibar1">
-
-				<form class="d-flex">
-					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
-				
+		
 	
 		<% if(loginUser != null){ %>
          	<a href="enrollForm.bo" class="btn btn-primary float-right" >글쓰기</a>
