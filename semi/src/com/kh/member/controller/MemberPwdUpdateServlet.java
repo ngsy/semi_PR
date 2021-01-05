@@ -13,16 +13,16 @@ import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberUpdateServlet
+ * Servlet implementation class MemberPwdUpdateServlet
  */
-@WebServlet("/update.me")
-public class MemberUpdateServlet extends HttpServlet {
+@WebServlet("/updatePwd.me")
+public class MemberPwdUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberUpdateServlet() {
+    public MemberPwdUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,29 +33,25 @@ public class MemberUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String userId = request.getParameter("userId");
-		String userName = request.getParameter("userName");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
+		String userId = ((Member)request.getSession().getAttribute("loginUser")).getId();		
+		String userPwd = request.getParameter("userPwd");
+		String newPwd = request.getParameter("newPwd");
 		
-		Member updateM = new MemberService().updateMember(new Member(userId,userName,phone,email));
+		Member updateMem = new MemberService().updatePwd(userId,userPwd,newPwd);
 		
-		if(updateM != null) {
-			request.getSession().setAttribute("msg", "회원정보를 수정 완료.");
-			request.getSession().setAttribute("logintUser",updateM);
-			
-			response.sendRedirect(request.getContextPath());
+		RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
+		if(updateMem !=null) {
+
+			request.setAttribute("msg", "성공적으로 비밀번호를 변경하였습니다.");
+			request.getSession().setAttribute("loginUser", updateMem);
 			
 		}else {
-			request.setAttribute("msg", "회원정보 수정 실패.");
-			
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
+			request.setAttribute("msg", "비밀번호 변경에 실패하였습니다.");
 		}
-	
-	
 		
+		view.forward(request, response);
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

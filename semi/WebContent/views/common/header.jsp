@@ -140,8 +140,9 @@ String msg =(String)session.getAttribute("msg");
 		  </a>
 		
 		  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" 	style="text-align: center;" >
-		    <li><a class="dropdown-item" href="#">마이페이지</a></li>
-		    <li><a class="dropdown-item" href="#">테스트</a></li>
+		    <li><a class="dropdown-item" href="<%=contextPath%>/updateForm.me">마이페이지</a></li>
+
+
 		    <li><a class="dropdown-item" href="<%=contextPath%>/list.re?page=1">관리하기</a></li>
 		    
 		    <li><hr></li>
