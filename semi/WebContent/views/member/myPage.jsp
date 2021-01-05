@@ -16,14 +16,30 @@
 	String phone =loginUser.getPhone();
 	String email =loginUser.getEmail();
 	
-	String originPwd =(String)session.getAttribute("originPwd");
 
-
+	String originPwd=(String)session.getAttribute("originPwd");
 	
-	System.out.println("originPwd"+originPwd);
+	String alarm =(String)request.getAttribute("alarm");
 	
+	System.out.println("orginPwd 마이페이지:  "+originPwd);
+	
+	String pwdCk ="";
 
 %>
+
+
+<!-- 알림창 -->
+<script>
+
+
+	var alarm = "<%= alarm %>";
+	$(function(){
+		if(alarm != "null"){
+			alert(alarm);
+		}
+	
+	});
+</script>
 
 
   		<div class="card shadow mb-4">
@@ -55,7 +71,7 @@
 				
 	<form id="updateForm" action="<%=request.getContextPath()%>/update.me" method="post">
 	
-			<table>
+			<table align="center">
 				<tr>
 					<td width="200px"> 아이디</td>
 					<td><input type="text" class="form-control"  maxlength="13" name="userId"
@@ -105,9 +121,9 @@
 				      
 				      	<form id="updatePwdForm" action="<%= request.getContextPath() %>/updatePwd.me" method="post">
 							
+							pwdCk =prompt("비밀번호를 입력해주새요");
 							
-							
-							<table>
+							<table align="center">
 								<tr>
 									<td><label>현재 비밀번호</label>
 									<td><input type="password" class="form-control"  name="userPwd" id="userPwd"></td>
@@ -158,7 +174,7 @@
 	<script>
 		function checkPwd(){
 			
-
+			var userPwd = $("#userPwd");
 			var newPwd = $("input[name='newPwd']");
 			var checkPwd = $("input[name='checkPwd']");
 			

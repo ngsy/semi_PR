@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 				
 				session.setAttribute("originPwd", originPwd);
 				
-				System.out.println("originPwd: "+originPwd);
+				System.out.println("originPwd: 로그인 서블릿     "+originPwd);
 				
 				response.sendRedirect(request.getContextPath());
 				

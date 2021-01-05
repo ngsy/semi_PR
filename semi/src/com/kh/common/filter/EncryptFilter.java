@@ -40,7 +40,7 @@ public class EncryptFilter implements Filter {
 
 	
 		EncryptWrapper encRequest = new EncryptWrapper((HttpServletRequest)request);
-
+		request.setAttribute("originPwd",request.getParameter("userPwd"));
 		
 		chain.doFilter(encRequest, response);
 	}
