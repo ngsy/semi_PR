@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
 <%@ page
 	import="java.util.ArrayList,com.kh.board.model.vo.*, com.kh.shop.model.vo.*"%>
 
@@ -137,13 +139,14 @@ Reply r = (Reply) request.getAttribute("r");
 
 
 	<!-- 댓글 관련 영역 -->
-	<div class="replyArea">
+
+ <div  style="background:#fff;  border-line:none;">
 		<!-- 댓글 작성하는 div -->
 	
 			
 				<% if(loginUser != null){ %>
 					
-				<div class="input-group mb-3" style="width:800px; margin-left:25%;">
+				<div class="input-group mb-3" style="width:800px; margin-left:30%;">
 				
 				
 				  <textarea class="form-control" id="replyContent"  style="resize:none; text-align:left;"  rows="3" placeholder="댓글을 작성해주세요"></textarea>	  
@@ -152,21 +155,17 @@ Reply r = (Reply) request.getAttribute("r");
 				</div>
 				
 				<% }else{ %>
-				<div class="input-group mb-3" style="width:800px; margin-left:25%;">
+				<div class="input-group mb-3" style="width:800px; ">
 				<textarea class="form-control" id="replyContent"  style="resize:none; text-align:center;"  rows="3" placeholder="로그인 후  댓글을 작성해 주세요"></textarea>
 					</div>
 				<% } %>
 	
 		
-		
+	
 		<!-- 댓글 리스트들 보여주는 div -->
-		<div id="replyListArea" >
-			<table class="table datarow" id="replyList" align="center"  style="width:800px;" >
-			 <thead>
-			     <tr>
-				  
-				    </tr>
-			 	</thead>
+
+			<table class="table" id="replyList" align="center"  style="width:800px; " >
+		  <tbody>
 				<!-- <tr>
 					<td width="100px">admin</td>
 					<td width="330px">댓글작성내용</td>
@@ -184,8 +183,10 @@ Reply r = (Reply) request.getAttribute("r");
 				</tr> -->
 			
 			</table>
-		</div>
-	</div> 
+	
+ </div>
+
+
 	<script>
 	  $(function(){
 		 selectReplyList(); 

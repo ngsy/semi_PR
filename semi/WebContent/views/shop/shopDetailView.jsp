@@ -18,7 +18,7 @@
 			<%
 				if (loginUser != null && loginUser.getId().equals(s.getShopWriter())) {
 			%>
-			<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정</button>
+	<!-- 	<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정</button> -->	
 			<button class="btn btn-danger" id="delBtn" onclick="deleteBoard();">삭제</button>
 			<%
 				}
@@ -111,10 +111,10 @@
 
  <!-- 추천/신고/채팅버튼 -->
           <!-- 추천-->
-         <div class="btn1"  style="margin-left:1150px;">
+       <!--  <div class="btn1"  style="margin-left:1150px;">
          	<button class="btn btn-lg border-0  " id="likeBtn"  >
 			<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
-			 </button> 
+			 </button> -->
 			 <!-- 신고-->
            	<button class="btn btn-lg border-0  " id="angryBtn"  >
 			</i> <i class="fas fa-angry" style="font-size: 30px; "></i>
