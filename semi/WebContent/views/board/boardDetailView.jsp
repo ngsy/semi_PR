@@ -16,20 +16,10 @@ Reply r = (Reply) request.getAttribute("r");
 
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">게시판상세보기</div>
+	<div class="card-header py-3"><h2>게시물상세보기<h2></h2></div>
 
 	<div class="card-body">
-		<div class="btn3" style="margin-left: 70%;">
-			<%
-				if (loginUser != null && loginUser.getId().equals(b.getBoardWriter())) {
-			%>
-			<button class="btn btn-primary" id="updateBtn"	onclick="updateForm();">수정</button>
-			<button class="btn btn-danger" id="delBtn" onclick="deleteBoard();">삭제</button>
-			<%
-				}
-			%>
 
-		</div>
 		<br>
 
 		<form action="" id="postForm" method="post">
@@ -63,8 +53,16 @@ Reply r = (Reply) request.getAttribute("r");
 						<tr>
 							<td style="width: 20%; text-align: left">작성자|</td>
 							<td colspan="2" style="text-align: left"><%=b.getBoardWriter()%>
-
-
+											<!-- 신고-->
+								<button class="btn" id="angryBtn">
+									</i> <i class="fas fa-angry" ></i>
+								</button>
+								<!-- 채팅-->
+								<% if(loginUser.getM_no()!= b.getBoardWriterNo()){%>
+								<button class="btn" id="chatBtn" data-mno2="<%=b.getBoardWriterNo() %>" data-mname="<%=b.getBoardWriter()%>">
+									<i class="far fa-comment-dots" ></i>
+								</button>
+								<%} %>
 							</td>
 						</tr>
 						<tr>
@@ -112,22 +110,28 @@ Reply r = (Reply) request.getAttribute("r");
 
 
 
-		<!-- 추천/신고/채팅버튼 -->
-		<!-- 추천-->
-		<div class="btn1" style="margin-left: 1150px;">
-			<button class="btn btn-lg border-0  " id="likeBtn">
+
+ 		<div>
+ 			<%
+				if (loginUser != null && loginUser.getM_no()==b.getBoardWriterNo()) {
+			%>
+			<button class="btn btn-primary float-left" id="updateBtn"
+				onclick="updateForm();">수정</button>
+			<button class="btn btn-danger float-left" id="delBtn" onclick="deleteBoard();">삭제</button>
+			<%
+				}
+			%>
+ 		
+ 			<button class="btn btn-lg border-0  float-right" id="likeBtn">
 				<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
 			</button>
-			<!-- 신고-->
-			<button class="btn btn-lg border-0  " id="angryBtn">
+			
+			<button class="btn btn-lg border-0 float-right " id="angryBtn">
 				</i> <i class="fas fa-angry" style="font-size: 30px;"></i>
 			</button>
-			<!-- 채팅-->
-			<button class="btn btn-lg border-0  " id="chatBtn">
-				<i class="far fa-comment-dots" style="font-size: 30px;"></i>
-			</button>
-		</div>
-
+ 		
+ 		
+ 		</div>
 
 
 		<div class="btn2" align="center">
@@ -137,8 +141,25 @@ Reply r = (Reply) request.getAttribute("r");
 		<br> <br>
 
 
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				댓글 <span class="pull-right">
+					<button type="button" class="btn btn-primary btn-xs"
+						data-toggle="modal" data-target="#replyModal">쓰기</button>
+				</span>
+			</div>
+			<div class="panel-body">
+				<ul class="list-group" id="replyList">
+				
+				</ul>
+			</div>
+		</div>
+
+
 
 	<!-- 댓글 관련 영역 -->
+
+
 
  <div  style="background:#fff;  border-line:none;">
 		<!-- 댓글 작성하는 div -->
@@ -152,6 +173,7 @@ Reply r = (Reply) request.getAttribute("r");
 				  <textarea class="form-control" id="replyContent"  style="resize:none; text-align:left;"  rows="3" placeholder="댓글을 작성해주세요"></textarea>	  
 			
 				 <button type="submit" class="btn btn-primary mb-3"id="addReply" "> 등록</button>
+
 				</div>
 				
 				<% }else{ %>

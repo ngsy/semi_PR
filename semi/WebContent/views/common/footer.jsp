@@ -26,7 +26,7 @@
 			
 	
 		 chatListWS=new WebSocket("ws://localhost:8090/semi/chatList");
-
+		 chatWS=new WebSocket("ws://localhost:8090/semi/chat"); //채팅방 접속 
 			// WebSocket 서버와 접속이 되면 호출되는 함수
 			chatListWS.onopen = function(message) {
 				chatListWS.send(mno);
@@ -41,10 +41,14 @@
 			};
 			// WebSocket 서버로 부터 메시지가 오면 호출되는 함수
 			chatListWS.onmessage = function(message) {
-			
+				handleChatRoomMessage(message.data);
 
 			
-			};  
+			}; 
+			
+			 chatWS.onmessage=function(message){
+				 handleChatMessage(message.data);
+			 };
 		  
 		  <% }%>
 	  });
@@ -173,7 +177,7 @@
 					</div>
 					<div id="chatSend">
 						<textarea id="chatWriteArea" class="form-control"></textarea>
-						<button id="chatSendBtn" class="btn btn-primary">Send</button>
+						<button id="chatSendBtn" class="btn btn-primary" disabled>Send</button>
 					</div> 
 				
 	

@@ -12,14 +12,12 @@ public class ChatRoomEncoder implements Encoder.Text<ChatRoom>{
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		System.out.println("ChatEncoder is closing");
+		
 	}
 
 	@Override
 	public void init(EndpointConfig arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("ChatEncoder is initializing");
+	
 	}
 
 	@Override

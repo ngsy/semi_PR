@@ -13,14 +13,13 @@ public class ChatEncoder implements Encoder.Text<Chat>{
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		System.out.println("ChatEncoder is closing");
+		
 
 	}
 
 	@Override
 	public void init(EndpointConfig arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("ChatEncoder is initializing");
+		
 	}
 
 	@Override
