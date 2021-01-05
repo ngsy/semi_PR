@@ -260,4 +260,109 @@ BLACKLIST*/
 		return m;
 	}
 
+	public int updateMember(Connection conn, Member m) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, m.getM_name());
+			pstmt.setString(2,m.getPhone());
+			pstmt.setString(3,m.getEmail());
+			pstmt.setNString(4, m.getId());
+			
+			result =pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public Member selectMember(Connection conn, String id) {
+		Member m =null;
+		
+		PreparedStatement pstmt =null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m =new Member(
+						
+						rset.getInt("M_NO"),
+						rset.getString("M_NAME"),
+						rset.getString("ID"),
+						rset.getString("PASSWORD"),
+						rset.getString("PHONE"),
+						rset.getString("EMAIL"),
+						rset.getString("STATUS"),
+						rset.getInt("REPORT_COUNT"),
+						rset.getInt("GRADE"),
+						rset.getDouble("LATITUDE"),
+						rset.getDouble("LONGITUDE"),
+						rset.getString("REGION1"),
+						rset.getString("REGION2"),
+						rset.getString("BLACKLIST")
+						
+						);
+						
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return m;
+	}
+
+	public int updatePwd(Connection conn, String userId, String userPwd, String newPwd) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updatePwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,newPwd);
+			pstmt.setString(2,userId);
+			pstmt.setString(3, userPwd);
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

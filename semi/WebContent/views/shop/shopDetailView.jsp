@@ -18,7 +18,7 @@
 			<%
 				if (loginUser != null && loginUser.getId().equals(s.getShopWriter())) {
 			%>
-			<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정</button>
+	<!-- 	<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정</button> -->	
 			<button class="btn btn-danger" id="delBtn" onclick="deleteBoard();">삭제</button>
 			<%
 				}
@@ -38,7 +38,7 @@
 			function deleteBoard(){
 				
 				 if (confirm("정말 삭제하시겠습니까?"))
-		   	     $("#postForm").attr("action", "<%=contextPath%>/deleteB.bo");
+		   	     $("#postForm").attr("action", "<%=contextPath%>/deleteS.bo");
 				 $("#postForm").submit();
 			}
 		</script>
@@ -46,18 +46,17 @@
 		<div class="container">
 			<div class="row ">
 		
-
-
-   <div>
-   <th>사진</th>
+<div class="panel panel-default ">
+   <div class="panel-heading"  style="background:#fff;">우리가게사진 </div>
+ 
   <% for(int i=1; i<fileList.size(); i++){ %>
- 
-      <img width="200px" height="150px"  src="<%=contextPath%>/resources/board_upfiles/<%=fileList.get(i).getChangeName()%>" class="mg-fluid">
- 
+   <div class="panel-body" style="display:inline-block;"  >
+      <span ><img width="300px" height="250px" src="<%=contextPath%>/resources/board_upfiles/<%=fileList.get(i).getChangeName()%>" class="mg-fluid">  </span>
+     
+     </div>
 	<% } %>
-
-   </div>
-
+   
+</div>
 
 
 	
@@ -112,10 +111,10 @@
 
  <!-- 추천/신고/채팅버튼 -->
           <!-- 추천-->
-         <div class="btn1"  style="margin-left:1150px;">
+       <!--  <div class="btn1"  style="margin-left:1150px;">
          	<button class="btn btn-lg border-0  " id="likeBtn"  >
 			<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
-			 </button> 
+			 </button> -->
 			 <!-- 신고-->
            	<button class="btn btn-lg border-0  " id="angryBtn"  >
 			</i> <i class="fas fa-angry" style="font-size: 30px; "></i>

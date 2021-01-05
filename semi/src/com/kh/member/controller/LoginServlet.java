@@ -39,6 +39,8 @@ public class LoginServlet extends HttpServlet {
 
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
+		
+		String originPwd =(String) request.getAttribute("originPwd");
 	
 		
 		Member loginUser = new MemberService().loginMember(userId,userPwd);
@@ -51,6 +53,10 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser",loginUser);
 				session.setAttribute("userPwd", userPwd);
+				
+				session.setAttribute("originPwd", originPwd);
+				
+				System.out.println("originPwd: "+originPwd);
 				
 				response.sendRedirect(request.getContextPath());
 				

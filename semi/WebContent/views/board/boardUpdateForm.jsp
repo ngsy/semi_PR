@@ -45,7 +45,8 @@ Attachment at =(Attachment)request.getAttribute("at");
 
 
 				<button type="submit" class="btn btn-primary">글수정 </button>
-				<button type="reset" class="btn btn-danger">취소하기</button>
+				<button class="btn btn-danger"onclick="location.href='<%=contextPath%>/list.bo?currentPage=1';">취소하기</button>
+		
 			</form>
 		</div>
 		<script>

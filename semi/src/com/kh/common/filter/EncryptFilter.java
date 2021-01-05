@@ -16,7 +16,7 @@ import com.kh.common.wrapper.EncryptWrapper;
 /**
  * Servlet Filter implementation class EncryptFilter
  */
-@WebFilter(filterName ="encodingFilter",urlPatterns={"/insert.me","/login.me","/updatePwd.me"}) //"/updatePwd.me"추후 추가예정  
+@WebFilter(filterName ="encodingFilter",urlPatterns={"/insert.me","/login.me","/updatePwd.me"}) 
 public class EncryptFilter implements Filter {
 
     /**

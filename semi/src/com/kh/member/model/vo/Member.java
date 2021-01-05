@@ -85,7 +85,13 @@ public class Member {
 		this.grade = grade;
 	}
 	
-	
+	public Member(String id,String m_name,String phone, String email) {
+		this.id = id;
+		this.m_name =m_name;
+		this.phone = phone;
+		this.email = email;
+		
+	}
 	
 	
 	

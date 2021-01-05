@@ -110,9 +110,7 @@
 		<%if (!list.isEmpty()) {%>
 		$(function(){
 			$(".listArea>tbody>tr").click(function(){
-				console.log("먹어?")
 				var qno = $(this).children().eq(0).text();
-				console.log(qno)
 				
 			
 				location.href="<%= contextPath %>/detail.qo?qno=" + qno;

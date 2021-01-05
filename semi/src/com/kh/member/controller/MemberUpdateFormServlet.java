@@ -9,20 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.member.model.service.MemberService;
-import com.kh.member.model.vo.Member;
-
 /**
- * Servlet implementation class MemberUpdateServlet
+ * Servlet implementation class MemberUpdateFormServlet
  */
-@WebServlet("/update.me")
-public class MemberUpdateServlet extends HttpServlet {
+@WebServlet("/updateForm.me")
+public class MemberUpdateFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberUpdateServlet() {
+    public MemberUpdateFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,29 +28,11 @@ public class MemberUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		
-		String userId = request.getParameter("userId");
-		String userName = request.getParameter("userName");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
+		RequestDispatcher view =request.getRequestDispatcher("views/member/myPage.jsp");
+		view.forward(request, response);
+
 		
-		Member updateM = new MemberService().updateMember(new Member(userId,userName,phone,email));
-		
-		if(updateM != null) {
-			request.getSession().setAttribute("msg", "회원정보를 수정 완료.");
-			request.getSession().setAttribute("logintUser",updateM);
-			
-			response.sendRedirect(request.getContextPath());
-			
-		}else {
-			request.setAttribute("msg", "회원정보 수정 실패.");
-			
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
-		}
-	
-	
 		
 	}
 
