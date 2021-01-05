@@ -14,7 +14,7 @@
 	<div class="card-body">
          	<div class="btn3" style="margin-left:70%;">
 			<%
-				if (loginUser != null) {
+				if (loginUser != null && loginUser.getM_no()  == n.getNoticeWriterNo()) {
 			%>
 			<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정</button>
 			<button class="btn btn-danger" id="delBtn" onclick="deleteNotice();">삭제</button>
