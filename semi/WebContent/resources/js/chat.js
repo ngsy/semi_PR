@@ -257,7 +257,13 @@
 			
 			alert("채팅은 200자 미만으로 입력해주세요");
 			return;
-		}else{
+		}
+		
+		if(!chatArea.val()){
+			alert("채팅 내용을 입력해주세요");
+			return;
+			
+		}
 			//메세지 보내기
 			var jsonChat={chatSender:mno,chatReceiver:mno2,chatContent:chatArea.val()};
 			chatWS.send(JSON.stringify(jsonChat));
@@ -265,7 +271,7 @@
 			$("#chatView").scrollTop($("#chatView").height());
 			
 			
-		}
+		
 		
 		
 	});

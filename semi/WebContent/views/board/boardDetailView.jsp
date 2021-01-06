@@ -124,12 +124,11 @@ Reply r = (Reply) request.getAttribute("r");
  		
  		<!--button class="btn btn-lg border-0  float-right" id="likeBtn">
 				<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
-			</button>
+			</button> -->
 			
 			<button class="btn btn-lg border-0 float-right " id="boardReportBtn">
 				</i> <i class="fas fa-angry" style="font-size: 30px;"></i>
-			</button>  -->	
- 		
+			</button>  
  		
  		</div>
 
@@ -199,7 +198,7 @@ Reply r = (Reply) request.getAttribute("r");
 
 			</div>
 	</div> 
- </div>
+ 
  <!--게시글 신고 모달  -->
 	<div class="modal" id="boardReportModal" tabindex="-1">
 	  <div class="modal-dialog">
@@ -237,7 +236,7 @@ Reply r = (Reply) request.getAttribute("r");
 	    
 	    </div>
 	  </div>
-
+	</div>
 
  <!-- 사용자 신고 모달  -->
 	<div class="modal" id="userReportModal" tabindex="-1">
@@ -279,7 +278,7 @@ Reply r = (Reply) request.getAttribute("r");
 	  </div>
 	</div>
  <!--댓글 신고 모달  -->
-	<div class="modal" id="replyReportModal" tabindex="-1">
+	<div class="modal" id="replyReportModal" tabindex="-1" >
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -368,10 +367,16 @@ Reply r = (Reply) request.getAttribute("r");
 					value += '<tr>' + 
 								'<td width="100px" height="150px" ">작성자|<br>' + list[i].replyWriter+'<br>'+'<div style=" font-size:5px; color:#7CAA7A;">' +list[i].createDate+'</div>' + '</td>' +
 								'<td width="200px" height="150px">' + list[i].replyContent + '</td>' + 
-								'<td width="100px" >' +'<button class="btn btn-danger" id="delRBtn" onclick="" style="width:50px; font-size:5px;"> 삭제 </button>'
-							 	+'<button class="btn btn-lg border-0  replyReportBtn" ></i> <i class="fas fa-angry" style="font-size: 25px; "></i></button>' +'</td>' + 
-							
-							 '</tr>';
+								'<td width="100px" >' ;
+								
+						if(list[i].replyWriterNo==<%=loginUser.getM_no()%>){		
+					value+=	'<button class="btn btn-danger" id="delRBtn" data-rno="'+list[i].replyId+'"  style="width:50px; font-size:5px;"> 삭제 </button>';
+						}
+					
+					value+='<button class="btn btn-lg border-0  replyReportBtn" data-rno="'+list[i].replyId+'"></i> <i class="fas fa-angry" style="font-size: 25px; "></i></button>' +'</td></tr>';
+			
+				
+				
 				}				
 				
 				   $("#replyList").html(value);
@@ -431,73 +436,184 @@ $("#replyDelBtn").click(function(){
 	</div>
 	<!-- card end -->
 <script>
+$(function(){
+	
+	var boardModal=$("#boardReportModal");
+	var replyModal=$("#replyReportModal");
+	var userModal=$("#userReportModal");
+	
+	
+	//게시글신고모달에서 보내기 버튼 클릭했을 때
+	$("#boardReportModalSendBtn").on("click",function(){
+		
+		var category=boardModal.find("option:selected").val();
+		var content=boardModal.find(".reportContent").val();
+		
+		if(!category){
+			alert("신고이유를 선택하세요");
+			return;
+		}
+		if(!content){
+			alert("신고내용을 입력하세요");
+			return;
+		}
+		if(content.length>199){
+			alert("신고내용은 200자 이하로 입력하세요");
+			return;
+		}
+		
+		boardModal.find(".reportContent").val("");
+		boardModal.find("option").eq(0).attr("selected",true);
+		
+		var jsonObj={objNo:<%=b.getBoardNo()%>,type:2,category:category,content:content,mno:<%=loginUser.getM_no()%>};
+		
+		console.log(jsonObj);
+		
+		sendReport(jsonObj);
+		
+		boardModal.modal("hide");
+		
+	});
+	//댓글신고모달에서 보내기 버튼 클릭했을 때
+	$("#replyReportModalSendBtn").on("click",function(){
+		
+		var category=replyModal.find("option:selected").val();
+		var content=replyModal.find(".reportContent").val();
+		
+		if(!category){
+			alert("신고이유를 선택하세요");
+			return;
+		}
+		if(!content){
+			alert("신고내용을 입력하세요");
+			return;
+		}
+		if(content.length>199){
+			alert("신고내용은 200자 이하로 입력하세요");
+			return;
+		}
+		
+		replyModal.find(".reportContent").val("");
+		replyModal.find("option").eq(0).attr("selected",true);
+		
+		var jsonObj={objNo:replyModal.data("rno"),type:1,category:category,content:content,mno:<%=loginUser.getM_no()%>};
+		
+		console.log(jsonObj);
+		
+		sendReport(jsonObj);
+		
+		replyModal.modal("hide");
+		
+	});
+	
+	//사용자신고모달에서 보내기 버튼 클릭했을 때
+	$("#userReportModalSendBtn").on("click",function(){
+		
+		var category=userModal.find("option:selected").val();
+		var content=userModal.find(".reportContent").val();
+		
+		if(!category){
+			alert("신고이유를 선택하세요");
+			return;
+		}
+		if(!content){
+			alert("신고내용을 입력하세요");
+			return;
+		}
+		if(content.length>199){
+			alert("신고내용은 200자 이하로 입력하세요");
+			return;
+		}
+		
+		userModal.find(".reportContent").val("");
+		userModal.find("option").eq(0).attr("selected",true);
+		
+		var jsonObj={objNo:<%=b.getBoardWriterNo()%>,type:3,category:category,content:content,mno:<%=loginUser.getM_no()%>};
+		
+		console.log(jsonObj);
+		
+		sendReport(jsonObj);
+		
+		userModal.modal("hide");
+		
+	});
+	
+	function sendReport(obj){
+		
+		
+		$.ajax({
+			
+			url:"insert.re",
+			type:"post",
+			data:obj,
+			success:function(){
+				alert("신고 등록 완료");
+			},
+			error:function(){
+				
+				console.log("신고 보내기 실패");
+			}
+			
+		
+		});
+	}
+	
+	
+	
+	//모달 보이기 , 숨기기 설정 
+	$("#userReportBtn").on("click",function(){
+		
+		userModal.modal("show");
+		
+		
+	});
+	
+	$("#replyList").on("click",".replyReportBtn",function(){
+		
+		var rno=$(this).data("rno");
+		replyModal.data("rno",rno);
+		
+		replyModal.modal("show");
+		
+		
+	});
+	
+	$("#boardReportBtn").on("click",function(){
+		
+		boardModal.modal("show");
+	
+		
+	});
+	
+	$("#boardReportModalHideBtn").on("click",function(){
+		
+		boardModal.find(".reportContent").val("");
+		boardModal.find("option").eq(0).attr("selected",true);
+		
+		boardModal.modal("hide");
+		
+		
+	});
+	
+	$("#userReportModalHideBtn").on("click",function(){
+		
+		
+		userModal.find(".reportContent").val("");
+		userModal.find("option").eq(0).attr("selected",true);
+		userModal.modal("hide");
+		
+		
+	});
+	
+	$("#replyReportModalHideBtn").on("click",function(){
+		replyModal.find(".reportContent").val("");
+		replyModal.find("option").eq(0).attr("selected",true);
+		replyModal.modal("hide");
+		
+		
+	});
 
-var boardModal=$("#boardReportModal");
-var replyModal=$("#replyReportModal");
-var userModal=$("#userReportModal");
-
-
-//모달에서 보내기 버튼 클릭했을 때
-$("#boardReportModalSendBtn").on("click",function(){
-	
-	var category=boardModal.find("option:selected")
-	
-	
-	var jsonObj={objNo:<%=b.getBoardNo()%>,type:2,category:"",content:"",mno:<%=loginUser.getM_no()%>};
-	
-	
-	
 });
-
-
-
-
-//모달 보이기 , 숨기기 설정 
-$("#userReportBtn").on("click",function(){
-	
-	userModal.modal("show");
-	
-	
-});
-
-$("#replyList").on("click",".replyReportBtn",function(){
-	
-	replyModal.modal("show");
-	
-	
-});
-
-$("#boardReportBtn").on("click",function(){
-	
-	boardModal.modal("show");
-	
-	
-	
-	
-});
-
-$("#boardReportModalHideBtn").on("click",function(){
-	
-	boardModal.modal("hide");
-	
-	
-});
-
-$("#userReportModalHideBtn").on("click",function(){
-	
-	userModal.modal("hide");
-	
-	
-});
-
-$("#replyReportModalHideBtn").on("click",function(){
-	
-	replyModal.modal("hide");
-	
-	
-});
-
-
 </script>
 
 	<%@ include file="../common/footer.jsp"%>

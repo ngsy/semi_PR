@@ -1,7 +1,6 @@
 package com.kh.report.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.common.PageDto;
+import com.kh.board.model.service.BoardService;
+import com.kh.board.model.vo.Attachment;
+import com.kh.board.model.vo.Board;
 import com.kh.report.model.service.ReportService;
-import com.kh.report.model.vo.Report;
 
 /**
- * Servlet implementation class ReportListServlet
+ * Servlet implementation class GetBoardServlet
  */
-@WebServlet("/list.re")
-public class ReportListServlet extends HttpServlet {
+@WebServlet("/getBoard")
+public class GetBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReportListServlet() {
+    public GetBoardServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,33 +33,21 @@ public class ReportListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int curPage=Integer.parseInt(request.getParameter("page"));
+		int bno=Integer.parseInt(request.getParameter("bno"));
 		
-		int total=new ReportService().getTotalCount();
+		Board b = new ReportService().selectBoard(bno);
+		Attachment at = new ReportService().selectAttachment(bno);
 		
-		
-		PageDto pageDto=new PageDto(total,curPage);
-		ArrayList<Report> list=new ReportService().getReportList(pageDto);
-		
-
-		
-		
-		if(list!=null) {
-			request.setAttribute("list", list);
+		if(b != null) {
 			
-			request.setAttribute("pageDto", pageDto);
-			request.getRequestDispatcher("views/report/reportList.jsp").forward(request, response);
-			
+			request.setAttribute("b", b);
+			request.setAttribute("at", at);
+			request.getRequestDispatcher("views/report/boardDetail.jsp").forward(request, response);
 		}else {
 			
-			request.setAttribute("msg", "신고 리스트 조회 실패");
+			request.setAttribute("msg", "게시판 상세조회 실패");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
-		
-		
-		
-		
 	}
 
 	/**

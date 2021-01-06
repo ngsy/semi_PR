@@ -1,7 +1,6 @@
 package com.kh.report.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.common.PageDto;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.kh.board.model.vo.Reply;
 import com.kh.report.model.service.ReportService;
-import com.kh.report.model.vo.Report;
 
 /**
- * Servlet implementation class ReportListServlet
+ * Servlet implementation class GetReplytoReport
  */
-@WebServlet("/list.re")
-public class ReportListServlet extends HttpServlet {
+@WebServlet("/getReply")
+public class GetReplytoReport extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReportListServlet() {
+    public GetReplytoReport() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,33 +33,17 @@ public class ReportListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int curPage=Integer.parseInt(request.getParameter("page"));
+		int rno=Integer.parseInt(request.getParameter("rno"));
 		
-		int total=new ReportService().getTotalCount();
+		Reply r=new ReportService().getReply(rno);
 		
-		
-		PageDto pageDto=new PageDto(total,curPage);
-		ArrayList<Report> list=new ReportService().getReportList(pageDto);
-		
-
-		
-		
-		if(list!=null) {
-			request.setAttribute("list", list);
+		if(r!=null) {
 			
-			request.setAttribute("pageDto", pageDto);
-			request.getRequestDispatcher("views/report/reportList.jsp").forward(request, response);
+			response.setContentType("application/json; charset=utf-8");
 			
-		}else {
-			
-			request.setAttribute("msg", "신고 리스트 조회 실패");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(r,response.getWriter());
 		}
-		
-		
-		
-		
-		
 	}
 
 	/**

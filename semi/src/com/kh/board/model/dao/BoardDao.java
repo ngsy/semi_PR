@@ -277,7 +277,7 @@ public class BoardDao {
 			//REPLY_NO, REPLY_CONTENT, USER_ID, CREATE_DATE
 			list.add(new Reply(rs.getInt("REPLY_NUMBER"),
 					            rs.getString("REPLY_CONTENT"),
-					            rs.getString("ID"),
+					            rs.getString("M_NAME"),
 					            rs.getDate("R_WRITE_DATE"),
 					            rs.getInt("M_NO")
 					              )) ;
@@ -438,6 +438,8 @@ public class BoardDao {
 
 		return result;
 	}
+
+
 
 	
 }
