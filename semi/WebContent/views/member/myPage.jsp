@@ -228,7 +228,7 @@
 			$("#updatePwdForm").submit();
 		}
 		
-		<!-- 회원탈퇴 함수 -->	
+
 
 		function deleteMember(){
 			var pwd = prompt("현재 비밀번호를 입력해 주세요.");
