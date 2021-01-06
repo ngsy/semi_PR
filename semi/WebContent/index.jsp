@@ -37,7 +37,7 @@
 
 </style>
       
-        <!-- Masthead-->
+        <!-- Mastheaddf-->
         <header class="masthead bg-primary text-white text-center">
         
             <div class="container d-flex align-items-center flex-column">
@@ -170,10 +170,10 @@
 			
 			$("#thumbList").on("click",".thumb",function(){ 
 				var sNo =$(this).children().eq(0).val();
-				  <% if (loginUser == null ) { %>
+			
 			
 				window.open("<%=contextPath%>/detailTop.sh?sNo="+ sNo, '_blank'); 
-				<%}%>
+			
 			});
 		});
 
@@ -203,7 +203,7 @@
 			});
 		}
 		</script>
-		  <!-- ------------------------------------------가게스크립트 끝 ----------------------------------------------------------------->
+		  <!-- --------------------------------d----------가게스크립트 끝 ----------------------------------------------------------------->
           <!-- ------------------------------------------게시판스크립트 ----------------------------------------------------------------->
           
       	<script>

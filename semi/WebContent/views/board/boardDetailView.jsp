@@ -110,7 +110,7 @@ Reply r = (Reply) request.getAttribute("r");
 			<!-- row -->
 
 		</div>
-		<!-- container -->
+		<!-- container ---->
 
 
 
@@ -131,9 +131,7 @@ Reply r = (Reply) request.getAttribute("r");
 				<i class="far fa-thumbs-up" style="font-size: 30px;"></i>
 			</button> -->
 			
-			<button class="btn btn-lg border-0 float-right " id="boardReportBtn">
-				</i> <i class="fas fa-angry" style="font-size: 30px;"></i>
-			</button>  
+	
  		
  		</div>
 
