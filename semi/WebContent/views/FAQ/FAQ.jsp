@@ -22,7 +22,7 @@
     <div class="faqHeader">
         <!--button type="button" class="showAll">답변 모두 여닫기</button-->
     </div>
-    <ul class="faqBody">
+    <ul class="faqBody" >
         <li class="article" id="a1" >
             <p class="q"><a href="#a1">질문1. 품앗이란 무엇인가요?
             &nbsp;  &nbsp; <i class="fas fa-caret-square-down" style="font-size: 20px;">
@@ -67,19 +67,38 @@
             			</p>
         </li>
          <li class="article" id="a4">
-            <p class="q"><a href="#a4">질문4. 아이디랑 비번이 기억이 안나요.
+            <p class="q"><a href="#a4">질문4. 품앗이를 하다가 사기를 당했어요
             &nbsp;  &nbsp; <i class="fas fa-caret-square-down" style="font-size: 20px;">
             </i></a></p>
             <p class="a">회원님 당황하셨나요? 이런 큰일났네요 <br><br><br>
-            	아이디가 기억 안나요? 비번도 기억이 안나요? <br>
-            	그러면 정말 큰일이네요 <br>
-            </p>
+            	사기를 당하셨다고요? 그럴떄는 바로 경찰을 부르세요 <br>
+            	요새는 당하고만 살면 안됩니다<br>
+            	그렇다고 꼭 보복을 하라는 것은 아니고<br>
+            	법으로 보복하세요 <br>
+            	경찰서 번호 알려드리겠습니다.<br>
+            	◎ 경찰서 : (국번없이)112 <br>
+            	저희 품앗이는 신뢰를 바탕으로 합니다. 블랙리스트, 신고 철저하게 해주세요 <br>
+            	그러면 저희가 아예 그 사람들은 이 사이트에 못 들어오도록 철저하게 막겠습니다 <br>
+            	감사합니다 </p>
         </li>
          <li class="article" id="a5">
-            <p class="q"><a href="#a5">질문5. 품앗이 거래는 어떻게 하는건가요?
+            <p class="q"><a href="#a5">질문5. 고객센터는 언제 운용을 하나요?
 			&nbsp;  &nbsp; <i class="fas fa-caret-square-down" style="font-size: 20px;">
             </i></a></p>
-            <p class="a">답변5</p>
+            <p class="a">- 고객센터 전화번호 : 1544-1544 <br><br>
+            			- 상담 시간 : 9시 30분 ~오후 6시 (점심시간 : 오전 11시 30분 ~ 오후 1시 30분 /주말 ,공휴일 휴무) <br>
+            			- 전화 연결이 어려운 경우 카카오 상담톡으로 문의를 남겨주시면 확인 후 정성껏 답변드리겠습니다. <br>
+						※ 문의량이 많을 경우 상담 연결 및 답변이 지연될 수 있습니다.<br> 
+						★이번 프로젝트를 하면서 도움을 주신 분들 <br>
+						★남궁수영★<br>
+						★이윤해★<br>
+						★김한별★<br>
+						★윤우진★<br>
+						FEAT ★김정훈★<br>
+						모두들 너무 고생하셨습니다.<br>
+						감사했습니다.
+						</p>
+						
         </li>
         
         
