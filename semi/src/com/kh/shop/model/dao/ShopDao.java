@@ -31,7 +31,7 @@ public class ShopDao {
 	
 	
 	
-	public ArrayList<Shop> selectShList(Connection conn) {
+	public ArrayList<Shop> selectShList(Connection conn,double lat,double lon) {
 		ArrayList<Shop> list = new ArrayList<>();
 
 		PreparedStatement pstmt = null;
@@ -40,6 +40,9 @@ public class ShopDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setDouble(1, lat);
+			pstmt.setDouble(2, lon);
+			
 			rset = pstmt.executeQuery();
 			while (rset.next()) {
 				Shop s = new Shop();
@@ -101,8 +104,10 @@ public class ShopDao {
 			try {
 				pstmt = conn.prepareStatement(sql);
 
-				pstmt.setString(1, at.getChangeName());
-				pstmt.setString(2, at.getOriginName());
+				
+				
+				pstmt.setString(1, at.getOriginName());
+				pstmt.setString(2, at.getChangeName());
 				pstmt.setString(3, at.getFilePath());
 
 				result += pstmt.executeUpdate();

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import com.kh.member.model.vo.Member;
 import com.kh.shop.model.service.ShopService;
 import com.kh.shop.model.vo.Shop;
 
@@ -33,7 +33,14 @@ public class ShopListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Shop> list= new ShopService().selectShList();
+		Member loginUser=(Member)request.getSession().getAttribute("loginUser");
+		
+		double lat=loginUser.getLat();
+		
+		double lon=loginUser.getLon();
+		
+		
+		ArrayList<Shop> list= new ShopService().selectShList(lat,lon);
 		System.out.println(list);
 		request.setAttribute("list",list );
 		request.getRequestDispatcher("views/shop/shopListview.jsp").forward(request, response);

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.board.model.service.BoardService;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.PageInfo;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class BoardListServlet
@@ -33,7 +34,13 @@ public class BoardListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	
+		Member loginUser=(Member)request.getSession().getAttribute("loginUser");
+		
+		double lat=loginUser.getLat();
+		
+		double lon=loginUser.getLon();
+		
+		
 		int listCount;			// 총 게시글 갯수
 		int currentPage;		// 현재 페이지 (즉, 요청한 페이지)
 		int startPage;			// 현재 페이지에 하단에 보여지는 페이징 바의 시작 수 
@@ -44,7 +51,7 @@ public class BoardListServlet extends HttpServlet {
 		int boardLimit;			// 한 페이지에 보여질 게시글 최대 갯수
 		System.out.println("확인중");
 		// * listCount : 총 게시글 갯수 
-		listCount = new BoardService().getListCount();
+		listCount = new BoardService().getListCount(lat,lon);
 		
 		
 		currentPage = 1;
@@ -77,7 +84,8 @@ public class BoardListServlet extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, startPage, endPage, maxPage, pageLimit, boardLimit);
 		
 
-		ArrayList<Board> list = new BoardService().selectList(pi);
+		
+		ArrayList<Board> list = new BoardService().selectList(pi,lat,lon);
 		
 
 		System.out.println(list);

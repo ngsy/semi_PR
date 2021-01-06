@@ -43,6 +43,10 @@ Attachment at = (Attachment) request.getAttribute("at");
 							</td>
 						</tr>
 						<tr>
+							<td style="width: 20%; text-align: left">지역|</td>
+							<td colspan="2" style="text-align: left"><%= b.getRegion1()%>&nbsp;<%= b.getRegion2()%></td>
+						</tr>
+						<tr>
 							<td style="width: 20%; text-align: left">작성일자|</td>
 							<td colspan="2" style="text-align: left"><%=b.getCreateDate()%></td>
 						</tr>

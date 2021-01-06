@@ -86,16 +86,19 @@ public class BoardDao {
 		return result;
 	}
 
-	public int getListCount(Connection conn) {
+	public int getListCount(Connection conn,double lat,double lon) {
 		int listCount = 0;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("getListCount");
 
 		try {
-			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(sql);
 
-			rset = stmt.executeQuery(sql);
+			pstmt.setDouble(1, lat);
+			pstmt.setDouble(2, lon);
+
+			rset=pstmt.executeQuery();
 
 			if (rset.next()) {
 				listCount = rset.getInt(1);
@@ -107,17 +110,17 @@ public class BoardDao {
 		} finally {
 
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 
 		return listCount;
 	}
 
-	public ArrayList<Board> selectList(Connection conn, PageInfo pi) {
+	public ArrayList<Board> selectList(Connection conn, PageInfo pi,double lat,double lon) {
 		ArrayList<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-
+		Board b=null;
 		String sql = prop.getProperty("selectList");
 		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;// 시작페이지
 		int endRow = startRow + pi.getBoardLimit() - 1;
@@ -129,8 +132,10 @@ public class BoardDao {
 		// current page =1 startrow 1 endrow:10
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setDouble(1, lat);
+			pstmt.setDouble(2, lon);
+			pstmt.setInt(3, startRow);
+			pstmt.setInt(4, endRow);
 
 			rset = pstmt.executeQuery();
 
@@ -142,9 +147,22 @@ public class BoardDao {
 //			}
 			
 			while (rset.next()) {
-				list.add(new Board(rset.getInt("BOARD_NUMBER"),
-						rset.getString("BOARD_TITLE"),rset.getString("M_NAME"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE")));
+				b=new Board();
+				b.setBoardNo(rset.getInt("BOARD_NUMBER"));
+				b.setBoardTitle(rset.getString("BOARD_TITLE"));
+				b.setBoardWriter(rset.getString("M_NAME"));
+				b.setReadCount(rset.getInt("B_READ_COUNT"));
+				b.setCreateDate(rset.getDate("B_WRITE_DATE"));
+				b.setRegion1(rset.getString("REGION1"));
+				b.setRegion2(rset.getString("REGION2"));
 
+				
+//				list.add(new Board(rset.getInt("BOARD_NUMBER"),
+//						rset.getString("BOARD_TITLE"),rset.getString("M_NAME"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE")));
+
+			
+			list.add(b);
+			
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -192,9 +210,20 @@ public class BoardDao {
 			rset = pstmt.executeQuery();
 
 			if (rset.next()) {
-				b = new Board(rset.getInt("BOARD_NUMBER"),
-						rset.getString("BOARD_TITLE"),rset.getString("BOARD_CONTENT"),rset.getString("M_NAME"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE"),rset.getInt("M_NO"));
+//				b = new Board(rset.getInt("BOARD_NUMBER"),
+//						rset.getString("BOARD_TITLE"),rset.getString("BOARD_CONTENT"),rset.getString("M_NAME"), rset.getInt("B_READ_COUNT"),rset.getDate("B_WRITE_DATE"),rset.getInt("M_NO"));
 
+				b=new Board();
+				b.setBoardNo(rset.getInt("BOARD_NUMBER"));
+				b.setBoardTitle(rset.getString("BOARD_TITLE"));
+				b.setBoardContent(rset.getString("BOARD_CONTENT"));
+				b.setBoardWriter(rset.getString("M_NAME"));
+				b.setReadCount(rset.getInt("B_READ_COUNT"));
+				b.setCreateDate(rset.getDate("B_WRITE_DATE"));
+				b.setBoardWriterNo(rset.getInt("M_NO"));
+				b.setRegion1(rset.getString("REGION1"));
+				b.setRegion2(rset.getString("REGION2"));
+				
 
 			}
 		} catch (SQLException e) {

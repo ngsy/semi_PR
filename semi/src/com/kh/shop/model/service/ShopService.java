@@ -16,9 +16,9 @@ import com.kh.shop.model.vo.Shop;
 
 public class ShopService {
 
-	public ArrayList<Shop> selectShList() {
+	public ArrayList<Shop> selectShList(double lat,double lon) {
 		Connection conn = getConnection();
-		ArrayList<Shop> list =new ShopDao().selectShList(conn);
+		ArrayList<Shop> list =new ShopDao().selectShList(conn,lat,lon);
 		
 		close(conn);
 		return list;

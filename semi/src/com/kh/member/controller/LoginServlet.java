@@ -50,6 +50,16 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("loginUser : " + loginUser);
 		
 		if(loginUser !=null) {//로그인 성공했을경우
+			
+				if(loginUser.getBlacklist().equals("Y")) {
+					request.setAttribute("msg", "블랙리스트 로그인 불가");
+					
+					RequestDispatcher view =request.getRequestDispatcher("views/common/errorPage.jsp");
+					view.forward(request, response);
+					
+				}else {
+			
+			
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser",loginUser);
 				session.setAttribute("userPwd", userPwd);
@@ -61,7 +71,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath());
 				
 				System.out.println("로그인성공");
-				
+				}
 				
 			
 		}else { //실패했을 경우
