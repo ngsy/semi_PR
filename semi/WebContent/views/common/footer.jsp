@@ -59,34 +59,40 @@
 				<!-- end container-fluid -->
 				
 				
-						      <!-- Footer-->
+			      <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
                 <div class="row">
                     <!-- Footer Location-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Location</h4>
+                           <h1 class="text-uppercase mb-4">PUMASSI</h1>
                         <p class="lead mb-0">
-                            2215 John Daniel Drive
+                            (주)방구석 개발자
                             <br />
-                            Clark, MO 65243
+                           	<small>김한별 | 윤우진 | 이윤해 | 남궁수영</small>
                         </p>
                     </div>
                     <!-- Footer Social Icons-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Around the Web</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                        <h1 class="text-uppercase mb-4">  <i class="fas fa-tools"></i> &nbsp; 
+                        								<i class="fas fa-laptop-house"></i> &nbsp;
+                        								<i class="fas fa-handshake"></i> &nbsp;
+                        								<i class="fas fa-store"></i> &nbsp;
+                        													</h1>
+        
+
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                        <h4 class="text-uppercase mb-4">문의사항</h4>
                         <p class="lead mb-0">
-                            Freelance is a free to use, MIT licensed Bootstrap theme created by
-                            <a href="http://startbootstrap.com">Start Bootstrap</a>
-                            .
+                        			 
+						                        품앗이 이용 중 <br>
+						                        궁금하신 점이 있으신가요?<br>
+										Q&A를 이용해주세요!<br>
+										최선을 다해 도와드리겠습니다.<br>
+                            
+                            
                         </p>
                     </div>
                 </div>
@@ -94,7 +100,9 @@
         </footer>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright © Pumassi 2020</small></div>
+            <div class="container">
+            <small>품앗이는 통신판매중개자이며 통신판매의 당사자가 아닙니다.따라서 품앗이는 상품 거래정보 및 거래에 대하여 책임을 지지 않습니다</small><br>
+            <small>Copyright 2021 © Pumassi  All rights reserved</small></div>
         </div>
  
 					
