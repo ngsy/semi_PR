@@ -97,7 +97,8 @@
 
 		<div class="btn1" align="center">
 			<button class="btn btn-secondary"
-				onclick="location.href='<%=contextPath%>/list.qo?currentPage=1';">목록으로</button>
+				onclick="location.href='<%=contextPath%>/list.qo?currentPage=1';">목록으로
+				&nbsp; <i class="fas fa-list" style="font-size: 20px;"></i></button>
 
 		</div>
 		<br><br>
@@ -107,7 +108,7 @@
 		<!-- 댓글 작성하는 div -->
 	
 			
-				<% if(loginUser != null){ %>
+				<% if(loginUser != null && loginUser.getId().equals("admin")){ %>
 					
 				<div class="input-group mb-3" style="width:800px; margin-left:25%;">
 				
@@ -117,9 +118,9 @@
 				 <button type="submit" class="btn btn-primary mb-3"id="addReply"> 등록</button>
 				</div>
 				
-				<% }else{ %>
+				<% }else { %>
 				<div class="input-group mb-3" style="width:800px; margin-left:25%;">
-				<textarea class="form-control" id="replyContent"  style="resize:none; text-align:center;"  rows="3" placeholder="로그인 후  댓글을 작성해 주세요"></textarea>
+				<textarea class="form-control" id="replyContent"  style="resize:none; text-align:center;"  rows="3" placeholder="관리자만 댓글이 가능합니다."></textarea>
 					</div>
 				<% } %>
 
@@ -139,6 +140,24 @@
 	<script>
 	  $(function(){
 		 selectReplyList(); 
+		 $("#replyList").on("click","#delRQBtn",function(){
+			if(confirm("정말 삭제하시겠습니까?")){
+				var qno = $(this).data("qno");
+				$.ajax({
+					url : "delReply.qo",
+					type : "get",
+					data : {qno:qno},
+					success:function(){
+						alert("댓글 삭제 성공");
+						selectReplyList();
+					},
+					error:function(){
+						alert("댓글 삭제 실패");
+					}
+				});
+			} 
+		 });
+		 
 		$("#addReply").click(function(){
 			var content =$("#replyContent").val();
 			var qId=<%=q.getQnaNo()%>;
@@ -173,22 +192,26 @@
 				for(var i in list){
 					value += '<tr>' + 
 								'<td width="100px" height="150px" ">작성자 <br>' + list[i].replyWriter+'<br>'+'<div style=" font-size:5px; color:#7CAA7A;">' +list[i].createDate+'</div>' + '</td>' +
-								'<td width="200px" height="150px">' + list[i].replyContent + '</td>' + 
-								'<td width="100px" >' +'<button class="btn btn-danger" id="delRBtn" onclick="deleteQReply" style="width:50px; font-size:5px;"> 삭제 </button>'+
-								'&nbsp'+'<button class="btn btn-lg border-0  " id="angrybutton"></i> <i class="fas fa-angry" style="font-size: 25px; "></i></button>' +'</td>' + 			
-							 '</tr>';
+								'<td width="200px" height="150px">' + list[i].replyContent + '</td>' + '<td width="100px" >' ; 
+						if(list[i].replyWriterNo==<%=loginUser.getM_no()%>){				
+						value += '<button class="btn btn-danger" id="delRQBtn" data-qno ="'+list[i].replyId +'" style="width:50px; font-size:5px;"> 삭제 </button>';
+						}
+						value+='<button class="btn btn-lg border-0  replyReportQBtn" data-qno="'+list[i].replyId+'"></i> <i class="fas fa-angry" style="font-size: 25px; "></i></button>' +'</td></tr>';
+						
 				}
+				
 				   $("#replyList").html(value);
 			},
 			error:function(){
 				console.log("댓글실패 ");
 			}  
-		  });
+		  });		 
 	  }
-		
+	  
           
     	</script>
 
+	
 
 	</div>
 

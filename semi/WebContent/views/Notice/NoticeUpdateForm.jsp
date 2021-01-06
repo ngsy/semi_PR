@@ -10,7 +10,8 @@ Notice n =(Notice)request.getAttribute("notice");
 <html>
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">우리마을 게시글</div>
+	<div class="card-header py-3">
+	<h2>공지사항 수정  &nbsp; <i class="fas fa-edit" style="font-size: 30px;"></i></h2></div>
 
 	<div class="card-body">
 
@@ -32,8 +33,10 @@ Notice n =(Notice)request.getAttribute("notice");
 				</div>
 
 
-				<button type="submit" class="btn btn-primary">글수정 </button>
-				<button type="reset" class="btn btn-danger">취소하기</button>
+				<button type="submit" class="btn btn-primary">글수정 
+				&nbsp; <i class="fas fa-pen" style="font-size: 20px;"></i></button>
+				<button type="reset" class="btn btn-danger">취소하기
+				&nbsp; <i class="fas fa-undo" style="font-size: 20px;"></i></button>
 			</form>
 		</div>
 		<script>

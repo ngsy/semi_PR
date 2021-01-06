@@ -96,7 +96,8 @@
 
 		<div class="btn1" align="center">
 			<button class="btn btn-secondary"
-				onclick="location.href='<%=contextPath%>/list.no?currentPage=1';">목록으로</button>
+				onclick="location.href='<%=contextPath%>/list.no?currentPage=1';">목록으로
+				&nbsp; <i class="fas fa-list" style="font-size: 20px;"></i></button>
 
 		</div>
 

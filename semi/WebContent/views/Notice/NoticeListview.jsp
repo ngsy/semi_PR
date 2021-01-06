@@ -2,6 +2,8 @@
     pageEncoding="UTF-8" %>
 
 <%@ page import="java.util.ArrayList,com.kh.notice.model.vo.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <% 
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
@@ -25,12 +27,7 @@
 
 			<nav class="navbar navbar-light bg-light" id="navibar1">
 
-				<form class="d-flex">
-					
-					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search"
-						aria-label="Search" align="right">
-					<button class="btn btn-outline-success" type="submit">search</button>
-				</form>
+				
 			 <% if(loginUser != null && loginUser.getId().equals("admin")) { %>
 			<a href="enrollForm.no" class="btn btn-primary float-right" >글쓰기
 			 &nbsp; <i class="fas fa-pen" style="font-size: 20px;"></i></a>
@@ -60,6 +57,7 @@
 							<td><%= n.getNoticeWriter() %></td>
 							<td><%= n.getCount() %></td>
 							<td><%= n.getCreateDate() %></td>
+							
 					</tr>
 						<%} %>
 				<%} %>
