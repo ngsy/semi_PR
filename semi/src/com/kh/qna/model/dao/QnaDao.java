@@ -81,7 +81,7 @@ public class QnaDao {
 			while(rset.next()) {
 				list.add(new Qna(rset.getInt("QNA_NO"),
 									rset.getString("QNA_TITLE"),
-									rset.getString("ID"),
+									rset.getString("M_NAME"),
 									rset.getInt("QNA_COUNT"),
 									rset.getDate("QNA_DATE")));
 			}
@@ -132,7 +132,7 @@ public class QnaDao {
 				q = new Qna(rset.getInt("QNA_NO"),
 						rset.getString("QNA_TITLE"),
 						rset.getString("QNA_CONTENT"),
-						rset.getString("ID"), 
+						rset.getString("M_NAME"), 
 						rset.getInt("QNA_COUNT"),
 						rset.getDate("QNA_DATE"),
 						rset.getInt("M_NO"));
@@ -251,7 +251,7 @@ public class QnaDao {
 		while(rs.next()) {
 			list.add(new Reply(rs.getInt("QNA_REPLY_NO"),
 							   rs.getNString("QNA_REPLY_CONTENT"),
-							   rs.getNString("ID"),
+							   rs.getNString("M_NAME"),
 							   rs.getDate("QNA_WRITE_DATE"),
 							   rs.getInt("M_NO")));
 		}
@@ -268,7 +268,7 @@ public class QnaDao {
 		return list;
 	}
 
-	public int deleteQnaRelpy(Connection conn, int rqno) {
+	public int deleteQnaRelpy(Connection conn, int qno) {
 		int result = 0;
 		
 		PreparedStatement pstmt = null;
@@ -277,7 +277,7 @@ public class QnaDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, rqno);
+			pstmt.setInt(1, qno);
 			
 			result = pstmt.executeUpdate();
 			

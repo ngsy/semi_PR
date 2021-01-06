@@ -104,7 +104,7 @@ public class NoticeDao {
 			while(rset.next()) {
 				list.add(new Notice(rset.getInt("NOTICE_NO"),
 									rset.getString("NOTICE_TITLE"),
-									rset.getString("ID"),
+									rset.getString("M_NAME"),
 									rset.getInt("NOTICE_COUNT"),
 									rset.getDate("NOTICE_DATE")));
 			}
@@ -158,7 +158,7 @@ public class NoticeDao {
 				n = new Notice(rset.getInt("NOTICE_NO"),
 						rset.getString("NOTICE_TITLE"),
 						rset.getString("NOTICE_CONTENT"),
-						rset.getString("ID"), 
+						rset.getString("M_NAME"), 
 						rset.getInt("NOTICE_COUNT"),
 						rset.getDate("NOTICE_DATE"),
 						rset.getInt("M_NO"));

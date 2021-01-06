@@ -12,7 +12,7 @@
 
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-	<h2>Q&A 등록<h2>
+	<h2>Q&A 등록  &nbsp; <i class="fas fa-edit" style="font-size: 20px;"></i><h2>
 	
 	</div>
 
@@ -30,7 +30,8 @@
 					<label for="content">내용</label>
 					<textarea class="form-control" rows="5" id="summernote" name="content"></textarea>
 				</div>
-				<button type="submit" class="btn btn-primary">글쓰기 등록</button>
+				<button type="submit" class="btn btn-primary">글쓰기 등록
+				&nbsp; <i class="fas fa-check" style="font-size: 20px;"></i></button>
 			</form>
 		</div>
 		
