@@ -170,10 +170,10 @@
 			
 			$("#thumbList").on("click",".thumb",function(){ 
 				var sNo =$(this).children().eq(0).val();
-				  <% if (loginUser == null ) { %>
+			
 			
 				window.open("<%=contextPath%>/detailTop.sh?sNo="+ sNo, '_blank'); 
-				<%}%>
+			
 			});
 		});
 
