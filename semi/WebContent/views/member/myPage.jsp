@@ -31,11 +31,6 @@
 
 
 
- <input type="hidden" name="region1">
-         <input type="hidden" name="region2">
-         <input type="hidden" name="lat">
-         <input type="hidden" name="lon">
-
 
 
 
@@ -101,11 +96,7 @@
 				</tr>
 				
 				
-				<tr>
-					<td>내 위치 조회</td>
- <td id="locationTd"><label id="region1La"></label><label id="region2La"></label><button  class="btn btn-primary" id="locationBtn">조회</button><td>				
-				
-				</tr>
+			
 			
 						</table>
 						
@@ -133,15 +124,15 @@
 							<table align="center">
 								<tr>
 									<td><label>현재 비밀번호</label>
-									<td><input type="password" class="form-control"  name="userPwd" id="userPwd"></td>
+									<td><input type="password" class="form-control"  name="userPwd" id="userPwd"placeholder="현재 비밀번호 입력"></td>
 								</tr>
 								<tr>
-									<td><label>변경할 비밀번호</label></td>
-									<td><input type="password"class="form-control"  name="newPwd"></td>
+									<td><label>새 비밀번호</label></td>
+									<td><input type="password"class="form-control"  name="newPwd" placeholder="새 비밀번호 입력"></td>
 								</tr>
 								<tr>
-									<td><label>변경할 비밀번호 확인</label></td>
-									<td><input type="password" class="form-control"  name="checkPwd"></td>
+									<td><label>새 비밀번호 확인</label></td>
+									<td><input type="password" class="form-control"  name="checkPwd" placeholder="새 비밀번호 확인"></td>
 								</tr>
 							</table>
 							

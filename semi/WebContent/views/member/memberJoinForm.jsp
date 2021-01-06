@@ -26,14 +26,14 @@
          <table align="center" >
              <tr>
                <td>이름</td>   <!-- required : 필수 -->
-               <td><input type="text"  class="form-control" maxlength="5" name="userName" required></td>
+               <td><input type="text"  class="form-control" maxlength="5" name="userName" placeholder="2~5이내한글로 적으시오" required></td>
                <td></td>
             </tr>
             <tr>
-               <td  width="200px"><label class="form-label">아이디</label></td>
-               <td><input type="text"  class="form-control" maxlength="13" name="userId" required></td>
+               <td  width="200px"><label class="form-label" >아이디</label></td>
+               <td><input type="text"  class="form-control" maxlength="13" name="userId" placeholder="2~13자이내  적으시오"  required></td>
                <td width="200px">
-                  <button type="button" class="btn btn-outline-primary" id="idCheckBtn" onclick="checkId();">중복확인</button>
+                  <button type="button" class="btn btn-outline-primary" id="idCheckBtn" onclick="checkId();" >중복확인</button>
                </td>
                <td><label id="idResult"></label></td>
             </tr>
@@ -42,7 +42,7 @@
             
             <tr>
                <td>비밀번호</td>
-               <td><input type="password"  class="form-control" maxlength="15" name="userPwd"
+               <td><input type="password"  class="form-control" maxlength="15" name="userPwd" placeholder="4~13자이내 적으시오"
                   required></td>
                <td><label id="pwdResult"></label></td>
                <td></td>
@@ -66,11 +66,7 @@
             <tr>
                <td>이메일</td>
                <td><input type="email" class="form-control"  name="email" placeholder="example@naver.com"></td>
-               <td width="200px">
-
-                    <button data-toggle="modal" data-target="#emailCheck" class="btn btn-outline-primary"  >인증하기</button>
-
-               </td>
+            
                <td></td>
             </tr>
             
@@ -92,7 +88,7 @@
 
         <div align="center">
          
-
+			<p>※중복확인을 하시면 버튼이 활성화 됩니다.</p>
             <button type="submit" class="btn btn-primary btn-primary" id="joinBtn" disabled>가입하기</button>
 
          </div>
@@ -220,62 +216,8 @@
 
 
 
-<!--  매일 modal-->
-        
- 
-        <div class="portfolio-modal modal fade" id="emailCheck" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" >
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <br>
-                                    <h3 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal1Label">이메일인증 </h3>
-                                  
-                                    
-                                    <!-- Portfolio Modal - Text-->
-                                   <br>
-                                   <form method="post">
-                                   
-                                   
-                                    <table align="center" >
-							             <tr>
-							               <td>이메일: </td>   <!-- required : 필수 -->
-							               <td><input type="text"  class="form-control"  name="emailCheckForm" id="emailCheckForm"  placeholder="example@naver.com" required></td>
-							               <td></td>
-							            </tr>
-							            
-							            <tr>
-							               <td>인증번호: </td>  
-							               <td><input type="text"  class="form-control"  name="confirmNum" id="confirmNum"></td>
-							               <td></td>
-							            </tr>
-							            
-							            
-							            		
-							 		</table>
-					
-									<br><br>
-			
-									     <button class="btn btn-primary" type="submit">확인</button>	                              
-                                   
-                                   </form>
-                               
-                                   
-                           
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+      
         
            <!-- 아이디 중복확인 -->
         
@@ -339,12 +281,46 @@
         
         
         
-        <!-- 비밀번호 체크  -->
+        <!-- 정규표현식및 ,비밀번호 체크   -->
         <script>
         function joinValidate(){
+        	
+        	 if (!(/^[가-힣]{2,}$/.test($("#enrollForm input[name=userName]")
+                       .val()))) {
+                    $("#enrollForm input[name=userName]").focus();
+                    
+                    alert("이름 두글자 이상 한글만 적어주세요!");
+                    return false;
+                 }
+        	
+              
+        	 if (!(/^[a-z][a-z\d]{3,11}$/i.test($(
+               "#enrollForm input[name=userId]").val()))) {
+            $("#enrollForm input[name=userId]").focus();
+            
+            alert("아이디 3자리이상11자리 이하로  영어와 숫자 조합으로 적어주세요");
+
+            return false;
+         }
+        	 
+        	 if (!(/^[a-z][a-z\d]{3,13}$/i.test($(
+             "#enrollForm input[name=userPwd]").val()))) {
+          $("#enrollForm input[name=userPwd]").focus();
+          
+          alert("비밀번호 4자리이상13자리 이하로 적어주세요");
+
+          return false;
+       }
+        	 
+        	
+        	
+        	 
+        	
+        	
         	if($("#enrollForm input[name=userPwd]").val()!=$("#enrollForm input[name=checkPwd]").val()){
         		
         		$("#pwdResult").text("비밀번호가 일치하지않습니다.");
+        		alert("비밀번호를 확인해주세요!")
         		return false;
         	}
         	
