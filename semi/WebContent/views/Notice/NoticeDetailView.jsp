@@ -9,15 +9,17 @@
 
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">공지사항상세보기</div>
+	<div class="card-header py-3"><h2>공지사항 상세보기</h2></div>
 
 	<div class="card-body">
          	<div class="btn3" style="margin-left:70%;">
 			<%
 				if (loginUser != null && loginUser.getM_no()  == n.getNoticeWriterNo()) {
 			%>
-			<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정</button>
-			<button class="btn btn-danger" id="delBtn" onclick="deleteNotice();">삭제</button>
+			<button class="btn btn-primary" id="updateBtn" onclick="updateForm();">수정
+			 &nbsp; <i class="fas fa-edit" style="font-size: 20px;"></i></button>
+			<button class="btn btn-danger" id="delBtn" onclick="deleteNotice();">삭제
+			 &nbsp; <i class="fas fa-trash-alt" style="font-size: 20px;"></i></button>
 			<%
 				}
 			%>

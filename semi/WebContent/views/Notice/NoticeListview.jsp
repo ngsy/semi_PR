@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 
 <%@ page import="java.util.ArrayList,com.kh.notice.model.vo.*" %>
 <% 
@@ -12,10 +12,11 @@
     int endPage = pi.getEndPage();
 %> 	
 
+
 <%@ include file="../common/header.jsp"%>
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-	<h2>공지사항 게시판</h2>
+	<h2>공지사항  &nbsp; <i class="fas fa-bullhorn" style="font-size: 30px;"></i></h2>
 	</div>
 
 	<div class="card-body">
@@ -24,9 +25,15 @@
 
 			<nav class="navbar navbar-light bg-light" id="navibar1">
 
-				
+				<form class="d-flex">
+					
+					<input class="form-control me-2" id="navibar1" type="search" placeholder="Search"
+						aria-label="Search" align="right">
+					<button class="btn btn-outline-success" type="submit">search</button>
+				</form>
 			 <% if(loginUser != null && loginUser.getId().equals("admin")) { %>
-			<a href="enrollForm.no" class="btn btn-primary float-right" >글쓰기</a>
+			<a href="enrollForm.no" class="btn btn-primary float-right" >글쓰기
+			 &nbsp; <i class="fas fa-pen" style="font-size: 20px;"></i></a>
 			<% } %>
 			</nav>
 	
@@ -114,10 +121,8 @@
 			});
 		});
 		<% } %>
-		
-		
 		</script>
-
+		
 	</div>
 
 
