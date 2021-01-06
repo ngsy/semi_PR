@@ -276,6 +276,7 @@ public class ShopDao {
 				s.setShopTitle(rs.getString("SHOP_TITLE"));
 			    s.setReadCount(rs.getInt("SHOP_READ_COUNT"));
 			    s.setCreateDate(rs.getDate("SHOP_WRITE_DATE"));
+			    s.setDetailLocation(rs.getString("DETAILLOCATION"));
 				s.setTitleImg(rs.getString("FILE_CHANGED"));
 				
 				list.add(s);

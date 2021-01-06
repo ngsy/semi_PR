@@ -454,11 +454,11 @@ public class BoardDao {
 			
 			while(rs.next()) {//BOARD_NO, BOARD_TITLE, COUNT, CHANGE_NAME 
 				Board b = new Board();
-				b.setBoardNo(rs.getInt("SHOP_"));
-				b.setBoardTitle(rs.getString("SHOP_TITLE"));
-			    b.setReadCount(rs.getInt("SHOP_READ_COUNT"));
-			    b.setCreateDate(rs.getDate("SHOP_WRITE_DATE"));
-				b.setTitleImg(rs.getString("FILE_CHANGED"));
+				b.setBoardNo(rs.getInt("BOARD_NUMBER"));
+				b.setBoardTitle(rs.getString("BOARD_TITLE"));
+			    b.setReadCount(rs.getInt("B_READ_COUNT"));
+			    b.setCreateDate(rs.getDate("B_WRITE_DATE"));
+
 				
 				list.add(b);
 			}
