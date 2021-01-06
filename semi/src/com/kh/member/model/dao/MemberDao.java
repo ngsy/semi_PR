@@ -365,4 +365,33 @@ BLACKLIST*/
 		return result;
 	}
 
+	public int deleteMember(Connection conn, String userId) {
+	int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteMember");
+		
+	System.out.println("Dao sql : "+sql);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,userId); 
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 	  > urlPatterns를 통해서 어떠한 서블릿을 가기전에 거칠 것인지를 지정해준다. --> /*로 지정하게 되면 모든 서블릿을 뜻한다. 
 */
 
+//인코딩과 암호화를 동시해 하려면 어노테이션 방식으로는 힘들다 순서를 정해줘서 해야하는데 어노테이션으론 순서정해주는게 힘들기때문에 web.xml 파일을 수정해줘야한다
 
 //@WebFilter(filterName="encodingFilter",urlPatterns="/*")
 

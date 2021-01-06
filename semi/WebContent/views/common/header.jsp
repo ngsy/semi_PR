@@ -7,7 +7,7 @@
 Member loginUser = (Member)session.getAttribute("loginUser"); 
 String msg =(String)session.getAttribute("msg"); 
 
-
+String alarm =(String)request.getAttribute("alarm");
 
 %>
        
@@ -187,6 +187,23 @@ String msg =(String)session.getAttribute("msg");
 			
 	    
         </script>
+        
+        
+        
+        
+        
+<!-- 알림창 -->
+<script>
+
+
+	var alarm = "<%= alarm %>";
+	$(function(){
+		if(alarm != "null"){
+			alert(alarm);
+		}
+	
+	});
+</script>
         
         <div class="container-fluid">
 

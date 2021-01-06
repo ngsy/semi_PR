@@ -255,4 +255,40 @@ public class ShopDao {
 
 		return result;
 	}
+
+
+
+	public ArrayList<Shop> selectShTopList(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<Shop> list = new ArrayList<>();
+		
+		String sql = prop.getProperty("selectTopShList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {//BOARD_NO, BOARD_TITLE, COUNT, CHANGE_NAME 
+				Shop s = new Shop();
+				s.setShopNo(rs.getInt("SHOP_NUMBER"));
+				s.setShopTitle(rs.getString("SHOP_TITLE"));
+			    s.setReadCount(rs.getInt("SHOP_READ_COUNT"));
+			    s.setCreateDate(rs.getDate("SHOP_WRITE_DATE"));
+				s.setTitleImg(rs.getString("FILE_CHANGED"));
+				
+				list.add(s);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block//
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		
+		return list;
+	}
 }

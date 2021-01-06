@@ -19,32 +19,29 @@
 
 	String originPwd=(String)session.getAttribute("originPwd");
 	
-	String alarm =(String)request.getAttribute("alarm");
+
 	
 	System.out.println("orginPwd 마이페이지:  "+originPwd);
 	
-	String pwdCk ="";
+	
 
 %>
 
 
-<!-- 알림창 -->
-<script>
 
 
-	var alarm = "<%= alarm %>";
-	$(function(){
-		if(alarm != "null"){
-			alert(alarm);
-		}
-	
-	});
-</script>
+
+ <input type="hidden" name="region1">
+         <input type="hidden" name="region2">
+         <input type="hidden" name="lat">
+         <input type="hidden" name="lon">
+
+
 
 
   		<div class="card shadow mb-4">
          <div class="card-header py-3" align="center">
-                    <h5> 마이페이지 </h5>
+                    <h4> 마이페이지 </h4>
          </div>                      
 		                    	
 			 <div>
@@ -70,7 +67,9 @@
 				<div class="tab-pane fade show active" id="list-updateForm" role="tabpanel" aria-labelledby="list-home-list">
 				
 	<form id="updateForm" action="<%=request.getContextPath()%>/update.me" method="post">
-	
+			
+			<h5>- 내 정보 수정 -</h5>
+			<hr>
 			<table align="center">
 				<tr>
 					<td width="200px"> 아이디</td>
@@ -100,6 +99,13 @@
 					<td><input type="email" class="form-control"  name="email" value="<%=email%>"></td>
 					<td></td>
 				</tr>
+				
+				
+				<tr>
+					<td>내 위치 조회</td>
+ <td id="locationTd"><label id="region1La"></label><label id="region2La"></label><button  class="btn btn-primary" id="locationBtn">조회</button><td>				
+				
+				</tr>
 			
 						</table>
 						
@@ -122,7 +128,8 @@
 				      	<form id="updatePwdForm" action="<%= request.getContextPath() %>/updatePwd.me" method="post">
 							
 							
-							
+							<h5>- 비밀번호 변경 -</h5>
+							<hr>
 							<table align="center">
 								<tr>
 									<td><label>현재 비밀번호</label>
@@ -147,13 +154,47 @@
 								</div>
 										      
 				      
-				      
+				      </form>
 				      </div>
 				      <!-- 비밀번호변경 끝 -->
 				      
 				      
 				      
-				      <div class="tab-pane fade" id="list-deleteMember" role="tabpanel" aria-labelledby="list-messages-list">회원탈퇴</div>
+<div class="tab-pane fade" id="list-deleteMember" role="tabpanel" aria-labelledby="list-messages-list">
+				 <!-- 회원탈퇴 시작 -->
+				<form id="deleteForm" action="<%= request.getContextPath() %>/" method="post">
+					
+					<h5>- 회원 탈퇴 -</h5>
+					<hr>
+				
+				<div align="left">
+					
+				<mark>※탈퇴 안내※</mark>
+				<br><br>
+									
+				<p>회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</p>	<br>
+				
+				<p>사용하고 계신 아이디 <h5><u>(" <%=userId %> ")</u></h5> (은)는 탈퇴할 경우 재사용 및 복구가 불가능합니다.</p>	<br>
+				
+				<p>탈퇴한 아이디는 본인과 인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다.</p>	<br>
+				
+				</div>
+			
+			
+			<br><br><br>
+			
+				<label><h5>안내사항을 확인하였으며 이에 동의합니다.</h5> </label>
+				<input type="checkbox" id="agree">
+				
+				<br><br>
+				<h8>※체크박스를 선택하시면 버튼이 활성화 됩니다.&ensp;&ensp; </h8>
+				<button id="deleteBtn" align="center" class="btn btn-primary btn-danger"  onclick="deleteMember();" disabled>탈퇴하기</button>
+				
+			</form>
+
+
+</div>
+ <!-- 회원탈퇴 끝 -->
 				    </div>
 				  </div>
 				</div>      
@@ -170,8 +211,9 @@
 	
 	
 	
-<!-- 비밀번호변경 함수 -->	
+
 	<script>
+	<!-- 비밀번호변경 함수 -->	
 		function checkPwd(){
 			
 			var userPwd = $("#userPwd");
@@ -195,11 +237,56 @@
 			$("#updatePwdForm").submit();
 		}
 		
+		<!-- 회원탈퇴 함수 -->	
+
+		function deleteMember(){
+			var pwd = prompt("현재 비밀번호를 입력해 주세요.");
+			
+			
+			if("<%=originPwd%>" == pwd){
+				var val = prompt("정말로 탈퇴하시겠습니까?(y/n)");
+		
+				
+				if(val =='y'){
+					
+					$("#deleteForm").attr("action","<%=request.getContextPath()%>/delete.me");
+					$("#deleteForm").submit();
+					
+				}else if(val == 'n'){
+					alert("취소하였습니다.");
+				
+				}
+				
+				
+			}else if (pwd == null){
+				alert("비밀번호를 입력해주세요.");
+				
+				
+			}else {
+				alert("비밀번호를 잘못입력하셨습니다.")
+			
+			}
+			
+	
+		}
+		
+		
+		
+		$(function(){
+		    $("#agree").change(function(){
+		        if($("#agree").is(":checked")){
+					
+		        	$("#deleteBtn").attr("disabled",false);
+
+		        }else{
+		        	
+		        	$("#deleteBtn").attr("disabled",true);
+		        }
+		    });
+		});
+		
 	
 	</script>
-
-
-
 
 
 

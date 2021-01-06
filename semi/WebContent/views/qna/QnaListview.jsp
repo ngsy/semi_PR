@@ -16,7 +16,7 @@
 
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-	<h2>Q&A 게시판 </h2>
+	<h2>Q&A   &nbsp; <i class="fas fa-bullhorn" style="font-size: 30px;"></i></h2>
 	</div>
 
 	<div class="card-body">
@@ -27,7 +27,8 @@
 
 				
 			<% if(loginUser != null){ %>
-         	<a href="enrollForm.qo" class="btn btn-primary float-right" >글쓰기</a>
+         	<a href="enrollForm.qo" class="btn btn-primary float-right" >글쓰기
+         	 &nbsp; <i class="fas fa-pen" style="font-size: 20px;"></i></a>
          	<% } %>
 			</nav>
 	
