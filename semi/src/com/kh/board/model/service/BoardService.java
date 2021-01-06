@@ -35,9 +35,9 @@ public class BoardService {
 		return result1 * result2;
 	}
 
-	public int getListCount() {
+	public int getListCount(double lat,double lon) {
 		Connection conn = getConnection();
-		int listCount = new BoardDao().getListCount(conn);
+		int listCount = new BoardDao().getListCount(conn,lat,lon);
 
 		close(conn);
 		return listCount;
@@ -45,10 +45,10 @@ public class BoardService {
 		
 	}
 
-	public ArrayList<Board> selectList(PageInfo pi) {
+	public ArrayList<Board> selectList(PageInfo pi,double lat,double lon) {
 		Connection conn = getConnection();
 
-		ArrayList<Board> list = new BoardDao().selectList(conn, pi);
+		ArrayList<Board> list = new BoardDao().selectList(conn, pi,lat,lon);
 		close(conn);
 		return list;
 	}

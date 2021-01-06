@@ -4,7 +4,7 @@
 <%@ include file="../common/header.jsp"%>
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">우리동네 가게</div>
+	<div class="card-header py-3"><h2>우리동네 가게</h2></div>
 
 	<div class="card-body">
 	
@@ -27,7 +27,7 @@
 
     <div class="col thumbnail" >
     <div class="card h-100 thumbnail">
-      <img src="<%=contextPath %>/resources/board_upfiles/<%= s.getTitleImg() %>" width="80px" height="150px"class="card-img-top" alt="...">
+      <img src="<%=contextPath %>/resources/board_upfiles/<%=s.getTitleImg() %>" width="80px" height="150px"class="card-img-top" alt="...">
       <div class="card-body thumbnail">
         <h5 class="card-title"><%=s.getShopTitle() %></h5>
         <p class="card-text"><%=s.getDetailLocation()%></p>

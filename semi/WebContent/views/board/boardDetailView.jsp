@@ -66,6 +66,11 @@ Reply r = (Reply) request.getAttribute("r");
 							</td>
 						</tr>
 						<tr>
+							<td style="width: 20%; text-align: left">지역|</td>
+							<td colspan="2" style="text-align: left"><%= b.getRegion1()%>&nbsp;<%= b.getRegion2()%></td>
+						</tr>
+						
+						<tr>
 							<td style="width: 20%; text-align: left">작성일자|</td>
 							<td colspan="2" style="text-align: left"><%=b.getCreateDate()%></td>
 						</tr>
@@ -323,6 +328,32 @@ Reply r = (Reply) request.getAttribute("r");
 	<script>
 	  $(function(){
 		 selectReplyList(); 
+
+		
+		$("#replyList").on("click","#delRBtn",function(){
+			
+			if(confirm("정말 삭제하시겠습니까?")){
+				var rno=$(this).data("rno");
+  				$.ajax({
+  					url:"delReply",
+  					type:"get",
+  					data:{rno :rno},
+  					success:function(){
+  						alert("댓글 삭제 성공");
+  						selectReplyList(); 
+  					},
+  					error:function(){
+  						alert("댓글 삭제 실패");
+  					}
+  					
+  					
+  					
+  				});	
+			}
+			
+			
+		});
+		 
 		$("#addReply").click(function(){
 			var content =$("#replyContent").val();
 			var bId=<%=b.getBoardNo()%>;
@@ -393,44 +424,8 @@ Reply r = (Reply) request.getAttribute("r");
 	</script>
 
 
-<script>
 
 
-</script>
-	<script>
-
-$("#replyList").on("click","#delRBtn",function(){
-	alert("댓글삭제클릭");
-	var item=$(this).closest(".datarow");
-	var rno=item.find(".rno").text();
-	$("#delrno").val(rno);
-	//비밀번호 지우기
-	$("#delpw").val("");
-
-});
-
-$("#replyDelBtn").click(function(){
-	var reply={
-			rno:$("#delrno").val(),
-			pw:$("#delpw").val(),
-			
-	}
-	$.ajax({
-		type:"post",
-		data:reply,
-		url:"rdelte.bo",
-		dataType:"text",
-		success:function(result,status,xhr){
-		alert(result);	
-		},
-		error:function(xhr,status,error){
-			console.log("ajax 통신실패");
-			  alert("댓글삭제중 오류가 발생하였씁니다 ");
-			  alert(xhr+ status+error);
-		}
-	});
-});
-</script>
 		</div>
 		<!-- card-body end -->
 	</div>

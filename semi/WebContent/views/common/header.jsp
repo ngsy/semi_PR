@@ -143,10 +143,16 @@ String alarm =(String)request.getAttribute("alarm");
 		  </a>
 		
 		  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" 	style="text-align: center;" >
+		  
+		  
+		  <% if(loginUser.getGrade()==0){ %>  
 		    <li><a class="dropdown-item" href="<%=contextPath%>/updateForm.me">마이페이지</a></li>
-
+			 <% }else if(loginUser.getGrade()==1){ %> 
 
 		    <li><a class="dropdown-item" href="<%=contextPath%>/list.re?page=1">관리하기</a></li>
+		     <% } %> 
+		    
+		    
 		    
 		    <li><hr></li>
 		    <li><a id="logoutMember"  href="<%= request.getContextPath() %>/logout.me" onclick="disconnect();">로그아웃</a></li>

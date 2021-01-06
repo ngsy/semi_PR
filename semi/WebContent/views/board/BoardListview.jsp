@@ -37,6 +37,7 @@
 					<tr>
 						<th scope="col">글번호</th>
 						<th scope="col">글제목</th>
+						<th scope="col">지역</th>
 						<th scope="col">작성자</th>
 						<th scope="col">조회수</th>
 						<th scope="col">작성일</th>
@@ -53,6 +54,7 @@
 					<tr>
 						<td scope="row"><%= b.getBoardNo() %></td>
 						<td><%= b.getBoardTitle() %></td>
+						<td><%= b.getRegion1()%>&nbsp;<%= b.getRegion2()%></td>
 						<td><%= b.getBoardWriter() %></td>
 						<td><%= b.getReadCount() %></td>
 						<td><%= b.getCreateDate() %></td>
