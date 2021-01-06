@@ -35,6 +35,7 @@ public class TopListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Board> list =new BoardService().selectTopList();
 		
+		
 		response.setContentType("application/json;charset=UTF-8");
 	
 		Gson gson= new GsonBuilder().setDateFormat("yyyy년MM월dd일").create();
