@@ -9,10 +9,6 @@ String msg =(String)session.getAttribute("msg");
 
 String alarm =(String)request.getAttribute("alarm");
 
-
-
-
-
 %>
        
 <!DOCTYPE html>
@@ -49,7 +45,11 @@ String alarm =(String)request.getAttribute("alarm");
 <script>
 	$(function(){
 
-		
+		   var msg="<%=msg%>";
+		   if(msg !="null"){
+		      alert(msg);
+		      <%session.removeAttribute("msg");%>
+		   }	
 
 
 		

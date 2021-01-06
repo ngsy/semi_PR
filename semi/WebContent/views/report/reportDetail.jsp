@@ -19,31 +19,87 @@
        		var delBtn=$("#delBtn");
        		var getBtn=$("#getBtn");
        		<% if(type==1){ %>
+       			console.log("111");
        			delBtn.text("댓글 삭제하기");
        			getBtn.text("댓글 조회하기");
        			
-      			getBtn.on("click",function(){
-            		
-      				//댓글 가져오는 ajax 
+     			getBtn.on("click",function(){
+     				
+     				
+      				$.ajax({
+      					url:"getReply",
+      					type:"get",
+      					data:{rno :<%=r.getReportObjNo()%>},
+      					success:function(reply){
+      						$("#replyWriter").val(reply.replyWriter);
+      						$("#replyContent").val(reply.replyContent);
+      						$("#replyDate").val(reply.createDate);
+      						
+      						$("#replyModal").modal("show");
+      					},
+      					error:function(){
+      						console.log("댓글 가져오기 실패");
+      					}
+      					
+      					
+      					
+      				});
+      				
+     				
       				
       				
-      				
-      				
-      				
-      				
-      				
-      				
-      				
-      				
-      				$("#replyModal").modal("show");
             	}); 
-       			
-       		
+     			
+     			
+ 				delBtn.on("click",function(){
+ 					if(confirm("정말로 삭제하시겠습니까?")){
+	      				$.ajax({
+	      					url:"delReply",
+	      					type:"get",
+	      					data:{rno :<%=r.getReportObjNo()%>},
+	      					success:function(){
+	      						alert("댓글 삭제 성공");
+	      					},
+	      					error:function(){
+	      						alert("댓글 삭제 실패");
+	      					}
+	      					
+	      					
+	      					
+	      				});	
+ 					}
+      				
+ 				}); 
+     
        		<% }else if(type==2){ %>
 	   			delBtn.text("게시글 삭제하기");
 	   			getBtn.text("게시글 조회하기");
        		
-       		
+    			getBtn.on("click",function(){
+            		
+    				window.open('<%=request.getContextPath()%>/getBoard?bno=<%=r.getReportObjNo()%>', '_blank'); 
+
+     				
+      				
+            	}); 
+				delBtn.on("click",function(){
+					if(confirm("정말로 삭제하시겠습니까?")){
+      				$.ajax({
+      					url:"delBoard",
+      					type:"get",
+      					data:{bno :<%=r.getReportObjNo()%>},
+      					success:function(){
+      						alert("게시글 삭제 성공");
+      					},
+      					error:function(){
+      						alert("게시글 삭제 실패");
+      					}
+      					
+      					
+      					
+      				});	
+					}
+ 				}); 
        		
        		
        		<% }else if(type==3){ %>
@@ -74,7 +130,25 @@
 	   				
 	   			});
 	   			
-       		
+				delBtn.on("click",function(){
+					if(confirm("정말로 블랙리스트에 추가하겠습니까?")){
+      				$.ajax({
+      					url:"blacklist",
+      					type:"get",
+      					data:{mno :<%=r.getReportObjNo()%>},
+      					success:function(){
+      						alert("블랙리스트 추가 성공");
+      					},
+      					error:function(){
+      						alert("블랙리스트 추가 실패");    				
+
+      					}
+      					
+      					
+      					
+      				});	
+					}
+ 				}); 
        		
        		<% }%>
        	
@@ -127,6 +201,7 @@
                   			<label id="userInfo"></label>
                   		  <button class="btn btn-primary" id="getBtn"></button>
                   		  <button class="btn btn-danger" id="delBtn" ></button>	
+                  		  <button class="btn btn-danger float-right" id="reportDelBtn" onclick="location.href='<%=request.getContextPath()%>/delReport?page=<%= pagee %>&rno=<%=r.getReportNo()%>'">신고 삭제</button>
                   		  <button class="btn btn-secondary float-right" onclick="location.href='<%=request.getContextPath()%>/list.re?page=<%= pagee %>'" >목록으로</button>	
                   		  
     

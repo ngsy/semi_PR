@@ -19,7 +19,7 @@
 
 	        <div class="card shadow mb-4">
                   <div class="card-header py-3">
-                       신고리스트     
+                      <h2> 신고리스트   </h2>  
                        
                    </div>                      
                     
@@ -52,9 +52,6 @@
                   				}else if(r.getReportType()==2){
                   					type="일반게시글";
                   				}else if(r.getReportType()==3){
-                  					type="업체게시글";
-
-                  				}else if(r.getReportType()==4){
                   					type="사용자";
 
                   				}
