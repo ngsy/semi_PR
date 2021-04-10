@@ -20,7 +20,7 @@
 |Server|Apache Tomcat 9.0|
 |Language|Java, HTML5, CSS3, JavaScript|
 |Framework|Bootstrap|
-|skill|Servlet, JSP, WebSocket |
+|Skill|Servlet, JSP, WebSocket |
 
 
 
